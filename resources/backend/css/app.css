@@ -1,0 +1,15 @@
+@import url('../../shared/css/theme.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        @apply antialiased;
+    }
+
+    body {
+        @apply bg-[var(--color-surface)] text-[var(--color-text)];
+    }
+}

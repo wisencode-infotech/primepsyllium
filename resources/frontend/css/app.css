@@ -1,0 +1,25 @@
+@import url('../../shared/css/theme.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    html {
+        @apply antialiased;
+    }
+
+    body {
+        @apply bg-[var(--color-surface)] text-[var(--color-text)];
+    }
+}
+
+@layer utilities {
+    .site-logo {
+        will-change: transform, top, left;
+    }
+}

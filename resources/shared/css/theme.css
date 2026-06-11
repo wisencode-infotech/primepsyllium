@@ -1,0 +1,63 @@
+:root {
+    --font-sans: "Raleway", ui-sans-serif, system-ui, sans-serif;
+
+    --color-primary: #006a4e;
+    --color-primary-hover: #00553f;
+    --color-primary-soft: #e6f2ef;
+    --color-primary-ring: rgba(0, 106, 78, 0.28);
+
+    --color-surface: #faf8ec;
+    --color-surface-elevated: #ffffff;
+    --color-surface-muted: #f4f0dd;
+
+    --color-text: #10211b;
+    --color-text-muted: #5d6d65;
+    --color-border: rgba(16, 33, 27, 0.12);
+
+    color-scheme: light;
+}
+
+html[data-theme="dark"] {
+    --color-surface: #0f1714;
+    --color-surface-elevated: #16211d;
+    --color-surface-muted: #1d2b26;
+
+    --color-text: #f5f2e7;
+    --color-text-muted: #b9c4bd;
+    --color-border: rgba(245, 242, 231, 0.12);
+    --color-primary-ring: rgba(165, 215, 195, 0.22);
+
+    color-scheme: dark;
+}
+
+html {
+    font-family: var(--font-sans);
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
+.theme-bg {
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
+::selection {
+    background: var(--color-primary);
+    color: #ffffff;
+}
+
+:focus-visible {
+    outline: none;
+}
+
+::selection,
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
+}
