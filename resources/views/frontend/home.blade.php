@@ -161,7 +161,7 @@
 
 
 {{-- ============================================================
-     ABOUT / STORY SECTION
+     SECTION 2 · ABOUT / OUR STORY
      ============================================================ --}}
 <section id="about" class="relative overflow-hidden bg-surface py-20 lg:py-28">
 
@@ -599,7 +599,7 @@
 {{-- ============================================================
      SECTION 6 · WHY CHOOSE US
      ============================================================ --}}
-<section id="about" class="bg-surface-elevated py-16 lg:py-24">
+<section id="why-us" class="bg-surface-elevated py-16 lg:py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
 
@@ -839,9 +839,230 @@
 
 
 {{-- ============================================================
-     GROUP OF COMPANIES
+     SECTION 9 · MEDIA CENTER / EVENTS
      ============================================================ --}}
-<section class="relative overflow-hidden py-20 lg:py-24">
+@php
+$events = [
+    [
+        'title'    => 'World Food Moscow 2025',
+        'date'     => 'Sep 2, 2025',
+        'tag'      => 'Exhibition',
+        'location' => 'Moscow, Russia',
+        'excerpt'  => 'Inviting global partners to visit Prime Psyllium at World Food Expo 2025. Meet our team, explore our certified psyllium product range, and discuss tailored bulk supply solutions for your market.',
+    ],
+    [
+        'title'    => 'Fi South America Expo 2025',
+        'date'     => 'Aug 18, 2025',
+        'tag'      => 'Trade Show',
+        'location' => 'São Paulo, Brazil',
+        'excerpt'  => 'Connecting with food ingredient leaders and new partners across Latin America at Fi South America 2025.',
+    ],
+];
+$featured = $events[0];
+$others   = array_slice($events, 1);
+@endphp
+
+<section id="media" class="bg-surface py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        {{-- Header --}}
+        <div class="mb-10 flex flex-wrap items-end justify-between gap-5">
+            <div>
+                <p class="inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.45em] text-[#006a4e]">
+                    <span class="block h-px w-6 bg-[#006a4e]/50"></span>
+                    Media Center
+                </p>
+                <h2 class="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-text sm:text-4xl">
+                    Global Events &amp; Trade Shows
+                </h2>
+            </div>
+            <a href="#" class="group inline-flex items-center gap-2 text-[13px] font-bold text-[#006a4e] transition-all hover:gap-3">
+                View All Events
+                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-[#006a4e]/10 transition-colors group-hover:bg-[#006a4e] group-hover:text-[#faf8ec]">
+                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+                </span>
+            </a>
+        </div>
+
+        {{-- ── FEATURED EVENT CARD ── --}}
+        @php
+            $fParts   = explode(' ', $featured['date']);
+            $fDay     = rtrim($fParts[1] ?? '', ',');
+            $fMonth   = strtoupper(substr($fParts[0] ?? '', 0, 3));
+            $fYear    = $fParts[2] ?? '';
+            $fCity    = trim(explode(',', $featured['location'])[0]);
+            $fCountry = trim(explode(',', $featured['location'])[1] ?? '');
+        @endphp
+
+        <div class="mb-6 overflow-hidden rounded-3xl border border-[#006a4e]/10 shadow-[0_8px_48px_rgba(0,106,78,0.12)]">
+            <div class="grid lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px]">
+
+                {{-- Left: content --}}
+                <div class="bg-surface-elevated p-8 sm:p-10 lg:p-12">
+
+                    <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-[#006a4e]/8 px-3 py-1.5">
+                        <span class="h-1.5 w-1.5 rounded-full bg-[#006a4e]"></span>
+                        <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-[#006a4e]">Featured Event</span>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-4">
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-[4rem] font-black leading-none tracking-tight text-[#006a4e]">{{ $fDay }}</span>
+                            <div>
+                                <p class="text-[14px] font-extrabold uppercase leading-none text-[#006a4e]">{{ $fMonth }}</p>
+                                <p class="mt-0.5 text-[12px] font-semibold text-text-muted">{{ $fYear }}</p>
+                            </div>
+                        </div>
+                        <div class="h-12 w-px bg-[#006a4e]/15"></div>
+                        <div class="flex flex-col gap-1.5">
+                            <span class="inline-flex w-fit rounded-full bg-[#006a4e] px-3 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#faf8ec]">{{ $featured['tag'] }}</span>
+                            <span class="flex items-center gap-1.5 text-[12px] font-semibold text-text-muted">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                {{ $featured['location'] }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-6 text-[1.75rem] font-extrabold leading-snug text-text sm:text-[2rem]">
+                        {{ $featured['title'] }}
+                    </h3>
+                    <p class="mt-3 max-w-lg text-[14px] leading-7 text-text-muted">
+                        {{ $featured['excerpt'] }}
+                    </p>
+
+                    <div class="mt-7 flex flex-wrap items-center gap-3">
+                        <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-[#006a4e] px-6 py-3 text-[13px] font-bold text-[#faf8ec] shadow-[0_6px_20px_rgba(0,106,78,0.28)] transition hover:bg-[#00553f]">
+                            Request a Meeting
+                            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+                        </a>
+                        <a href="#" class="inline-flex items-center gap-2 rounded-full border border-[#006a4e]/20 px-6 py-3 text-[13px] font-bold text-[#006a4e] transition hover:border-[#006a4e]/40 hover:bg-[#006a4e]/5">
+                            Event Details
+                        </a>
+                    </div>
+                </div>
+
+                {{-- Right: green visual panel --}}
+                <div class="relative flex flex-col items-center justify-center overflow-hidden bg-[#006a4e] p-10 text-center">
+                    <div class="pointer-events-none absolute inset-0">
+                        <div class="absolute -right-16 -top-16 h-52 w-52 rounded-full border border-[#faf8ec]/10"></div>
+                        <div class="absolute -bottom-20 -left-20 h-60 w-60 rounded-full border border-[#faf8ec]/[0.07]"></div>
+                        <div class="absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#faf8ec]/[0.04]"></div>
+                    </div>
+                    <div class="pointer-events-none absolute inset-0 opacity-[0.15]">
+                        @for($r = 0; $r < 7; $r++)
+                            @for($c = 0; $c < 5; $c++)
+                                <div class="absolute h-[3px] w-[3px] rounded-full bg-[#faf8ec]" style="top:{{ $r*16+4 }}%;left:{{ $c*22+5 }}%;"></div>
+                            @endfor
+                        @endfor
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-[#faf8ec]/20 bg-[#faf8ec]/10">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#faf8ec" stroke-width="1.4" stroke-opacity="0.85"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                        </div>
+
+                        <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-[#faf8ec]/45">Venue</p>
+                        <p class="mt-2 text-[2rem] font-black leading-tight text-[#faf8ec]">{{ $fCity }}</p>
+                        <p class="mt-0.5 text-[12px] font-semibold text-[#faf8ec]/55">{{ $fCountry }}</p>
+
+                        <div class="mx-auto my-6 h-px w-14 bg-[#faf8ec]/20"></div>
+
+                        <div class="flex items-center justify-center gap-5">
+                            @foreach([['25+','Events'],['90+','Countries'],['6','Continents']] as $s)
+                            <div>
+                                <p class="text-[1.25rem] font-black text-[#faf8ec]">{{ $s[0] }}</p>
+                                <p class="text-[9px] font-semibold uppercase tracking-wide text-[#faf8ec]/45">{{ $s[1] }}</p>
+                            </div>
+                            @if(!$loop->last)<div class="h-7 w-px bg-[#faf8ec]/20"></div>@endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        {{-- ── OTHER EVENTS ── --}}
+        @if(count($others) > 0)
+        <div class="mb-6 space-y-3">
+            @foreach($others as $ev)
+            @php
+                $eParts = explode(' ', $ev['date']);
+                $eDay   = rtrim($eParts[1] ?? '', ',');
+                $eMonth = strtoupper(substr($eParts[0] ?? '', 0, 3));
+                $eYear  = $eParts[2] ?? '';
+            @endphp
+            <div class="group relative flex flex-wrap items-center gap-5 overflow-hidden rounded-2xl border border-[#006a4e]/10 bg-surface-elevated px-8 py-5 transition-all duration-300 hover:border-[#006a4e]/25 hover:shadow-[0_12px_32px_rgba(0,106,78,0.10)] sm:flex-nowrap">
+                <div class="absolute inset-y-4 left-0 w-[3px] rounded-full bg-[#006a4e]/15 transition-colors duration-300 group-hover:bg-[#006a4e]"></div>
+
+                {{-- Date pill --}}
+                <div class="shrink-0">
+                    <div class="inline-flex items-center gap-2 rounded-full border border-[#006a4e]/15 bg-surface px-3 py-1.5">
+                        <span class="text-[13px] font-black text-[#006a4e]">{{ $eDay }}</span>
+                        <span class="text-[9px] font-bold uppercase tracking-wide text-[#006a4e]/55">{{ $eMonth }} {{ $eYear }}</span>
+                    </div>
+                </div>
+
+                <div class="hidden h-8 w-px shrink-0 bg-[#006a4e]/10 sm:block"></div>
+
+                {{-- Content --}}
+                <div class="min-w-0 flex-1">
+                    <div class="mb-1 flex flex-wrap items-center gap-2">
+                        <span class="rounded-full bg-[#006a4e]/8 px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#006a4e]">{{ $ev['tag'] }}</span>
+                        <span class="flex items-center gap-1 text-[11px] text-text-muted">
+                            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            {{ $ev['location'] }}
+                        </span>
+                    </div>
+                    <h3 class="text-[14px] font-extrabold leading-snug text-text transition-colors group-hover:text-[#006a4e]">{{ $ev['title'] }}</h3>
+                    <p class="mt-0.5 text-[12px] leading-5 text-text-muted line-clamp-1">{{ $ev['excerpt'] }}</p>
+                </div>
+
+                {{-- Arrow --}}
+                <a href="#" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#006a4e]/12 text-[#006a4e]/30 transition-all duration-300 group-hover:border-[#006a4e] group-hover:bg-[#006a4e] group-hover:text-[#faf8ec]">
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+                </a>
+            </div>
+            @endforeach
+        </div>
+        @endif
+
+        {{-- ── BOTTOM CTA STRIP ── --}}
+        <div class="overflow-hidden rounded-2xl bg-[#006a4e]">
+            <div class="relative px-8 py-8 sm:px-10">
+                <div class="pointer-events-none absolute inset-0">
+                    <div class="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-[#faf8ec]/[0.06]"></div>
+                    <div class="absolute -bottom-8 left-1/3 h-28 w-28 rounded-full bg-[#faf8ec]/[0.04]"></div>
+                </div>
+                <div class="relative flex flex-wrap items-center justify-between gap-6">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-[#faf8ec]/50">Join Us Worldwide</p>
+                        <p class="mt-1 text-[1.2rem] font-extrabold leading-snug text-[#faf8ec]">Want to Meet Our Team at the Next Expo?</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-8">
+                        @foreach([['25+','Global Events'],['6','Continents'],['90+','Countries']] as $s)
+                        <div class="text-center">
+                            <p class="text-[1.4rem] font-black text-[#faf8ec]">{{ $s[0] }}</p>
+                            <p class="text-[9px] font-semibold uppercase tracking-wider text-[#faf8ec]/45">{{ $s[1] }}</p>
+                        </div>
+                        @endforeach
+                    </div>
+                    <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-[#faf8ec] px-6 py-3 text-[13px] font-bold text-[#006a4e] transition hover:bg-[#faf8ec]/90">
+                        Enquire Now
+                        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+{{-- ============================================================
+     SECTION 10 · GROUP OF COMPANIES
+     ============================================================ --}}
+<section id="companies" class="relative overflow-hidden py-20 lg:py-24">
 
     <div class="pointer-events-none absolute inset-0 -z-10">
         <div class="absolute -left-32 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-[#006a4e]/5 blur-3xl"></div>
@@ -900,119 +1121,7 @@
 
 
 {{-- ============================================================
-     MEDIA CENTER / EVENTS
-     ============================================================ --}}
-@php
-$events = [
-    ['title' => 'World Food Moscow 2025',        'date' => 'Sep 2, 2025',   'tag' => 'Exhibition', 'location' => 'Moscow, Russia',       'excerpt' => 'Inviting global partners to visit Prime Psyllium at World Food Expo 2025 and explore our full certified psyllium product range.'],
-    ['title' => 'Fi South America Expo 2025',    'date' => 'Aug 18, 2025',  'tag' => 'Trade Show', 'location' => 'São Paulo, Brazil',     'excerpt' => 'Connecting with food ingredient leaders and new partners across Latin America at Fi South America 2025.'],
-];
-@endphp
-
-<section id="media" class="bg-surface py-16 lg:py-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-        {{-- Header row --}}
-        <div class="mb-10 flex flex-wrap items-end justify-between gap-5">
-            <div>
-                <p class="inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.45em] text-[#006a4e]">
-                    <span class="block h-px w-6 bg-[#006a4e]/50"></span>
-                    Media Center
-                </p>
-                <h2 class="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-text sm:text-4xl">
-                    Global Events &amp; Trade Shows
-                </h2>
-            </div>
-            <a href="#" class="group inline-flex items-center gap-2 text-[13px] font-bold text-[#006a4e] transition-all hover:gap-3">
-                View All Events
-                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-[#006a4e]/10 transition-colors group-hover:bg-[#006a4e] group-hover:text-[#faf8ec]">
-                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
-                </span>
-            </a>
-        </div>
-
-        <div class="grid gap-5 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_360px]">
-
-            {{-- LEFT: event cards --}}
-            <div class="space-y-3">
-                @foreach($events as $i => $ev)
-                <div class="group flex items-start gap-5 rounded-2xl border border-[#006a4e]/8 bg-surface-elevated px-6 py-5 shadow-sm transition-all duration-300 hover:border-[#006a4e]/22 hover:shadow-[0_8px_28px_rgba(0,106,78,0.09)]">
-
-                    {{-- Date block --}}
-                    <div class="flex w-12 shrink-0 flex-col items-center rounded-xl border border-[#006a4e]/12 bg-surface py-2 text-center">
-                        <span class="text-[9px] font-bold uppercase tracking-wide text-[#006a4e]/55">
-                            {{ strtoupper(substr(explode(' ', $ev['date'])[0], 0, 3)) }}
-                        </span>
-                        <span class="text-[20px] font-black leading-none text-[#006a4e]">
-                            {{ explode(' ', $ev['date'])[1] ?? '' }}
-                        </span>
-                        <span class="text-[9px] font-semibold text-text-muted">
-                            {{ explode(', ', $ev['date'])[1] ?? '' }}
-                        </span>
-                    </div>
-
-                    {{-- Content --}}
-                    <div class="min-w-0 flex-1">
-                        <div class="flex flex-wrap items-center gap-2">
-                            <span class="rounded-full bg-[#006a4e] px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#faf8ec]">{{ $ev['tag'] }}</span>
-                            <span class="flex items-center gap-1 text-[11px] text-text-muted">
-                                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                {{ $ev['location'] }}
-                            </span>
-                        </div>
-                        <h3 class="mt-1.5 text-[15px] font-extrabold leading-snug text-text transition-colors duration-200 group-hover:text-[#006a4e]">
-                            {{ $ev['title'] }}
-                        </h3>
-                        <p class="mt-1 text-[12px] leading-5 text-text-muted line-clamp-2">{{ $ev['excerpt'] }}</p>
-                    </div>
-
-                    {{-- Arrow --}}
-                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#006a4e]/12 text-[#006a4e]/30 transition-all duration-300 group-hover:border-[#006a4e] group-hover:bg-[#006a4e] group-hover:text-[#faf8ec]">
-                        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-
-            {{-- RIGHT: sidebar --}}
-            <div class="flex flex-col gap-4">
-
-                {{-- Stats card --}}
-                <div class="rounded-2xl border border-[#006a4e]/10 bg-surface-elevated p-6 shadow-sm">
-                    <p class="text-[10px] font-bold uppercase tracking-[0.35em] text-[#006a4e]/60">Our Expo Presence</p>
-                    <div class="mt-4 space-y-4">
-                        @foreach([['25+', 'Global Events Attended'], ['6', 'Continents Covered'], ['90+', 'Countries Reached'], ['2025', 'Active Exhibition Year']] as $stat)
-                        <div class="flex items-center justify-between border-b border-[#006a4e]/8 pb-3 last:border-0 last:pb-0">
-                            <span class="text-[12px] font-semibold text-text-muted">{{ $stat[1] }}</span>
-                            <span class="text-[18px] font-black text-[#006a4e]">{{ $stat[0] }}</span>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-
-                {{-- Meet us CTA --}}
-                <div class="relative overflow-hidden rounded-2xl bg-[#006a4e] p-6">
-                    <div class="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-[#faf8ec]/[0.07]"></div>
-                    <div class="pointer-events-none absolute -bottom-6 -left-6 h-24 w-24 rounded-full bg-[#faf8ec]/[0.05]"></div>
-                    <div class="relative">
-                        <p class="text-[10px] font-bold uppercase tracking-[0.35em] text-[#faf8ec]/50">Upcoming</p>
-                        <p class="mt-2 text-[18px] font-extrabold leading-snug text-[#faf8ec]">Want to Meet<br>Our Team?</p>
-                        <p class="mt-2 text-[12px] leading-5 text-[#faf8ec]/65">Find us at the next global trade expo. Enquire about booth visits, meetings, or product samples.</p>
-                        <a href="#contact" class="mt-4 inline-flex items-center gap-2 rounded-full bg-[#faf8ec] px-5 py-2.5 text-[12px] font-bold text-[#006a4e] transition hover:bg-[#faf8ec]/90">
-                            Enquire Now
-                            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-
-
-{{-- ============================================================
-     SECTION 9 · CONTACT CTA
+     SECTION 11 · CONTACT CTA
      ============================================================ --}}
 <section id="contact" class="py-16 lg:py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
