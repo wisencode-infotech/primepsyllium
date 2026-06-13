@@ -22,4 +22,35 @@
     .site-logo {
         will-change: transform, top, left;
     }
+    [x-cloak] { display: none !important; }
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+    animation: marquee 60s linear infinite;
+}
+
+@keyframes spin-globe {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+.animate-spin-globe {
+    animation: spin-globe 20s linear infinite;
+}
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select {
+    color-scheme: dark;
+    background-color: var(--color-surface-elevated);
+    color: var(--color-text);
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.6;
 }
