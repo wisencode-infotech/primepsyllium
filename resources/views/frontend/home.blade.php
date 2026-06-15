@@ -69,7 +69,7 @@
                         <p class="mt-1 text-[10px] font-semibold text-text-muted sm:text-[11px]">Countries Served</p>
                     </div>
                     <div class="w-px bg-[#006a4e]/10"></div>
-                    <div class="flex-1 text-center lg:text-left">
+                    <div class="flex-1 text-center lg:px-6 lg:text-left">
                         <p class="text-2xl font-black text-[#006a4e] sm:text-3xl">6<span class="text-lg sm:text-xl">+</span></p>
                         <p class="mt-1 text-[10px] font-semibold text-text-muted sm:text-[11px]">Certifications</p>
                     </div>
@@ -80,20 +80,20 @@
             <div class="relative flex items-center justify-center pb-6 lg:justify-end lg:pb-0">
 
                 {{-- Glow --}}
-                <div class="absolute h-[340px] w-[340px] rounded-full bg-[#006a4e]/8 blur-[70px] sm:h-[440px] sm:w-[440px] lg:h-[560px] lg:w-[560px]"></div>
+                <div class="absolute h-[340px] w-[340px] rounded-full blur-[70px] sm:h-[440px] sm:w-[440px] lg:h-[560px] lg:w-[560px]" style="background-color:rgba(118, 158, 43, 0.14);"></div>
 
                 {{-- Outer dashed ring --}}
-                <div class="absolute h-[320px] w-[320px] rounded-full border border-dashed border-[#006a4e]/12 sm:h-[430px] sm:w-[430px] lg:h-[560px] lg:w-[560px]"></div>
+                <div class="absolute h-[320px] w-[320px] rounded-full border border-dashed sm:h-[430px] sm:w-[430px] lg:h-[560px] lg:w-[560px]" style="border-color:rgba(118, 158, 43, 0.18);"></div>
 
                 {{-- Middle ring --}}
-                <div class="absolute h-[278px] w-[278px] rounded-full border border-[#006a4e]/[0.08] bg-[#006a4e]/[0.03] sm:h-[374px] sm:w-[374px] lg:h-[490px] lg:w-[490px]"></div>
+                <div class="absolute h-[278px] w-[278px] rounded-full border sm:h-[374px] sm:w-[374px] lg:h-[490px] lg:w-[490px]" style="border-color:rgba(118, 158, 43, 0.16);background-color:rgba(118, 158, 43, 0.06);"></div>
 
                 {{-- Inner ring --}}
-                <div class="absolute h-[254px] w-[254px] rounded-full border-2 border-[#006a4e]/[0.12] bg-[#006a4e]/[0.04] sm:h-[346px] sm:w-[346px] lg:h-[458px] lg:w-[458px]"></div>
+                <div class="absolute h-[254px] w-[254px] rounded-full border-2 sm:h-[346px] sm:w-[346px] lg:h-[458px] lg:w-[458px]" style="border-color:rgba(118, 158, 43, 0.24);background-color:rgba(118, 158, 43, 0.08);"></div>
 
                 {{-- Spinning circular image --}}
                 <div class="relative z-10 h-[240px] w-[240px] sm:h-[320px] sm:w-[320px] lg:h-[430px] lg:w-[430px]"
-                     style="filter:drop-shadow(0 20px 60px rgba(0,106,78,0.28)) drop-shadow(0 6px 20px rgba(0,106,78,0.14));">
+                     style="filter:drop-shadow(0 20px 60px rgba(118,158,43,0.32)) drop-shadow(0 6px 20px rgba(118,158,43,0.18));">
                     <div class="h-full w-full animate-spin-globe" style="clip-path:circle(50% at 50% 50%);-webkit-clip-path:circle(50% at 50% 50%);">
                         <img
                             src="{{ asset('assets/frontend/images/hero-image.png') }}"
@@ -163,30 +163,177 @@
 {{-- ============================================================
      SECTION 2 · ABOUT / OUR STORY
      ============================================================ --}}
-<section id="about" class="relative overflow-hidden bg-surface py-20 lg:py-28">
+<section id="about" class="story-section story-section-v2 relative overflow-hidden bg-surface py-14 lg:py-20">
+    <div class="story-grid pointer-events-none absolute inset-0"></div>
+    <div class="story-aurora pointer-events-none absolute left-1/2 top-10 h-[520px] w-[520px] -translate-x-1/2 rounded-full"></div>
+    <div class="story-v2-glow story-v2-glow-left"></div>
+    <div class="story-v2-glow story-v2-glow-right"></div>
+
+    <div class="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div class="story-v2-shell">
+            <div class="story-v2-top story-reveal">
+                <div>
+                    <p class="inline-flex items-center gap-2.5 rounded-full border border-[#006a4e]/18 bg-[#006a4e]/5 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.42em] text-[#006a4e]">
+                        <span class="h-1.5 w-1.5 rounded-full bg-[#769e2b]"></span>
+                        Our Story
+                    </p>
+                    <h2 class="mt-4 max-w-3xl text-4xl font-black leading-[0.98] tracking-tight text-text sm:text-5xl lg:text-[3.65rem] xl:text-[4rem]">
+                        Built in Palanpur.<br>
+                        Trusted across <span class="story-v2-gradient-text">90+ countries.</span>
+                    </h2>
+                </div>
+                <p class="story-v2-intro max-w-md text-[14px] leading-7 text-text-muted">
+                    Prime Psyllium blends founder-led expertise since <strong class="font-semibold text-text">1995</strong> with modern processing, reliable sourcing, and export-ready quality for global brands.
+                </p>
+            </div>
+
+            <div class="mt-8 grid gap-5 lg:grid-cols-[0.96fr_1.04fr] lg:items-stretch">
+                <div class="story-v2-visual story-reveal">
+                    <div class="story-v2-mapline" aria-hidden="true"></div>
+                    <div class="story-v2-image-wrap">
+                        <img
+                            src="{{ asset('assets/frontend/images/about-palanpur.webp') }}"
+                            alt="Palanpur, Gujarat - the home of Prime Psyllium"
+                            class="story-v2-image"
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+                        >
+                        <div class="hidden min-h-[520px] flex-col items-center justify-center gap-4 bg-gradient-to-br from-[#006a4e]/10 to-[#006a4e]/5">
+                            <div class="flex h-20 w-20 items-center justify-center rounded-2xl bg-[#006a4e]/10">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#006a4e" stroke-width="1.5" stroke-opacity="0.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            </div>
+                            <p class="text-[11px] font-semibold text-[#006a4e]/40">about-palanpur.webp</p>
+                        </div>
+                        <div class="story-v2-image-shade"></div>
+                        <div class="story-v2-scan"></div>
+                    </div>
+
+                    <div class="story-v2-location">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Palanpur, Gujarat, India</span>
+                    </div>
+
+                    <div class="story-v2-seal">
+                        <span>Est.</span>
+                        <strong>1995</strong>
+                    </div>
+
+                    <div class="story-v2-mini-card story-v2-mini-card-one">
+                        <p>Founder Expertise</p>
+                        <strong>30+ years</strong>
+                    </div>
+                    <div class="story-v2-mini-card story-v2-mini-card-two">
+                        <p>Global Supply</p>
+                        <strong>6 continents</strong>
+                    </div>
+                </div>
+
+                <div class="story-v2-console story-reveal" style="animation-delay:0.16s;">
+                    <div class="story-v2-console-grid"></div>
+                    <div class="relative z-10">
+                        <div class="flex flex-wrap gap-2">
+                            @foreach(['Psyllium Husk', 'Psyllium Seeds', 'Psyllium Powder'] as $chip)
+                                <span class="story-v2-chip">{{ $chip }}</span>
+                            @endforeach
+                        </div>
+
+                        <h3 class="mt-6 text-3xl font-black leading-tight text-[#faf8ec] sm:text-[2.15rem]">
+                            Top rated psyllium products manufacturer &amp; supplier.
+                        </h3>
+
+                        <div class="mt-5 space-y-3 text-[13px] leading-6 text-[#faf8ec]/72">
+                            <p>
+                                Prime Psyllium has been a trusted Psyllium manufacturer and supplier in India since 2018, built on decades of industry expertise.
+                            </p>
+                            <p>
+                                We deliver high-quality Psyllium Husk, Psyllium Seeds, and Psyllium Powder with consistent purity, reliability, and professional care for customers worldwide.
+                            </p>
+                        </div>
+
+                        <div class="story-v2-timeline mt-6">
+                            @foreach([
+                                ['1995', 'Founder entered the psyllium business'],
+                                ['2018', 'Prime Psyllium built with export focus'],
+                                ['90+', 'Countries served with dependable supply'],
+                            ] as $index => $item)
+                                <div class="story-v2-timeline-item" style="animation-delay:{{ 0.22 + ($index * 0.1) }}s;">
+                                    <span></span>
+                                    <div>
+                                        <strong>{{ $item[0] }}</strong>
+                                        <p>{{ $item[1] }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="story-v2-proof mt-6">
+                            <div>
+                                <p class="text-[2.8rem] font-black leading-none text-[#faf8ec]">30<span class="text-2xl">+</span></p>
+                                <p class="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#faf8ec]/55">Years of experience</p>
+                            </div>
+                            <p>
+                                Group companies <strong>Amiras Agro</strong> and <strong>Fibra</strong> support premium spices and high-quality processed psyllium products for global markets.
+                            </p>
+                        </div>
+
+                        <a href="#contact" class="story-v2-cta mt-6 inline-flex items-center gap-2.5 rounded-full bg-[#faf8ec] px-6 py-3 text-[13px] font-extrabold text-[#006a4e] shadow-[0_18px_44px_rgba(0,0,0,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_54px_rgba(0,0,0,0.28)]">
+                            Start a Conversation
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="story-v2-stats story-reveal" style="animation-delay:0.3s;">
+                @foreach([
+                    ['100%', 'Natural sourcing mindset'],
+                    ['90+', 'Countries served'],
+                    ['6', 'Continents reached'],
+                    ['30+', 'Years of trust'],
+                ] as $stat)
+                    <div class="story-v2-stat">
+                        <strong>{{ $stat[0] }}</strong>
+                        <span>{{ $stat[1] }}</span>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about-legacy" class="hidden">
 
     {{-- Decorative background blobs --}}
     <div class="pointer-events-none absolute inset-0 -z-10">
         <div class="absolute -left-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-[#006a4e]/5 blur-[80px]"></div>
         <div class="absolute -right-40 bottom-0 h-80 w-80 rounded-full bg-[#006a4e]/5 blur-[80px]"></div>
     </div>
+    <div class="story-grid pointer-events-none absolute inset-0"></div>
+    <div class="story-aurora pointer-events-none absolute left-1/2 top-10 h-[520px] w-[520px] -translate-x-1/2 rounded-full"></div>
 
     <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
 
             {{-- ── LEFT: IMAGE ── --}}
-            <div class="relative">
+            <div class="story-reveal story-visual relative">
+                <div class="story-orbit story-orbit-one"></div>
+                <div class="story-orbit story-orbit-two"></div>
 
                 {{-- Decorative corner accent --}}
                 <div class="absolute -left-4 -top-4 h-24 w-24 rounded-tl-3xl border-l-2 border-t-2 border-[#006a4e]/25 lg:-left-6 lg:-top-6 lg:h-32 lg:w-32"></div>
                 <div class="absolute -bottom-4 -right-4 h-24 w-24 rounded-br-3xl border-b-2 border-r-2 border-[#006a4e]/25 lg:-bottom-6 lg:-right-6 lg:h-32 lg:w-32"></div>
 
+                {{-- Animated route line --}}
+                <svg class="pointer-events-none absolute -right-7 -top-7 z-10 hidden h-40 w-40 text-[#006a4e]/35 lg:block" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+                    <path class="story-dash" d="M10 118 C48 52 86 142 148 30" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="148" cy="30" r="4" fill="#006a4e"/>
+                </svg>
+
                 {{-- Image frame --}}
-                <div class="relative overflow-hidden rounded-3xl shadow-[0_24px_80px_rgba(0,106,78,0.18)]">
+                <div class="story-frame relative overflow-hidden rounded-3xl shadow-[0_24px_80px_rgba(0,106,78,0.18)]">
                     <img
                         src="{{ asset('assets/frontend/images/about-palanpur.webp') }}"
                         alt="Palanpur — The Home of Prime Psyllium"
-                        class="h-[420px] w-full object-cover object-center sm:h-[480px] lg:h-[560px]"
+                        class="story-image h-[420px] w-full object-cover object-center sm:h-[480px] lg:h-[560px]"
                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
                     >
                     {{-- Fallback placeholder --}}
@@ -199,6 +346,8 @@
 
                     {{-- Green gradient overlay at bottom --}}
                     <div class="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#006a4e]/40 to-transparent"></div>
+                    <div class="story-sweep pointer-events-none absolute -inset-y-16 left-0 w-28 bg-gradient-to-r from-transparent via-[#faf8ec]/70 to-transparent blur-sm"></div>
+                    <div class="story-image-tint pointer-events-none absolute inset-0"></div>
 
                     {{-- Location tag --}}
                     <div class="absolute bottom-5 left-5 flex items-center gap-2.5 rounded-full bg-surface-elevated/90 px-4 py-2 backdrop-blur-sm shadow-lg">
@@ -208,13 +357,13 @@
                 </div>
 
                 {{-- Circular badge --}}
-                <div class="absolute -right-5 top-10 z-10 flex h-20 w-20 flex-col items-center justify-center rounded-full bg-[#006a4e] shadow-[0_8px_32px_rgba(0,106,78,0.40)] sm:-right-6 sm:h-24 sm:w-24">
+                <div class="story-float story-pulse absolute -right-5 top-10 z-10 flex h-20 w-20 flex-col items-center justify-center rounded-full bg-[#006a4e] shadow-[0_8px_32px_rgba(0,106,78,0.40)] sm:-right-6 sm:h-24 sm:w-24">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#faf8ec" stroke-width="1.5"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 6v6l4 2" stroke-opacity="0.7"/></svg>
                     <p class="mt-1 text-center text-[7px] font-bold uppercase leading-tight tracking-wider text-[#faf8ec]">Est.<br>1995</p>
                 </div>
 
                 {{-- Natural badge --}}
-                <div class="absolute -bottom-5 left-10 z-10 flex items-center gap-2 rounded-full bg-surface-elevated px-4 py-2.5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] sm:left-14">
+                <div class="story-float absolute -bottom-5 left-10 z-10 flex items-center gap-2 rounded-full bg-surface-elevated px-4 py-2.5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] sm:left-14" style="animation-delay:1.1s;">
                     <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#006a4e]/10">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#006a4e" stroke-width="2"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/><path d="M8 12s1.5-3 4-3 4 3 4 3-1.5 3-4 3-4-3-4-3z" fill="#006a4e" fill-opacity="0.2"/></svg>
                     </div>
@@ -223,7 +372,7 @@
             </div>
 
             {{-- ── RIGHT: CONTENT ── --}}
-            <div class="lg:pl-4">
+            <div class="story-reveal lg:pl-4" style="animation-delay:0.18s;">
 
                 {{-- Eyebrow --}}
                 <div class="inline-flex items-center gap-2 rounded-full border border-[#006a4e]/20 bg-[#006a4e]/5 px-4 py-1.5 text-[10.5px] font-bold uppercase tracking-[0.4em] text-[#006a4e]">
@@ -245,8 +394,22 @@
                     We deliver high-quality Psyllium Husk, Psyllium Seeds, and Psyllium Powder with consistent purity, reliability, and professional care. With exports to the USA, Brazil, Russia, and other international markets, we proudly serve brands and partners worldwide.
                 </p>
 
+                {{-- Animated timeline chips --}}
+                <div class="story-milestones mt-7 grid gap-3 sm:grid-cols-3">
+                    @foreach([
+                        ['1995','Founder expertise'],
+                        ['2018','Prime Psyllium built'],
+                        ['90+','Countries served'],
+                    ] as $index => $milestone)
+                        <div class="story-reveal story-card rounded-2xl border border-[#006a4e]/12 bg-surface-elevated/85 p-4 shadow-[0_10px_34px_rgba(0,106,78,0.07)] backdrop-blur-sm" style="animation-delay:{{ 0.28 + ($index * 0.1) }}s;">
+                            <p class="text-[1.35rem] font-black leading-none text-[#006a4e]">{{ $milestone[0] }}</p>
+                            <p class="mt-2 text-[10px] font-bold uppercase tracking-[0.18em] text-text-muted">{{ $milestone[1] }}</p>
+                        </div>
+                    @endforeach
+                </div>
+
                 {{-- Stat + group companies blurb --}}
-                <div class="mt-8 flex items-start gap-6 rounded-2xl border border-[#006a4e]/10 bg-surface-elevated p-6 shadow-[0_4px_24px_rgba(0,106,78,0.07)]">
+                <div class="story-reveal story-proof mt-8 flex items-start gap-6 rounded-2xl border border-[#006a4e]/10 bg-surface-elevated p-6 shadow-[0_4px_24px_rgba(0,106,78,0.07)]" style="animation-delay:0.48s;">
                     <div class="shrink-0 text-center">
                         <p class="text-[2.6rem] font-black leading-none tracking-tight text-[#006a4e]">30<span class="text-2xl">+</span></p>
                         <p class="mt-1.5 text-[10px] font-bold uppercase tracking-wider text-text-muted">Years of<br>Experience</p>
@@ -373,7 +536,12 @@
                         x-transition:leave="transition ease-in duration-150"
                         x-transition:leave-start="opacity-100 scale-100"
                         x-transition:leave-end="opacity-0 scale-95"
-                        class="group rounded-2xl border border-[#006a4e]/10 bg-surface-elevated p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,106,78,0.12)]"
+                        @click="openDrawer(products.find(p => String(p.id) === String($el.dataset.pid)))"
+                        @keydown.enter.prevent="openDrawer(products.find(p => String(p.id) === String($el.dataset.pid)))"
+                        @keydown.space.prevent="openDrawer(products.find(p => String(p.id) === String($el.dataset.pid)))"
+                        role="button"
+                        tabindex="0"
+                        class="group cursor-pointer rounded-2xl border border-[#006a4e]/10 bg-surface-elevated p-4 text-left shadow-sm outline-none transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,106,78,0.12)] focus-visible:ring-2 focus-visible:ring-[#006a4e]/25"
                     >
                         {{-- Product image --}}
                         <div class="mb-4 flex h-32 items-center justify-center overflow-hidden rounded-xl bg-surface-muted">
@@ -395,10 +563,10 @@
                             @endforeach
                         </div>
 
-                        <a href="#" class="mt-3 inline-flex items-center gap-1 text-[11px] font-bold text-[#006a4e] transition hover:gap-2">
+                        <button type="button" class="mt-3 inline-flex items-center gap-1 text-[11px] font-bold text-[#006a4e] transition group-hover:gap-2">
                             View Details
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
-                        </a>
+                        </button>
                     </div>
                     @endforeach
 
@@ -409,7 +577,12 @@
                         x-transition:enter="transition ease-out duration-200"
                         x-transition:enter-start="opacity-0 scale-95"
                         x-transition:enter-end="opacity-100 scale-100"
-                        class="group flex flex-col rounded-2xl border border-[#006a4e]/10 bg-surface-elevated p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,106,78,0.12)]"
+                        @click="openDrawer(alsoProducts.find(p => p.slug === '{{ $item['slug'] }}'), 'also')"
+                        @keydown.enter.prevent="openDrawer(alsoProducts.find(p => p.slug === '{{ $item['slug'] }}'), 'also')"
+                        @keydown.space.prevent="openDrawer(alsoProducts.find(p => p.slug === '{{ $item['slug'] }}'), 'also')"
+                        role="button"
+                        tabindex="0"
+                        class="group flex cursor-pointer flex-col rounded-2xl border border-[#006a4e]/10 bg-surface-elevated p-4 text-left shadow-sm outline-none transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,106,78,0.12)] focus-visible:ring-2 focus-visible:ring-[#006a4e]/25"
                     >
                         <div class="mb-3 self-start rounded-full bg-[#006a4e]/6 px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.3em] text-[#006a4e]/60">Also Available</div>
                         <div class="mb-4 flex h-32 items-center justify-center overflow-hidden rounded-xl bg-surface-muted">
@@ -422,10 +595,10 @@
                         </div>
                         <h3 class="text-[13px] font-extrabold text-text">{{ $item['name'] }}</h3>
                         <p class="mt-1 text-[11px] leading-4 text-text-muted">{{ $item['description'] }}</p>
-                        <a href="#" class="mt-3 inline-flex items-center gap-1 text-[11px] font-bold text-[#006a4e] transition hover:gap-2">
+                        <button type="button" class="mt-3 inline-flex items-center gap-1 text-[11px] font-bold text-[#006a4e] transition group-hover:gap-2">
                             View Details
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
-                        </a>
+                        </button>
                     </div>
                     @endforeach
 
@@ -461,6 +634,164 @@
                 </div>
 
             </div>
+
+            {{-- Product details drawer --}}
+            <template x-teleport="body">
+                <div
+                    x-show="drawerOpen"
+                    x-cloak
+                    class="fixed inset-0 z-[80]"
+                    @keydown.escape.window="closeDrawer()"
+                >
+                    <div
+                        x-show="drawerOpen"
+                        x-transition.opacity.duration.300ms
+                        class="absolute inset-0 bg-[#0b1713]/55 backdrop-blur-sm"
+                        @click="closeDrawer()"
+                    ></div>
+
+                    <aside
+                        x-show="drawerOpen"
+                        x-transition:enter="transition ease-out duration-500"
+                        x-transition:enter-start="translate-x-full opacity-0"
+                        x-transition:enter-end="translate-x-0 opacity-100"
+                        x-transition:leave="transition ease-in duration-300"
+                        x-transition:leave-start="translate-x-0 opacity-100"
+                        x-transition:leave-end="translate-x-full opacity-0"
+                        class="product-drawer absolute right-0 top-0 flex h-full w-full max-w-full flex-col overflow-y-auto bg-surface-elevated shadow-[-28px_0_80px_rgba(0,0,0,0.24)] sm:max-w-[660px] lg:max-w-[52vw] xl:max-w-[860px] lg:rounded-l-[2rem]"
+                        @click.stop
+                    >
+                        <template x-if="selectedProduct">
+                            <div>
+                                <div class="product-drawer-hero relative overflow-hidden p-5 sm:p-7">
+                                    <div class="product-drawer-orbit product-drawer-orbit-one"></div>
+                                    <div class="product-drawer-orbit product-drawer-orbit-two"></div>
+                                    <button
+                                        type="button"
+                                        @click="closeDrawer()"
+                                        class="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-[#faf8ec]/25 bg-[#0b1713]/35 text-[#faf8ec] shadow-[0_12px_30px_rgba(0,0,0,0.2)] backdrop-blur-md transition hover:bg-[#0b1713]/55"
+                                        aria-label="Close product details"
+                                    >
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4 4l10 10M14 4L4 14"/></svg>
+                                    </button>
+                                    <div class="product-drawer-hero-grid relative z-10 grid gap-5 sm:grid-cols-[minmax(0,1fr)_230px] sm:items-end">
+                                        <div class="product-drawer-copy pt-12 sm:pt-16">
+                                            <div class="inline-flex items-center gap-2 rounded-full border border-[#faf8ec]/18 bg-[#faf8ec]/10 px-3 py-1.5 backdrop-blur-sm">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-[#b9df72] shadow-[0_0_16px_rgba(185,223,114,0.85)]"></span>
+                                                <span class="text-[9px] font-extrabold uppercase tracking-[0.35em] text-[#faf8ec]/72">Product Details</span>
+                                            </div>
+                                            <h3 class="mt-4 text-3xl font-black leading-tight text-[#faf8ec] sm:text-[2.55rem]" x-text="selectedProduct.name"></h3>
+                                            <p class="mt-3 max-w-xl text-[13px] leading-6 !text-[#faf8ec]/78" x-text="selectedProduct.overview"></p>
+                                        </div>
+                                        <div class="product-drawer-media-card">
+                                            <img
+                                                :src="`{{ asset('') }}${selectedProduct.image}`"
+                                                :alt="selectedProduct.name"
+                                                class="h-full w-full rounded-[1.15rem] bg-[#faf8ec] object-cover object-center"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-drawer-body space-y-5 p-5 sm:p-7">
+                                    <div class="product-drawer-reveal flex flex-wrap gap-2">
+                                        <template x-for="label in selectedProduct.categoryLabels" :key="label">
+                                            <span class="rounded-full bg-[#006a4e]/8 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#006a4e]" x-text="label"></span>
+                                        </template>
+                                    </div>
+
+                                    <div class="product-drawer-card product-drawer-reveal rounded-2xl border border-[#006a4e]/10 bg-surface p-5">
+                                        <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-[#006a4e]/65">Product Detail</p>
+                                        <div class="mt-3 space-y-3">
+                                            <template x-for="paragraph in selectedProduct.details" :key="paragraph">
+                                                <p class="text-[14px] leading-7 text-text-muted" x-text="paragraph"></p>
+                                            </template>
+                                        </div>
+                                    </div>
+
+                                    <div class="product-drawer-card product-drawer-reveal rounded-2xl border border-[#006a4e]/10 bg-[#006a4e]/[0.035] p-5">
+                                        <div class="flex items-center justify-between gap-3">
+                                            <div>
+                                                <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-[#006a4e]/65" x-text="selectedProduct.specTable.title"></p>
+                                                <p class="mt-1 text-[11px] font-semibold text-text-muted" x-text="selectedProduct.specTable.subtitle"></p>
+                                            </div>
+                                            <span class="hidden rounded-full bg-surface-elevated px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#006a4e] sm:inline-flex">Specification</span>
+                                        </div>
+                                        <div class="mt-4 overflow-x-auto rounded-2xl border border-[#006a4e]/10 bg-surface shadow-[0_16px_44px_rgba(0,106,78,0.06)]">
+                                            <table class="min-w-[720px] w-full border-collapse text-left text-[12px]">
+                                                <thead>
+                                                    <tr class="bg-[#006a4e] text-[#faf8ec]">
+                                                        <template x-for="column in selectedProduct.specTable.columns" :key="column">
+                                                            <th class="px-4 py-3 font-extrabold" x-text="column"></th>
+                                                        </template>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <template x-for="(row, rowIndex) in selectedProduct.specTable.rows" :key="`${selectedProduct.slug}-${rowIndex}`">
+                                                        <tr :class="rowIndex % 2 === 0 ? 'bg-[#006a4e]/[0.055]' : 'bg-surface'">
+                                                            <template x-for="(cell, cellIndex) in row" :key="`${selectedProduct.slug}-${rowIndex}-${cellIndex}`">
+                                                                <td
+                                                                    class="border-t border-[#006a4e]/10 px-4 py-3 leading-5"
+                                                                    :class="cellIndex === 0 ? 'font-extrabold text-text' : 'font-semibold text-text-muted'"
+                                                                    x-text="cell"
+                                                                ></td>
+                                                            </template>
+                                                        </tr>
+                                                    </template>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <p
+                                            x-show="selectedProduct.specTable.note"
+                                            class="mt-3 text-[11px] leading-5 text-text-muted"
+                                            x-text="selectedProduct.specTable.note"
+                                        ></p>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <template x-for="spec in selectedProduct.specs" :key="spec">
+                                                <span class="rounded-full border border-[#006a4e]/10 bg-surface px-3 py-1.5 text-[10px] font-bold text-[#006a4e]" x-text="spec"></span>
+                                            </template>
+                                        </div>
+                                    </div>
+
+                                    <div class="product-drawer-reveal grid gap-4 sm:grid-cols-2">
+                                        <div class="product-drawer-card rounded-2xl border border-[#006a4e]/10 bg-surface p-5">
+                                            <p class="mb-3 text-[11px] font-bold uppercase tracking-[0.28em] text-[#006a4e]/65">Key Strengths</p>
+                                            <div class="space-y-2">
+                                                <template x-for="feature in selectedProduct.features" :key="feature">
+                                                    <div class="flex items-center gap-2 rounded-xl border border-[#006a4e]/10 bg-surface px-3 py-2.5">
+                                                        <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#006a4e] text-[#faf8ec]">
+                                                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                                                        </span>
+                                                        <span class="text-[12px] font-semibold text-text" x-text="feature"></span>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </div>
+
+                                        <div class="product-drawer-card rounded-2xl border border-[#006a4e]/10 bg-surface p-5">
+                                            <p class="mb-3 text-[11px] font-bold uppercase tracking-[0.28em] text-[#006a4e]/65">Applications</p>
+                                            <div class="space-y-2">
+                                                <template x-for="app in selectedProduct.applications" :key="app">
+                                                    <div class="rounded-xl border border-[#006a4e]/10 bg-surface px-3 py-2.5 text-[12px] font-semibold text-text-muted" x-text="app"></div>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="product-drawer-reveal rounded-2xl bg-[#006a4e] p-5 text-[#faf8ec] shadow-[0_18px_44px_rgba(0,106,78,0.22)]">
+                                        <p class="text-[15px] font-extrabold">Need this product in bulk?</p>
+                                        <p class="mt-2 text-[12px] leading-5 text-[#faf8ec]/72">Share your grade, packaging, quantity and destination. Our team can help with a suitable supply plan.</p>
+                                        <a href="#contact" @click="closeDrawer()" class="mt-4 inline-flex items-center gap-2 rounded-full bg-[#faf8ec] px-5 py-2.5 text-[12px] font-extrabold text-[#006a4e] transition hover:bg-[#faf8ec]/90">
+                                            Request Quote
+                                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 6.5h9M7 2.5l4 4-4 4"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </aside>
+                </div>
+            </template>
         </div>
     </div>
 </section>
@@ -663,10 +994,10 @@
      ============================================================ --}}
 <section id="quality" class="py-16 lg:py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid gap-6 lg:grid-cols-[1fr_440px] xl:grid-cols-[1fr_500px]">
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_440px] xl:grid-cols-[minmax(0,1fr)_500px]">
 
             {{-- Left: Certifications --}}
-            <div class="rounded-3xl border border-[#006a4e]/10 bg-surface-elevated p-8 sm:p-10">
+            <div class="min-w-0 rounded-3xl border border-[#006a4e]/10 bg-surface-elevated p-8 sm:p-10">
                 <p class="inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.45em] text-[#006a4e]">
                     <span class="block h-px w-6 bg-[#006a4e]/50"></span>
                     Certified Quality
@@ -678,27 +1009,33 @@
                     We adhere to international standards to ensure unmatched quality &amp; safety — every batch, every shipment.
                 </p>
 
-                <div class="mt-8 grid grid-cols-3 gap-3 sm:grid-cols-6">
-                    @foreach([
+                @php
+                    $certifications = [
                         ['Sedex',  'Sedex Member',      'sedex.webp'],
                         ['FSSC',   'FSSC 22000',         'fssc.webp'],
                         ['FDA',    'FDA Approved',        'fda.webp'],
                         ['GMP',    'Good Mfg. Practice',  'gmp.webp'],
                         ['Kosher', 'KBD Kosher',          'klbd.webp'],
                         ['HALAL',  'HALAL Certified',     'halal.webp'],
-                    ] as $cert)
-                    <div class="flex flex-col items-center rounded-xl border border-[#006a4e]/12 p-3 text-center transition hover:border-[#006a4e]/28 hover:bg-surface">
-                        <div class="flex h-14 w-14 items-center justify-center rounded-full border border-[#006a4e]/10 bg-surface-elevated p-1">
-                            <img
-                                src="{{ asset('assets/frontend/images/certificate/' . $cert[2]) }}"
-                                alt="{{ $cert[0] }}"
-                                class="h-full w-full object-contain"
-                            >
-                        </div>
-                        <p class="mt-2 text-[10px] font-extrabold text-text leading-tight">{{ $cert[0] }}</p>
-                        <p class="mt-0.5 text-[9px] text-text-muted leading-tight">{{ $cert[1] }}</p>
+                    ];
+                @endphp
+
+                <div class="cert-slider mt-8">
+                    <div class="cert-slider-track">
+                        @foreach(array_merge($certifications, $certifications) as $cert)
+                            <div class="cert-slide">
+                                <div class="cert-logo">
+                                    <img
+                                        src="{{ asset('assets/frontend/images/certificate/' . $cert[2]) }}"
+                                        alt="{{ $cert[0] }}"
+                                        class="h-full w-full object-contain"
+                                    >
+                                </div>
+                                <p class="cert-title mt-3 text-[12px] font-extrabold leading-tight">{{ $cert[0] }}</p>
+                                <p class="cert-desc mt-1 text-[10px] leading-tight">{{ $cert[1] }}</p>
+                            </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
 
                 <a href="#" class="mt-8 inline-flex items-center gap-2 rounded-full border border-[#006a4e]/20 bg-surface px-6 py-3 text-[13px] font-bold text-[#006a4e] transition hover:bg-[#006a4e]/8">
@@ -708,23 +1045,48 @@
             </div>
 
             {{-- Right: Sustainability card --}}
-            <div id="sustainability" class="relative flex flex-col justify-end overflow-hidden rounded-3xl bg-[#006a4e] p-8 sm:p-10">
+            <div id="sustainability" class="sustain-card relative flex min-h-[520px] flex-col justify-between overflow-hidden rounded-3xl bg-[#006a4e] p-8 sm:p-10">
                 <div class="pointer-events-none absolute inset-0">
                     <div class="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#faf8ec]/[0.05]"></div>
                     <div class="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-[#faf8ec]/[0.04]"></div>
                 </div>
+                <div class="sustain-glow sustain-glow-one"></div>
+                <div class="sustain-glow sustain-glow-two"></div>
+                <div class="sustain-rings" aria-hidden="true"></div>
                 <svg class="pointer-events-none absolute bottom-0 right-0 opacity-[0.07]" width="220" height="280" viewBox="0 0 220 280" fill="#faf8ec"><path d="M110 0 C110 0 20 70 20 160 C20 225 60 280 110 280 C160 280 200 225 200 160 C200 70 110 0 110 0 Z"/></svg>
+                <svg class="sustain-leaf pointer-events-none absolute -right-8 bottom-2 h-[300px] w-[240px] opacity-20" viewBox="0 0 220 280" fill="none" aria-hidden="true">
+                    <path d="M110 0 C110 0 20 70 20 160 C20 225 60 280 110 280 C160 280 200 225 200 160 C200 70 110 0 110 0 Z" fill="#faf8ec"/>
+                    <path d="M110 42 C118 92 118 160 96 240" stroke="#006a4e" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+                    <path d="M111 124 C88 118 66 104 48 84" stroke="#006a4e" stroke-width="2" stroke-linecap="round" opacity="0.32"/>
+                    <path d="M108 154 C136 146 162 128 182 104" stroke="#006a4e" stroke-width="2" stroke-linecap="round" opacity="0.32"/>
+                </svg>
                 <div class="relative z-10">
-                    <p class="text-[11px] font-bold uppercase tracking-[0.45em] text-[#faf8ec]/55">Our Commitment</p>
-                    <h2 class="mt-4 text-2xl font-extrabold leading-[1.18] text-[#faf8ec] sm:text-3xl">
+                    <div class="inline-flex items-center gap-2 rounded-full border border-[#faf8ec]/15 bg-[#faf8ec]/8 px-3 py-1.5 backdrop-blur-sm">
+                        <span class="h-1.5 w-1.5 rounded-full bg-[#b9df72] shadow-[0_0_16px_rgba(185,223,114,0.9)]"></span>
+                        <span class="text-[10px] font-bold uppercase tracking-[0.38em] text-[#faf8ec]/70">Our Commitment</span>
+                    </div>
+                    <h2 class="mt-5 text-3xl font-extrabold leading-[1.08] text-[#faf8ec] sm:text-[2.35rem]">
                         Delivering Wellbeing.<br>Sustaining Tomorrow.
                     </h2>
-                    <p class="mt-4 text-[13px] leading-6 text-[#faf8ec]/68">
+                    <p class="sustain-copy mt-4 text-[13px] leading-6">
                         We are committed to nature, communities, and a healthier planet — through eco-friendly processing, chemical-free sourcing, and biodegradable packaging for generations to come.
                     </p>
-                    <a href="#" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-[#faf8ec] transition hover:gap-3">
+                    <div class="mt-7 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                        @foreach([
+                            ['100%','Naturally Refined'],
+                            ['90+','Countries Served'],
+                            ['6','Continents'],
+                        ] as $item)
+                            <div class="sustain-stat">
+                                <p class="text-2xl font-black leading-none text-[#faf8ec]">{{ $item[0] }}</p>
+                                <p class="sustain-stat-label mt-1 text-[9px] font-bold uppercase tracking-[0.16em]">{{ $item[1] }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <a href="#" class="group mt-7 inline-flex items-center gap-2 rounded-full bg-[#faf8ec] px-5 py-3 text-[12px] font-extrabold text-[#006a4e] shadow-[0_16px_34px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(0,0,0,0.22)]">
                         Explore Our Sustainability
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                        <svg class="transition-transform duration-300 group-hover:translate-x-1" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
                     </a>
                 </div>
             </div>
@@ -737,7 +1099,10 @@
 {{-- ============================================================
      SECTION 8 · GLOBAL PRESENCE
      ============================================================ --}}
-<section id="global" class="bg-[#006a4e] py-16 lg:py-24">
+<section id="global" class="global-section relative overflow-hidden bg-[#006a4e] py-16 lg:py-24">
+    <div class="global-bg-grid pointer-events-none absolute inset-0"></div>
+    <div class="global-glow global-glow-left"></div>
+    <div class="global-glow global-glow-right"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-12 lg:grid-cols-[380px_1fr] lg:items-start xl:grid-cols-[420px_1fr]">
 
@@ -757,9 +1122,9 @@
                 {{-- Country tags --}}
                 <div class="mt-8 flex flex-wrap gap-2">
                     @foreach(['Canada','Russia','South Korea','Brazil','South Africa','USA','UAE','Morocco','Bahrain','Sri Lanka','Turkey','Ecuador','Australia','Argentina'] as $country)
-                    <span class="rounded-full border border-[#faf8ec]/18 px-3 py-1.5 text-[11px] font-semibold text-[#faf8ec]/70 transition hover:border-[#faf8ec]/35 hover:text-[#faf8ec]">{{ $country }}</span>
+                    <span class="global-chip rounded-full border border-[#faf8ec]/18 px-3 py-1.5 text-[11px] font-semibold text-[#faf8ec]/70 transition hover:border-[#faf8ec]/35 hover:text-[#faf8ec]">{{ $country }}</span>
                     @endforeach
-                    <span class="rounded-full border border-[#faf8ec]/18 px-3 py-1.5 text-[11px] font-semibold text-[#faf8ec]/50">+76 more</span>
+                    <span class="global-chip rounded-full border border-[#faf8ec]/18 px-3 py-1.5 text-[11px] font-semibold text-[#faf8ec]/50">+76 more</span>
                 </div>
 
                 <a href="#" class="mt-8 inline-flex items-center gap-2 rounded-full border border-[#faf8ec]/20 px-6 py-3 text-[13px] font-bold text-[#faf8ec] transition hover:bg-[#faf8ec]/10">
@@ -771,8 +1136,38 @@
             {{-- Right: Map + Stats --}}
             <div>
                 {{-- SVG World Map --}}
-                <div class="relative mb-8 overflow-hidden rounded-2xl">
-                    <svg viewBox="0 0 720 360" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto opacity-40">
+                <div class="global-map-card relative mb-8 overflow-hidden rounded-2xl border border-[#faf8ec]/15 bg-[#faf8ec] p-4 shadow-[0_24px_70px_rgba(0,0,0,0.16)]">
+                    <img
+                        src="{{ asset('assets/frontend/images/map.svg') }}"
+                        alt="Prime Psyllium global presence map"
+                        class="global-map-image h-auto w-full"
+                    >
+                    <div class="global-map-shine pointer-events-none absolute inset-y-0 left-0 w-32"></div>
+                    <svg class="global-routes pointer-events-none absolute inset-4 h-[calc(100%-2rem)] w-[calc(100%-2rem)]" viewBox="0 0 1076 400" fill="none" aria-hidden="true">
+                        <path class="global-route global-route-one" d="M568 168 C420 92 294 108 214 176" />
+                        <path class="global-route global-route-two" d="M568 168 C680 86 792 80 914 118" />
+                        <path class="global-route global-route-three" d="M568 168 C520 255 430 300 326 292" />
+                        <path class="global-route global-route-four" d="M568 168 C640 228 716 240 820 246" />
+                    </svg>
+                    @foreach([
+                        ['left' => '29%', 'top' => '28%', 'label' => 'Canada'],
+                        ['left' => '74%', 'top' => '27%', 'label' => 'Russia'],
+                        ['left' => '83%', 'top' => '42%', 'label' => 'South Korea'],
+                        ['left' => '34%', 'top' => '68%', 'label' => 'Brazil'],
+                        ['left' => '54%', 'top' => '80%', 'label' => 'South Africa'],
+                        ['left' => '28%', 'top' => '47%', 'label' => 'USA'],
+                        ['left' => '59%', 'top' => '51%', 'label' => 'UAE'],
+                        ['left' => '48%', 'top' => '48%', 'label' => 'Morocco'],
+                        ['left' => '60%', 'top' => '50%', 'label' => 'Bahrain'],
+                        ['left' => '64%', 'top' => '63%', 'label' => 'Sri Lanka'],
+                        ['left' => '56%', 'top' => '45%', 'label' => 'Turkey'],
+                        ['left' => '27%', 'top' => '65%', 'label' => 'Ecuador'],
+                        ['left' => '80%', 'top' => '76%', 'label' => 'Australia'],
+                        ['left' => '32%', 'top' => '83%', 'label' => 'Argentina'],
+                    ] as $pin)
+                        <span class="global-pin" style="left:{{ $pin['left'] }};top:{{ $pin['top'] }};" aria-label="{{ $pin['label'] }}"></span>
+                    @endforeach
+                    <svg viewBox="0 0 720 360" fill="none" xmlns="http://www.w3.org/2000/svg" class="hidden">
                         @foreach([
                             [80,80],[90,85],[100,80],[110,78],[120,76],[130,78],[140,82],[150,86],[160,88],[170,86],[180,84],
                             [80,92],[90,97],[100,95],[110,92],[120,90],[130,92],[140,96],[150,100],[160,102],[170,100],[180,98],
@@ -826,7 +1221,7 @@
                 {{-- Stats --}}
                 <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
                     @foreach([['90+','Countries'],['6','Continents'],['1000+','Happy Clients'],['30+','Years of Trust']] as $stat)
-                    <div class="rounded-2xl bg-[#faf8ec]/8 p-5 text-center">
+                    <div class="global-stat rounded-2xl bg-[#faf8ec]/8 p-5 text-center">
                         <p class="text-3xl font-black text-[#faf8ec]">{{ $stat[0] }}</p>
                         <p class="mt-1.5 text-[11px] font-semibold text-[#faf8ec]/60">{{ $stat[1] }}</p>
                     </div>
