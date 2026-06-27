@@ -88,5 +88,31 @@
             <path d="M3 12h18" />
             <path d="M12 3a13 13 0 0 1 0 18a13 13 0 0 1 0-18Z" />
             @break
+
+        @case('palette')
+            <path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.83 2-1.85 0-.48-.2-.92-.51-1.26-.31-.34-.5-.78-.5-1.26 0-1.02.9-1.85 2-1.85h2.36A4.65 4.65 0 0 0 22 11.15C22 6.1 17.5 2 12 2Z" />
+            <circle cx="7.5" cy="11.5" r="1.3" />
+            <circle cx="9.5" cy="7.5" r="1.3" />
+            <circle cx="14.5" cy="7.5" r="1.3" />
+            <circle cx="16.5" cy="11.5" r="1.3" />
+            @break
+
+        @case('mail')
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="m3 7 9 6 9-6" />
+            @break
+
+        @case('users')
+            <circle cx="9" cy="8" r="3.2" />
+            <path d="M2.5 19c0-3.3 2.9-5.5 6.5-5.5s6.5 2.2 6.5 5.5" />
+            <circle cx="17" cy="9" r="2.4" />
+            <path d="M15.8 13.7c2.5.4 4.7 2.2 4.7 5.3" />
+            @break
+
+        @case('document')
+            <path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5L14 2.5Z" />
+            <path d="M14 2.5V8.5h6" />
+            <path d="M9 12.5h6M9 16h6" />
+            @break
     @endswitch
 </svg>

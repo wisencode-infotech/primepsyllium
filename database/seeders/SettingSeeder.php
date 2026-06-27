@@ -24,6 +24,7 @@ class SettingSeeder extends Seeder
             'address' => "Survey No. 314/2, S. B. Pura Road, Palanpur, B.K., Gujarat- 385001. INDIA",
             'logo' => $this->copyImage('assets/frontend/images/brand-logo.png'),
             'global_presence_image' => $this->copyImage('assets/frontend/images/globe.png'),
+            'favicon' => $this->copyImage('assets/frontend/icons/favicon.png'),
         ]);
     }
 

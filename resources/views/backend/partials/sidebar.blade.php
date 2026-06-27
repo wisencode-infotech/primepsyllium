@@ -38,6 +38,10 @@
                 ['route' => 'admin.certifications.index', 'pattern' => 'admin.certifications.*', 'icon' => 'badge', 'label' => 'Certifications'],
                 ['route' => 'admin.media-center-items.index', 'pattern' => 'admin.media-center-items.*', 'icon' => 'newspaper', 'label' => 'Media Center'],
                 ['route' => 'admin.countries.index', 'pattern' => 'admin.countries.*', 'icon' => 'globe', 'label' => 'Countries'],
+                ['route' => 'admin.inquiries.index', 'pattern' => 'admin.inquiries.*', 'icon' => 'mail', 'label' => 'Inquiries'],
+                ['route' => 'admin.email-templates.index', 'pattern' => 'admin.email-templates.*', 'icon' => 'document', 'label' => 'Email Templates'],
+                ['route' => 'admin.email-recipients.index', 'pattern' => 'admin.email-recipients.*', 'icon' => 'users', 'label' => 'Email Recipients'],
+                ['route' => 'admin.theme.edit', 'pattern' => 'admin.theme.*', 'icon' => 'palette', 'label' => 'Brand Theme'],
                 ['route' => 'admin.settings.edit', 'pattern' => 'admin.settings.*', 'icon' => 'settings', 'label' => 'Settings'],
             ];
         @endphp

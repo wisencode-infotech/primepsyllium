@@ -16,7 +16,7 @@
         <meta property="og:site_name" content="{{ config('site.seo.og_site_name') }}">
         <meta name="twitter:card" content="{{ config('site.seo.twitter_card') }}">
         <meta name="google-site-verification" content="{{ config('site.seo.site_verification') }}">
-        <link rel="icon" type="image/png" href="{{ asset('assets/frontend/icons/favicon.png') }}">
+        <link rel="icon" type="image/png" href="{{ $settings->favicon_url ?? asset('assets/frontend/icons/favicon.png') }}">
 
         {{-- Prime Psyllium frontend design --}}
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
@@ -24,6 +24,15 @@
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/responsive.css') }}">
+
+        {{-- Admin-configurable brand theme colors override the defaults baked into common.css --}}
+        <style>
+            :root {
+                @foreach ($settings->themeVariables() as $property => $color)
+                    {{ $property }}: {{ $color }};
+                @endforeach
+            }
+        </style>
     </head>
 
     <body>

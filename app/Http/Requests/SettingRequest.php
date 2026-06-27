@@ -20,6 +20,7 @@ class SettingRequest extends FormRequest
             'address' => ['required', 'string'],
             'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,svg', 'max:2048'],
             'global_presence_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,svg', 'max:4096'],
+            'favicon' => ['nullable', 'mimes:jpeg,png,jpg,webp,ico,svg', 'max:1024'],
         ];
     }
 }

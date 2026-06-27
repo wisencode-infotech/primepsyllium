@@ -192,41 +192,63 @@
                             <h6 class="common-icon-title fts-14 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Get in Touch</h6>
                             <h2 class="fts-54 fw-5 title-text-L mt-2 mt-lg-3 wow fadeInUp">Discuss Your Requirements.</h2>
                             <div class="contact-form-prime contact-form-card mt-3 mt-lg-4">
-                                <form action="" method="get">
+                                @if (session('contact_status'))
+                                    <div class="alert alert-success fts-14 mb-3" role="alert">
+                                        {{ session('contact_status') }}
+                                    </div>
+                                @endif
+
+                                <form action="{{ route('contact.store') }}" method="POST">
+                                    @csrf
                                     <div class="row gx-3 gy-3">
                                         <div class="col-6">
                                             <div class="common-contact-field wow fadeInUp">
                                                 <label for="contact-name" class="fts-14 fw-5 title-text-L mb-2 ms-2">Full Name *</label>
-                                                <input type="text" name="name" id="contact-name" placeholder="Enter Full Name" class="common-input fts-14" required>
+                                                <input type="text" name="name" id="contact-name" value="{{ old('name') }}" placeholder="Enter Full Name" class="common-input fts-14" required>
+                                                @error('name')
+                                                    <span class="text-danger fts-12">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="common-contact-field wow fadeInUp">
                                                 <label for="contact-company" class="fts-14 fw-5 title-text-L mb-2 ms-2">Company *</label>
-                                                <input type="text" name="company" id="contact-company" placeholder="Enter Company Name" class="common-input fts-14" required>
+                                                <input type="text" name="company" id="contact-company" value="{{ old('company') }}" placeholder="Enter Company Name" class="common-input fts-14" required>
+                                                @error('company')
+                                                    <span class="text-danger fts-12">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="common-contact-field wow fadeInUp">
                                                 <label for="contact-email" class="fts-14 fw-5 title-text-L mb-2 ms-2">Email Address *</label>
-                                                <input type="email" name="email" id="contact-email" placeholder="Enter Email Address" class="common-input fts-14" required>
+                                                <input type="email" name="email" id="contact-email" value="{{ old('email') }}" placeholder="Enter Email Address" class="common-input fts-14" required>
+                                                @error('email')
+                                                    <span class="text-danger fts-12">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="common-contact-field wow fadeInUp">
                                                 <label for="contact-product" class="fts-14 fw-5 title-text-L mb-2 ms-2">Product Interest *</label>
                                                 <select name="product_interest" id="contact-product" class="common-input fts-14" required>
-                                                    <option value="" selected disabled>Enter Product Interest</option>
+                                                    <option value="" {{ old('product_interest') ? '' : 'selected disabled' }}>Enter Product Interest</option>
                                                     @foreach($products as $product)
-                                                        <option value="{{ $product->slug }}">{{ $product->name }}</option>
+                                                        <option value="{{ $product->name }}" {{ old('product_interest') === $product->name ? 'selected' : '' }}>{{ $product->name }}</option>
                                                     @endforeach
                                                 </select>
+                                                @error('product_interest')
+                                                    <span class="text-danger fts-12">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="common-contact-field wow fadeInUp">
                                                 <label for="contact-message" class="fts-14 fw-5 title-text-L mb-2 ms-2">Message *</label>
-                                                <textarea name="message" id="contact-message" class="common-input fts-14" rows="6" placeholder="Tell us about your requirement...." required></textarea>
+                                                <textarea name="message" id="contact-message" class="common-input fts-14" rows="6" placeholder="Tell us about your requirement...." required>{{ old('message') }}</textarea>
+                                                @error('message')
+                                                    <span class="text-danger fts-12">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-12">

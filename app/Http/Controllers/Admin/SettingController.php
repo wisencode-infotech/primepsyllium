@@ -39,6 +39,14 @@ class SettingController extends Controller
             $data['global_presence_image'] = $request->file('global_presence_image')->store('branding', 'public');
         }
 
+        if ($request->hasFile('favicon')) {
+            if ($setting->favicon) {
+                Storage::disk('public')->delete($setting->favicon);
+            }
+
+            $data['favicon'] = $request->file('favicon')->store('branding', 'public');
+        }
+
         if ($setting->exists) {
             $setting->update($data);
         } else {

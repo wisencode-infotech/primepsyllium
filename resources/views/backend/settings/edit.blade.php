@@ -50,6 +50,12 @@
                     <x-input-error class="mt-2" :messages="$errors->get('global_presence_image')" />
                 </div>
 
+                <div class="mt-4">
+                    <x-image-upload name="favicon" label="Favicon" :value="$setting->favicon_url" />
+                    <p class="mt-1 text-xs text-text-muted">Shown as the browser tab icon. PNG, ICO or SVG recommended.</p>
+                    <x-input-error class="mt-2" :messages="$errors->get('favicon')" />
+                </div>
+
                 <div class="mt-6">
                     <x-primary-button>Save Settings</x-primary-button>
                 </div>

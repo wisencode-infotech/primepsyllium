@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             SettingSeeder::class,
             MediaCenterItemSeeder::class,
             CountrySeeder::class,
+            EmailTemplateSeeder::class,
+            EmailRecipientSeeder::class,
         ]);
 
         $superAdminEmail = trim((string) env('SUPER_ADMIN_EMAIL', ''));
