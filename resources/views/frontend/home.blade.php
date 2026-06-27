@@ -31,9 +31,9 @@
     <section class="media-coverage-main py-4 py-lg-5">
         <div class="container">
             <div class="coverage-sliders">
-                @foreach(['sedex.webp', 'fssc.webp', 'fda.webp', 'gmp.webp', 'klbd.webp', 'halal.webp', 'sedex.webp', 'fssc.webp'] as $logo)
+                @foreach($certifications as $certification)
                     <div class="media-items">
-                        <img src="{{ asset('assets/frontend/images/certificate/' . $logo) }}" alt="" class="brand-media-logo">
+                        <img src="{{ $certification->image_url }}" alt="{{ $certification->name }}" class="brand-media-logo">
                     </div>
                 @endforeach
             </div>
@@ -91,11 +91,11 @@
                 <p class="fts-15 fw-4 subtitle-text-L mt-1 mt-lg-2 wow fadeInUp">Psyllium that brings nature&rsquo;s wellness to every product. Clean, pure and backed by trust.</p>
             </div>
             <div class="prime-product-slider mt-3 mt-lg-4 pt-3 px-lg-4">
-                @foreach(config('products.items') as $product)
+                @foreach($products as $product)
                     <div class="single-prime-product text-center mx-2">
-                        <img src="{{ asset($product['image']) }}" alt="{{ $product['name'] }}" class="product-img">
-                        <h4 class="mt-2 mt-md-3 fts-20 fw-6 title-text-L">{{ $product['name'] }}</h4>
-                        <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2">{{ $product['description'] }}</p>
+                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-img">
+                        <h4 class="mt-2 mt-md-3 fts-20 fw-6 title-text-L">{{ $product->name }}</h4>
+                        <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2">{{ $product->description }}</p>
                         <a href="#get-in-touch" class="media-more fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1 justify-content-center mt-1 mt-md-2">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
                     </div>
                 @endforeach
@@ -136,32 +136,21 @@
             <div class="row">
                 <div class="col-xxl-10 mx-auto mt-lg-2">
                     <div class="row justify-content-center">
-                        <div class="col-lg-5 mt-3">
-                            <div class="media-center-box p-4">
-                                <div class="footer-steps-box">
-                                    <img src="{{ asset('assets/frontend/images/world-food.png') }}" alt="World Food Moscow 2025">
-                                </div>
-                                <div class="footer-steps-content mt-3">
-                                    <span>September 2, 2025</span>
-                                    <h4 class="fts-16 fw-6 title-text-L">World Food Moscow 2025 Participating</h4>
-                                    <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2">We are delighted to invite you to visit Prime Psyllium at World Food Expo 2025...</p>
-                                    <a href="#" class="media-more mt-1 mt-md-2 fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 mt-3">
-                            <div class="media-center-box p-4">
-                                <div class="footer-steps-box">
-                                    <img src="{{ asset('assets/frontend/images/north-amk.png') }}" alt="Fi South America Expo 2025">
-                                </div>
-                                <div class="footer-steps-content mt-3">
-                                    <span>August 18, 2025</span>
-                                    <h4 class="fts-16 fw-6 title-text-L">Fi South America Expo 2025...</h4>
-                                    <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2">We are thrilled to announce our participation in Fi South America Expo 2025...</p>
-                                    <a href="#" class="media-more mt-1 mt-md-2 fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
+                        @foreach ($mediaCenterItems as $item)
+                            <div class="col-lg-5 mt-3">
+                                <div class="media-center-box p-4">
+                                    <div class="footer-steps-box">
+                                        <img src="{{ $item->image_url }}" alt="{{ $item->title }}">
+                                    </div>
+                                    <div class="footer-steps-content mt-3">
+                                        <span>{{ $item->formatted_date }}</span>
+                                        <h4 class="fts-16 fw-6 title-text-L">{{ $item->title }}</h4>
+                                        <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{ $item->description }}</p>
+                                        <a href="{{ $item->link ?: route('events.show', $item) }}" class="media-more mt-1 mt-md-2 fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -174,7 +163,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5">
                     <div class="global-left-layout px-2 px-sm-4">
-                        <img src="{{ asset('assets/frontend/images/globe.png') }}" alt="Prime Psyllium global presence" class="w-100 wow zoomIn">
+                        <img src="{{ $settings->global_presence_image_url ?? asset('assets/frontend/images/globe.png') }}" alt="Prime Psyllium global presence" class="w-100 wow zoomIn">
                     </div>
                 </div>
                 <div class="col-lg-5">
@@ -182,23 +171,8 @@
                         <h6 class="common-icon-title fts-14 mb-3 mb-lg-4 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Our Global Presence</h6>
                         <p class="fts-15 fw-4 subtitle-text-L mt-3 mt-lg-4 wow fadeInUp">Building long-term relationships with businesses worldwide through quality products, reliable supply, and consistent service.</p>
                         <ul class="global-country-list d-flex flex-wrap mt-3 mt-lg-4">
-                            @foreach([
-                                ['Canada', 'Canada-flag.png'],
-                                ['Morocco', 'Morocco-flag.png'],
-                                ['Russia', 'Russai-flag.png'],
-                                ['Bahrain', 'Bahrain-flag.png'],
-                                ['South Korea', 'South-Korea-flag.png'],
-                                ['Sri Lanka', 'Sri-Lanka-flag.png'],
-                                ['Brazil', 'Brazil-flag.png'],
-                                ['Turkey', 'Turkey-flag.png'],
-                                ['South Africa', 'South-Africa-flag.png'],
-                                ['Ecuador', 'Ecuador-flag.png'],
-                                ['USA', 'USA-flag.png'],
-                                ['Australia', 'Australia-flag.png'],
-                                ['UAE', 'UAE-flag.png'],
-                                ['Argentina', 'Argentina-flag.png'],
-                            ] as [$country, $flag])
-                                <li class="fts-15 fw-4 subtitle-text-L py-1 wow fadeInUp"><img src="{{ asset('assets/frontend/images/' . $flag) }}" alt="{{ $country }}">{{ $country }}</li>
+                            @foreach($countries as $country)
+                                <li class="fts-15 fw-4 subtitle-text-L py-1 wow fadeInUp"><img src="{{ $country->image_url }}" alt="{{ $country->name }}">{{ $country->name }}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -243,8 +217,8 @@
                                                 <label for="contact-product" class="fts-14 fw-5 title-text-L mb-2 ms-2">Product Interest *</label>
                                                 <select name="product_interest" id="contact-product" class="common-input fts-14" required>
                                                     <option value="" selected disabled>Enter Product Interest</option>
-                                                    @foreach(config('products.items') as $product)
-                                                        <option value="{{ $product['slug'] }}">{{ $product['name'] }}</option>
+                                                    @foreach($products as $product)
+                                                        <option value="{{ $product->slug }}">{{ $product->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -275,7 +249,7 @@
                             <div class="left-contact-icon"><iconify-icon icon="subway:call"></iconify-icon></div>
                             <div class="right-contact-text">
                                 <p class="fts-13 subtitle-text-L fw-4 text-uppercase">Call us:</p>
-                                <a href="tel:+919157573300" class="fts-14 fw-5 black-color-L">+91 91575 73300</a>
+                                <a href="tel:{{ preg_replace('/\s+/', '', $settings->phone) }}" class="fts-14 fw-5 black-color-L">{{ $settings->phone }}</a>
                             </div>
                         </div>
                     </div>
@@ -284,7 +258,7 @@
                             <div class="left-contact-icon"><iconify-icon icon="clarity:email-solid"></iconify-icon></div>
                             <div class="right-contact-text">
                                 <p class="fts-13 subtitle-text-L fw-4 text-uppercase">email us:</p>
-                                <a href="mailto:export@primepsyllium.com" class="fts-14 fw-5 primary-color-L text-decoration-underline">export@primepsyllium.com</a>
+                                <a href="mailto:{{ $settings->email }}" class="fts-14 fw-5 primary-color-L text-decoration-underline">{{ $settings->email }}</a>
                             </div>
                         </div>
                     </div>
@@ -293,7 +267,7 @@
                             <div class="left-contact-icon"><iconify-icon icon="mdi:map-marker"></iconify-icon></div>
                             <div class="right-contact-text">
                                 <p class="fts-13 subtitle-text-L fw-4 text-uppercase">address:</p>
-                                <a href="https://maps.google.com/?q=Survey+No.+314/2,+S.+B.+Pura+Road,+Palanpur,+B.K.,+Gujarat-385001,+India" target="_blank" rel="noopener noreferrer" class="fts-14 fw-5 black-color-L">Survey No. 314/2, S. B. Pura Road, Palanpur, B.K., Gujarat- 385001. INDIA</a>
+                                <a href="https://maps.google.com/?q={{ urlencode($settings->address) }}" target="_blank" rel="noopener noreferrer" class="fts-14 fw-5 black-color-L">{{ $settings->address }}</a>
                             </div>
                         </div>
                     </div>

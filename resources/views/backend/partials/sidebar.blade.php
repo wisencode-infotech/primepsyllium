@@ -1,0 +1,75 @@
+{{-- Mobile backdrop --}}
+<div x-show="mobileOpen" x-transition.opacity @click="mobileOpen = false" class="fixed inset-0 z-40 bg-black/30 lg:hidden" style="display: none;"></div>
+
+<aside
+    class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-border bg-surface-elevated transition-transform duration-200 lg:relative"
+    :class="[mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0', collapsed ? 'lg:w-20' : 'lg:w-64']"
+>
+    @php
+        $sidebarLogoUrl = \App\Models\Setting::current()->logo_url ?? asset('assets/frontend/images/brand-logo.png');
+    @endphp
+
+    <button
+        @click="collapsed = !collapsed"
+        class="absolute -right-3 top-6 z-10 hidden h-6 w-6 items-center justify-center rounded-full border border-border bg-surface-elevated text-text-muted shadow-sm hover:text-text lg:flex"
+    >
+        <x-icon x-show="!collapsed" name="chevron-left" class="h-3.5 w-3.5" />
+        <x-icon x-show="collapsed" name="chevron-right" class="h-3.5 w-3.5" style="display: none;" />
+    </button>
+
+    <div class="flex h-16 shrink-0 items-center justify-between border-b border-border px-4">
+        <a href="{{ route('admin.dashboard') }}" class="flex min-w-0 flex-1 items-center gap-2 overflow-hidden" :class="collapsed ? 'lg:justify-center' : ''">
+            <span x-show="collapsed" style="display: none;" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-white">
+                {{ mb_substr(config('app.name'), 0, 1) }}
+            </span>
+            <img x-show="!collapsed" x-transition.opacity src="{{ $sidebarLogoUrl }}" alt="{{ config('app.name') }}" class="h-10 w-auto max-w-[160px] shrink-0 object-contain">
+        </a>
+
+        <button @click="mobileOpen = false" class="rounded-md p-1.5 text-text-muted hover:bg-surface-muted hover:text-text lg:hidden">
+            <x-icon name="chevron-left" class="h-4 w-4" />
+        </button>
+    </div>
+
+    <nav class="flex flex-1 flex-col gap-1 overflow-y-auto p-3">
+        @php
+            $navItems = [
+                ['route' => 'admin.dashboard', 'pattern' => 'admin.dashboard', 'icon' => 'dashboard', 'label' => 'Dashboard'],
+                ['route' => 'admin.products.index', 'pattern' => 'admin.products.*', 'icon' => 'box', 'label' => 'Products'],
+                ['route' => 'admin.certifications.index', 'pattern' => 'admin.certifications.*', 'icon' => 'badge', 'label' => 'Certifications'],
+                ['route' => 'admin.media-center-items.index', 'pattern' => 'admin.media-center-items.*', 'icon' => 'newspaper', 'label' => 'Media Center'],
+                ['route' => 'admin.countries.index', 'pattern' => 'admin.countries.*', 'icon' => 'globe', 'label' => 'Countries'],
+                ['route' => 'admin.settings.edit', 'pattern' => 'admin.settings.*', 'icon' => 'settings', 'label' => 'Settings'],
+            ];
+        @endphp
+
+        @foreach ($navItems as $item)
+            <a
+                href="{{ route($item['route']) }}"
+                title="{{ $item['label'] }}"
+                class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition {{ request()->routeIs($item['pattern']) ? 'bg-primary-soft text-primary' : 'text-text-muted hover:bg-surface-muted hover:text-text' }}"
+            >
+                <x-icon :name="$item['icon']" class="h-5 w-5 shrink-0" />
+                <span x-show="!collapsed" x-transition.opacity class="truncate">{{ $item['label'] }}</span>
+            </a>
+        @endforeach
+
+        <div class="mt-auto flex flex-col gap-1 border-t border-border pt-3">
+            <a
+                href="{{ route('profile.edit') }}"
+                title="Profile"
+                class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition {{ request()->routeIs('profile.edit') ? 'bg-primary-soft text-primary' : 'text-text-muted hover:bg-surface-muted hover:text-text' }}"
+            >
+                <x-icon name="user" class="h-5 w-5 shrink-0" />
+                <span x-show="!collapsed" x-transition.opacity class="truncate">Profile</span>
+            </a>
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" title="Log Out" class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-text-muted transition hover:bg-surface-muted hover:text-text">
+                    <x-icon name="logout" class="h-5 w-5 shrink-0" />
+                    <span x-show="!collapsed" x-transition.opacity class="truncate">Log Out</span>
+                </button>
+            </form>
+        </div>
+    </nav>
+</aside>

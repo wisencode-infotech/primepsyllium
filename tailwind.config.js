@@ -22,6 +22,7 @@ export default {
                     DEFAULT: 'var(--color-primary)',
                     hover: 'var(--color-primary-hover)',
                     soft: 'var(--color-primary-soft)',
+                    border: 'var(--color-primary-border)',
                 },
                 surface: {
                     DEFAULT: 'var(--color-surface)',
@@ -33,6 +34,12 @@ export default {
                     muted: 'var(--color-text-muted)',
                 },
                 border: 'var(--color-border)',
+                focus: 'var(--color-focus)',
+                danger: {
+                    DEFAULT: 'var(--color-danger)',
+                    border: 'var(--color-danger-border)',
+                },
+                success: 'var(--color-success)',
             },
         },
     },

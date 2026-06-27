@@ -16,6 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call([
+            ProductSeeder::class,
+            CertificationSeeder::class,
+            SettingSeeder::class,
+            MediaCenterItemSeeder::class,
+            CountrySeeder::class,
+        ]);
+
         $superAdminEmail = trim((string) env('SUPER_ADMIN_EMAIL', ''));
         $superAdminName = trim((string) env('SUPER_ADMIN_NAME', ''));
         $superAdminPassword = (string) env('SUPER_ADMIN_PASSWORD', '');

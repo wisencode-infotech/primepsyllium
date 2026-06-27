@@ -39,7 +39,7 @@
                             <li><a href="#get-in-touch" class="desktop-nav-items">Contact Us</a></li>
                         </ul>
                         <a href="{{ url('/') }}">
-                            <img src="{{ asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="desktop-nav-logo">
+                            <img src="{{ $settings->logo_url ?? asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="desktop-nav-logo">
                         </a>
                         <div class="right-desknav-talkmenu d-flex align-items-center gap-2">
                             <a href="#get-in-touch" class="btn-desknav-talk fts-14 d-lg-flex d-none">Let&rsquo;s Talk <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Let&rsquo;s Talk"></a>
@@ -53,7 +53,7 @@
                     <div class="offcanvas offcanvas-end" tabindex="-1" id="primeNavOffcanvas" aria-labelledby="primeNavOffcanvasLabel">
                         <div class="prime-nav-heading d-flex align-items-center justify-content-between gap-2 px-3 pt-3 pb-2 mt-1">
                             <a href="{{ url('/') }}">
-                                <img src="{{ asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="desktop-nav-logo">
+                                <img src="{{ $settings->logo_url ?? asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="desktop-nav-logo">
                             </a>
                             <button type="button" class="btn-close fts-13" data-bs-dismiss="offcanvas" aria-label="Close"><iconify-icon icon="charm:cross" class="fts-26 subtitle-text-L"></iconify-icon></button>
                         </div>
@@ -81,7 +81,7 @@
                         <div class="col-xl-5 col-lg-3 col-md-6 col-6">
                             <div class="single-motorfooter-links mb-3 mb-lg-0">
                                 <div class="footer-left-logo py-1 text-center">
-                                    <a href="{{ url('/') }}"><img src="{{ asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="footer-logo"></a>
+                                    <a href="{{ url('/') }}"><img src="{{ $settings->logo_url ?? asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="footer-logo"></a>
                                 </div>
                             </div>
                         </div>
@@ -113,11 +113,12 @@
                             <div class="single-motorfooter-links mb-3 mb-lg-0">
                                 <h4 class="fts-18 fw-7 title-text-L pe-lg-4">Countries</h4>
                                 <ul class="ui-footer-links mt-lg-2 mt-1">
-                                    <li><a href="#our-global-presence" class="fts-14">USA</a></li>
-                                    <li><a href="#our-global-presence" class="fts-14">Canada</a></li>
-                                    <li><a href="#our-global-presence" class="fts-14">Brazil</a></li>
-                                    <li><a href="#our-global-presence" class="fts-14">Russia</a></li>
-                                    <li><a href="#our-global-presence" class="fts-14">South Korea</a></li>
+                                    @foreach ($footerCountries as $footerCountry)
+                                        <li><a href="#our-global-presence" class="fts-14">{{ $footerCountry->name }}</a></li>
+                                    @endforeach
+                                    @if ($footerCountriesRemaining > 0)
+                                        <li><a href="#our-global-presence" class="fts-14">+{{ $footerCountriesRemaining }} countries</a></li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>

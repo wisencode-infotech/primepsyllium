@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
+<html
+    lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+    data-theme="light"
+    x-data="{ collapsed: JSON.parse(localStorage.getItem('admin-sidebar-collapsed') ?? 'false'), mobileOpen: false }"
+    x-init="$watch('collapsed', value => localStorage.setItem('admin-sidebar-collapsed', JSON.stringify(value)))"
+>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,20 +20,18 @@
         @vite(['resources/backend/css/app.css', 'resources/backend/js/app.js'])
     </head>
     <body class="antialiased">
-        <div class="min-h-screen bg-[var(--color-surface)]">
-            @include('backend.partials.navigation')
+        <div class="flex min-h-screen bg-surface">
+            @include('backend.partials.sidebar')
 
-            @isset($header)
-                <header class="bg-surface-elevated shadow">
-                    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+            <div class="flex min-w-0 flex-1 flex-col">
+                @include('backend.partials.topbar')
 
-            <main>
-                {{ $slot }}
-            </main>
+                <main class="flex-1 p-4 sm:p-6 lg:p-8">
+                    {{ $slot }}
+                </main>
+            </div>
         </div>
+
+        @stack('scripts')
     </body>
 </html>
