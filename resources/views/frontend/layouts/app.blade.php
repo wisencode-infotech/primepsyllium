@@ -149,6 +149,8 @@
                                             <a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="linkedin" class="lnk border-lightcolor"><iconify-icon icon="flowbite:linkedin-solid"></iconify-icon></a>
                                             <a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="teams" class="lnk border-lightcolor"><iconify-icon icon="bi:microsoft-teams"></iconify-icon></a>
                                         </div>
+
+                                        <p class="footer-credit-text fts-13 fw-4 subtitle-text-L text-center text-lg-end mt-2 mb-0">Built by <a href="https://wisencode.com" target="_blank" rel="noopener noreferrer" class="secondary-color-L fw-5 text-decoration-none">Wisencode Infotech</a>.</p>
                                     </div>
                                 </div>
                             </div>
