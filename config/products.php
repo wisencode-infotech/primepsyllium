@@ -29,7 +29,7 @@ return [
             'slug'        => 'psyllium-husk',
             'description' => 'Premium quality whole husk for diverse industries',
             'categories'  => ['psyllium-husk', 'fibers'],
-            'image'       => 'assets/frontend/images/products/psyllium-husk.png',
+            'image'       => 'assets/frontend/images/product1.png',
         ],
         [
             'id'          => 2,
@@ -37,7 +37,7 @@ return [
             'slug'        => 'psyllium-husk-powder',
             'description' => 'Fine powder for versatile pharmaceutical & food applications',
             'categories'  => ['psyllium-husk', 'powders'],
-            'image'       => 'assets/frontend/images/products/psyllium-husk-powder.png',
+            'image'       => 'assets/frontend/images/product3.png',
         ],
         [
             'id'          => 3,
@@ -45,7 +45,7 @@ return [
             'slug'        => 'psyllium-seed',
             'description' => 'Pure whole seeds with high mucilage content',
             'categories'  => ['granules'],
-            'image'       => 'assets/frontend/images/products/psyllium-seed.png',
+            'image'       => 'assets/frontend/images/product2.png',
         ],
         [
             'id'          => 4,
@@ -53,7 +53,7 @@ return [
             'slug'        => 'psyllium-seed-powder',
             'description' => 'Finely milled seed powder for industrial use',
             'categories'  => ['powders'],
-            'image'       => 'assets/frontend/images/products/psyllium-seed-powder.png',
+            'image'       => 'assets/frontend/images/product1.png',
         ],
         [
             'id'          => 5,
@@ -61,7 +61,7 @@ return [
             'slug'        => 'psyllium-khakha-powder',
             'description' => 'By-product powder with unique nutritional profile',
             'categories'  => ['powders', 'meal'],
-            'image'       => 'assets/frontend/images/products/psyllium-khakha-powder.png',
+            'image'       => 'assets/frontend/images/product2.png',
         ],
     ],
 

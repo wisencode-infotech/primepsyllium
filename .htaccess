@@ -3,14 +3,22 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    DirectoryIndex index.php
     RewriteEngine On
 
     # Keep old /public URLs working, but redirect them to the clean project URL.
+    RewriteRule ^public/?$ ./ [L,R=301]
     RewriteCond %{THE_REQUEST} \s/+(.*/)?public/([^\s?]*) [NC]
     RewriteRule ^public/(.*)$ $1 [L,R=301]
 
     # Serve the Laravel public directory without exposing /public in the URL.
-    RewriteRule ^$ public/ [L]
+    RewriteRule ^$ index.php [L]
+
     RewriteCond %{REQUEST_URI} !/public/ [NC]
+    RewriteCond %{DOCUMENT_ROOT}/primepsyllium/public/$1 -f [OR]
+    RewriteCond %{DOCUMENT_ROOT}/primepsyllium/public/$1 -d
     RewriteRule ^(.*)$ public/$1 [L]
+
+    RewriteCond %{REQUEST_URI} !/public/ [NC]
+    RewriteRule ^(.*)$ index.php [L]
 </IfModule>
