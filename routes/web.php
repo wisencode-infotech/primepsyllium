@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\CertificationController;
 use App\Http\Controllers\Admin\ContactInquiryController;
 use App\Http\Controllers\Admin\CountryController;
@@ -9,19 +10,29 @@ use App\Http\Controllers\Admin\EmailRecipientController;
 use App\Http\Controllers\Admin\EmailTemplateController;
 use App\Http\Controllers\Admin\MediaCenterItemController;
 use App\Http\Controllers\Admin\NotificationController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ThemeSettingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 
+Route::get('/about-us', AboutController::class)->name('about.index');
+
+Route::get('/psyllium', [ProductController::class, 'index'])->name('products.index');
+
+Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name('products.show');
+
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+
 Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('events.show');
 
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::middleware(['auth', 'verified', 'role:super-admin'])
@@ -30,8 +41,8 @@ Route::middleware(['auth', 'verified', 'role:super-admin'])
     ->group(function (): void {
         Route::get('/', AdminDashboardController::class)->name('dashboard');
 
-        Route::post('products/reorder', [ProductController::class, 'reorder'])->name('products.reorder');
-        Route::resource('products', ProductController::class)->except('show');
+        Route::post('products/reorder', [AdminProductController::class, 'reorder'])->name('products.reorder');
+        Route::resource('products', AdminProductController::class)->except('show');
 
         Route::post('certifications/reorder', [CertificationController::class, 'reorder'])->name('certifications.reorder');
         Route::resource('certifications', CertificationController::class)->except('show');

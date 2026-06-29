@@ -50,7 +50,7 @@ $('.coverage-sliders').slick({
   ]
 });
 
-// products slider 
+// products slider
 $('.prime-product-slider').slick({
   dots: false,
   arrows: true,

@@ -7,15 +7,25 @@ use App\Mail\ContactInquiryNotification;
 use App\Models\ContactInquiry;
 use App\Models\EmailRecipient;
 use App\Models\EmailTemplate;
+use App\Models\Product;
 use App\Models\Setting;
 use App\Models\User;
 use App\Notifications\NewContactInquiry;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 
 class ContactController extends Controller
 {
+    public function index(): View
+    {
+        return view('frontend.contact', [
+            'products' => Product::query()->active()->ordered()->get(),
+            'settings' => Setting::current(),
+        ]);
+    }
+
     public function store(ContactInquiryRequest $request): RedirectResponse
     {
         $inquiry = ContactInquiry::query()->create($request->validated());
@@ -28,7 +38,7 @@ class ContactController extends Controller
 
         User::role('super-admin')->get()->each->notify(new NewContactInquiry($inquiry));
 
-        return redirect()->to(url('/').'#get-in-touch')
+        return redirect()->to(url()->previous(url('/')).'#get-in-touch')
             ->with('contact_status', 'Thank you for reaching out. Our team will get back to you shortly.');
     }
 

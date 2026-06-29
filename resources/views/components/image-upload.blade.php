@@ -4,7 +4,7 @@
     <x-input-label :for="$name" :value="$label" />
 
     <label
-        :for="$name"
+        for="{{ $name }}"
         @dragover.prevent="dragging = true"
         @dragleave.prevent="dragging = false"
         @drop.prevent="

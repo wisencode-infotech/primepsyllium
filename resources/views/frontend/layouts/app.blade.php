@@ -22,8 +22,9 @@
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/animate.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/slick.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}?v={{ filemtime(public_path('assets/frontend/css/main.css')) }}">
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/responsive.css') }}">
+        @stack('styles')
 
         {{-- Admin-configurable brand theme colors override the defaults baked into common.css --}}
         <style>
@@ -42,10 +43,10 @@
                 <div class="container">
                     <div class="inner desktop-nav d-flex justify-content-between gap-2 align-items-center py-1">
                         <ul class="desktop-navbar-list d-lg-flex d-none align-items-center gap-1">
-                            <li><a href="#products" class="desktop-nav-items">Products</a></li>
+                            <li><a href="{{ route('products.index') }}" class="desktop-nav-items">Products</a></li>
                             <li><a href="#quality" class="desktop-nav-items">Ingredients</a></li>
-                            <li><a href="#about-us" class="desktop-nav-items">About Us</a></li>
-                            <li><a href="#get-in-touch" class="desktop-nav-items">Contact Us</a></li>
+                            <li><a href="{{ route('about.index') }}" class="desktop-nav-items">About Us</a></li>
+                            <li><a href="{{ route('contact.index') }}" class="desktop-nav-items">Contact Us</a></li>
                         </ul>
                         <a href="{{ url('/') }}">
                             <img src="{{ $settings->logo_url ?? asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="desktop-nav-logo">
@@ -68,10 +69,10 @@
                         </div>
                         <div class="prime-nav-body px-3">
                             <ul class="desktop-navbar-list mt-2">
-                                <li><a href="#products" class="desktop-nav-items mx-0 my-1">Products</a></li>
+                                <li><a href="{{ route('products.index') }}" class="desktop-nav-items mx-0 my-1">Products</a></li>
                                 <li><a href="#quality" class="desktop-nav-items mx-0 my-1">Ingredients</a></li>
-                                <li><a href="#about-us" class="desktop-nav-items mx-0 my-1">About Us</a></li>
-                                <li><a href="#get-in-touch" class="desktop-nav-items mx-0 my-1">Contact Us</a></li>
+                                <li><a href="{{ route('about.index') }}" class="desktop-nav-items mx-0 my-1">About Us</a></li>
+                                <li><a href="{{ route('contact.index') }}" class="desktop-nav-items mx-0 my-1">Contact Us</a></li>
                             </ul>
                             <a href="#get-in-touch" class="btn-desknav-talk fts-14 d-flex justify-content-center mt-2 w-100">Let&rsquo;s Talk <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Let&rsquo;s Talk"></a>
                         </div>
@@ -98,10 +99,10 @@
                             <div class="single-motorfooter-links mb-3 mb-lg-0">
                                 <h4 class="fts-18 fw-7 title-text-L">Company</h4>
                                 <ul class="ui-footer-links mt-lg-2 mt-1">
-                                    <li><a href="#about-us" class="fts-14">About Us</a></li>
+                                    <li><a href="{{ route('about.index') }}" class="fts-14">About Us</a></li>
                                     <li><a href="#quality" class="fts-14">Accreditation</a></li>
-                                    <li><a href="#" class="fts-14">Events</a></li>
-                                    <li><a href="#get-in-touch" class="fts-14">Contact Us</a></li>
+                                    <li><a href="{{ route('events.index') }}" class="fts-14">Events</a></li>
+                                    <li><a href="{{ route('contact.index') }}" class="fts-14">Contact Us</a></li>
                                     <li><a href="#" class="fts-14">Blogs</a></li>
                                 </ul>
                             </div>
@@ -110,11 +111,12 @@
                             <div class="single-motorfooter-links mb-3 mb-lg-0">
                                 <h4 class="fts-18 fw-7 title-text-L">Psyllium Products</h4>
                                 <ul class="ui-footer-links mt-lg-2 mt-1">
-                                    <li><a href="#products" class="fts-14">Psyllium Seeds</a></li>
-                                    <li><a href="#products" class="fts-14">Psyllium Husk</a></li>
-                                    <li><a href="#products" class="fts-14">Psyllium Husk Powder</a></li>
-                                    <li><a href="#products" class="fts-14">Psyllium Seed Powder</a></li>
-                                    <li><a href="#products" class="fts-14">Psyllium KhaKha Powder</a></li>
+                                    @foreach ($footerProducts as $footerProduct)
+                                        <li><a href="{{ route('products.show', $footerProduct) }}" class="fts-14">{{ $footerProduct->name }}</a></li>
+                                    @endforeach
+                                    @if ($footerProductsRemaining > 0)
+                                        <li><a href="{{ route('products.index') }}" class="fts-14">+{{ $footerProductsRemaining }} more</a></li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -164,6 +166,6 @@
         <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
         <script src="{{ asset('assets/frontend/js/slick.min.js') }}"></script>
         <script src="{{ asset('assets/frontend/js/wow.js') }}"></script>
-        <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+        <script src="{{ asset('assets/frontend/js/main.js') }}?v={{ filemtime(public_path('assets/frontend/js/main.js')) }}"></script>
     </body>
 </html>

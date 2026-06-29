@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasRichContent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class MediaCenterItem extends Model
 {
+    use HasRichContent;
+
     protected $fillable = [
         'title',
         'slug',

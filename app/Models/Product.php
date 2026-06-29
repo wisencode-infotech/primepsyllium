@@ -2,15 +2,19 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasRichContent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
+    use HasRichContent;
+
     protected $fillable = [
         'name',
         'slug',
         'description',
+        'content',
         'image',
         'sort_order',
         'is_active',

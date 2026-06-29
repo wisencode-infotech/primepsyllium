@@ -96,7 +96,7 @@
                         <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-img">
                         <h4 class="mt-2 mt-md-3 fts-20 fw-6 title-text-L">{{ $product->name }}</h4>
                         <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2">{{ $product->description }}</p>
-                        <a href="#get-in-touch" class="media-more fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1 justify-content-center mt-1 mt-md-2">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
+                        <a href="{{ route('products.show', $product) }}" class="media-more fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1 justify-content-center mt-1 mt-md-2">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
                     </div>
                 @endforeach
             </div>
@@ -130,7 +130,7 @@
     </section>
 
     {{-- media center section start --}}
-    <div class="media-center-section pt-4 pt-lg-5">
+    <div class="media-center-section pt-4 pt-lg-5" id="media-center">
         <div class="container">
             <h6 class="common-icon-title mx-auto fts-14 mb-3 mb-lg-4 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Media Center</h6>
             <div class="row">

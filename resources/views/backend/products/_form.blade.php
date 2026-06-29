@@ -10,9 +10,16 @@
 </div>
 
 <div class="mt-4">
-    <x-input-label for="description" value="Description" />
+    <x-input-label for="description" value="Short Description (shown on the homepage card)" />
     <textarea id="description" name="description" rows="3" class="mt-1 block w-full border-border focus:border-primary focus:ring-focus rounded-md shadow-sm bg-surface-elevated text-text placeholder:text-text-muted">{{ old('description', $product->description ?? '') }}</textarea>
     <x-input-error class="mt-2" :messages="$errors->get('description')" />
+</div>
+
+<div class="mt-4">
+    <x-input-label for="content" value="Full Details (shown on the product page)" />
+    <div data-quill="#content" class="mt-1"></div>
+    <textarea id="content" name="content" class="hidden">{{ old('content', $product->content ?? '') }}</textarea>
+    <x-input-error class="mt-2" :messages="$errors->get('content')" />
 </div>
 
 <div class="mt-4">
