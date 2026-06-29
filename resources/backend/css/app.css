@@ -13,3 +13,45 @@
         @apply bg-[var(--color-surface)] text-[var(--color-text)];
     }
 }
+
+@layer components {
+    .table-shell {
+        @apply bg-surface-elevated border border-border rounded-2xl shadow-sm overflow-hidden;
+    }
+
+    .table-head-row {
+        @apply text-left text-xs font-semibold text-text-muted uppercase tracking-wider bg-surface-muted border-b border-border;
+    }
+
+    .table-row {
+        @apply border-t border-border first:border-t-0 hover:bg-surface-muted transition-colors duration-150;
+    }
+
+    .pill {
+        @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full;
+    }
+
+    .pill-success {
+        @apply bg-success-soft text-success;
+    }
+
+    .pill-muted {
+        @apply bg-surface-muted text-text-muted;
+    }
+
+    .pill-danger {
+        @apply bg-danger-soft text-danger;
+    }
+
+    .pill-info {
+        @apply bg-primary-soft text-primary;
+    }
+
+    .row-link {
+        @apply text-sm font-medium text-primary hover:text-primary-hover transition-colors;
+    }
+
+    .row-link-danger {
+        @apply text-sm font-medium text-danger hover:underline transition-colors;
+    }
+}

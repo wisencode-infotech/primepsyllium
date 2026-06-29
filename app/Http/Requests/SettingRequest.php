@@ -21,6 +21,12 @@ class SettingRequest extends FormRequest
             'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,svg', 'max:2048'],
             'global_presence_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,svg', 'max:4096'],
             'favicon' => ['nullable', 'mimes:jpeg,png,jpg,webp,ico,svg', 'max:1024'],
+            'facebook_url' => ['nullable', 'url', 'max:255'],
+            'instagram_url' => ['nullable', 'url', 'max:255'],
+            'whatsapp_url' => ['nullable', 'url', 'max:255'],
+            'twitter_url' => ['nullable', 'url', 'max:255'],
+            'linkedin_url' => ['nullable', 'url', 'max:255'],
+            'teams_url' => ['nullable', 'url', 'max:255'],
         ];
     }
 }

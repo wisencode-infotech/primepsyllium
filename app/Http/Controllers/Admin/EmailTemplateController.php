@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmailTemplateRequest;
 use App\Models\EmailTemplate;
+use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -19,7 +20,10 @@ class EmailTemplateController extends Controller
 
     public function create(): View
     {
-        return view('backend.email-templates.create');
+        return view('backend.email-templates.create', [
+            'setting' => Setting::current(),
+            'sampleData' => $this->sampleData(),
+        ]);
     }
 
     public function store(EmailTemplateRequest $request): RedirectResponse
@@ -34,7 +38,11 @@ class EmailTemplateController extends Controller
 
     public function edit(EmailTemplate $email_template): View
     {
-        return view('backend.email-templates.edit', ['emailTemplate' => $email_template]);
+        return view('backend.email-templates.edit', [
+            'emailTemplate' => $email_template,
+            'setting' => Setting::current(),
+            'sampleData' => $this->sampleData(),
+        ]);
     }
 
     public function update(EmailTemplateRequest $request, EmailTemplate $email_template): RedirectResponse
@@ -56,5 +64,22 @@ class EmailTemplateController extends Controller
         $email_template->delete();
 
         return redirect()->route('admin.email-templates.index')->with('status', 'Email template deleted successfully.');
+    }
+
+    /**
+     * Sample values used to render a realistic live preview of the template.
+     *
+     * @return array<string, string>
+     */
+    private function sampleData(): array
+    {
+        return [
+            '{{name}}' => 'John Doe',
+            '{{company}}' => 'Acme Corporation',
+            '{{email}}' => 'john.doe@example.com',
+            '{{product_interest}}' => 'Organic Psyllium Husk Powder',
+            '{{message}}' => "Hi, I'd like to know more about your bulk pricing for psyllium husk powder.",
+            '{{submitted_at}}' => now()->format('d M Y, h:i A'),
+        ];
     }
 }

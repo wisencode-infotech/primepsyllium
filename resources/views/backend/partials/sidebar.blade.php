@@ -39,22 +39,65 @@
                 ['route' => 'admin.media-center-items.index', 'pattern' => 'admin.media-center-items.*', 'icon' => 'newspaper', 'label' => 'Media Center'],
                 ['route' => 'admin.countries.index', 'pattern' => 'admin.countries.*', 'icon' => 'globe', 'label' => 'Countries'],
                 ['route' => 'admin.inquiries.index', 'pattern' => 'admin.inquiries.*', 'icon' => 'mail', 'label' => 'Inquiries'],
-                ['route' => 'admin.email-templates.index', 'pattern' => 'admin.email-templates.*', 'icon' => 'document', 'label' => 'Email Templates'],
-                ['route' => 'admin.email-recipients.index', 'pattern' => 'admin.email-recipients.*', 'icon' => 'users', 'label' => 'Email Recipients'],
+                [
+                    'label' => 'Emails',
+                    'icon' => 'mail',
+                    'patterns' => ['admin.email-branding.*', 'admin.email-templates.*', 'admin.email-recipients.*'],
+                    'children' => [
+                        ['route' => 'admin.email-branding.edit', 'pattern' => 'admin.email-branding.*', 'icon' => 'image', 'label' => 'Email Branding'],
+                        ['route' => 'admin.email-templates.index', 'pattern' => 'admin.email-templates.*', 'icon' => 'document', 'label' => 'Email Templates'],
+                        ['route' => 'admin.email-recipients.index', 'pattern' => 'admin.email-recipients.*', 'icon' => 'users', 'label' => 'Email Recipients'],
+                    ],
+                ],
                 ['route' => 'admin.theme.edit', 'pattern' => 'admin.theme.*', 'icon' => 'palette', 'label' => 'Brand Theme'],
                 ['route' => 'admin.settings.edit', 'pattern' => 'admin.settings.*', 'icon' => 'settings', 'label' => 'Settings'],
             ];
         @endphp
 
         @foreach ($navItems as $item)
-            <a
-                href="{{ route($item['route']) }}"
-                title="{{ $item['label'] }}"
-                class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition {{ request()->routeIs($item['pattern']) ? 'bg-primary-soft text-primary' : 'text-text-muted hover:bg-surface-muted hover:text-text' }}"
-            >
-                <x-icon :name="$item['icon']" class="h-5 w-5 shrink-0" />
-                <span x-show="!collapsed" x-transition.opacity class="truncate">{{ $item['label'] }}</span>
-            </a>
+            @if (isset($item['children']))
+                @php $groupActive = request()->routeIs(...$item['patterns']); @endphp
+                <div x-data="{ open: @js($groupActive) }">
+                    <button
+                        type="button"
+                        @click="open = !open"
+                        title="{{ $item['label'] }}"
+                        class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition {{ $groupActive ? 'text-primary' : 'text-text-muted hover:bg-surface-muted hover:text-text' }}"
+                    >
+                        <x-icon :name="$item['icon']" class="h-5 w-5 shrink-0" />
+                        <span x-show="!collapsed" x-transition.opacity class="flex-1 truncate text-left">{{ $item['label'] }}</span>
+                        <x-icon
+                            x-show="!collapsed"
+                            name="chevron-right"
+                            class="h-4 w-4 shrink-0 transition-transform duration-150"
+                            ::class="open ? 'rotate-90' : ''"
+                            style="display: none;"
+                        />
+                    </button>
+
+                    <div x-show="!collapsed && open" x-transition style="display: none;" class="ml-5 mt-1 flex flex-col gap-1 border-l-2 border-border pl-4">
+                        @foreach ($item['children'] as $child)
+                            <a
+                                href="{{ route($child['route']) }}"
+                                title="{{ $child['label'] }}"
+                                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition {{ request()->routeIs($child['pattern']) ? 'bg-primary-soft text-primary' : 'text-text-muted hover:bg-surface-muted hover:text-text' }}"
+                            >
+                                <x-icon :name="$child['icon']" class="h-4 w-4 shrink-0" />
+                                <span class="truncate">{{ $child['label'] }}</span>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            @else
+                <a
+                    href="{{ route($item['route']) }}"
+                    title="{{ $item['label'] }}"
+                    class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition {{ request()->routeIs($item['pattern']) ? 'bg-primary-soft text-primary' : 'text-text-muted hover:bg-surface-muted hover:text-text' }}"
+                >
+                    <x-icon :name="$item['icon']" class="h-5 w-5 shrink-0" />
+                    <span x-show="!collapsed" x-transition.opacity class="truncate">{{ $item['label'] }}</span>
+                </a>
+            @endif
         @endforeach
 
         <div class="mt-auto flex flex-col gap-1 border-t border-border pt-3">

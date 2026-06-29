@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ContactInquiry extends Model
 {
@@ -22,5 +23,10 @@ class ContactInquiry extends Model
     public function scopeLatestFirst($query)
     {
         return $query->orderByDesc('created_at');
+    }
+
+    public function replies(): HasMany
+    {
+        return $this->hasMany(InquiryReply::class)->latest();
     }
 }

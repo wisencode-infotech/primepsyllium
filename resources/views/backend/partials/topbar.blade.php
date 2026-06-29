@@ -33,9 +33,71 @@
             <x-icon name="moon" x-show="dark" class="h-5 w-5" style="display: none;" />
         </button>
 
-        <button class="inline-flex h-9 w-9 items-center justify-center rounded-full text-text-muted hover:bg-surface-muted hover:text-text" title="Notifications">
-            <x-icon name="bell" class="h-5 w-5" />
-        </button>
+        <x-dropdown align="right" width="w-96" content-classes="bg-surface-elevated">
+            <x-slot name="trigger">
+                <button class="relative inline-flex h-9 w-9 items-center justify-center rounded-full text-text-muted hover:bg-surface-muted hover:text-text" title="Notifications">
+                    <x-icon name="bell" class="h-5 w-5" />
+                    @if ($unreadNotificationsCount > 0)
+                        <span class="absolute -top-1 -right-1 inline-flex h-[1.125rem] min-w-[1.125rem] items-center justify-center rounded-full bg-red-600 px-1 text-[10px] font-semibold leading-none text-white ring-2 ring-surface-elevated">
+                            {{ $unreadNotificationsCount > 9 ? '9+' : $unreadNotificationsCount }}
+                        </span>
+                    @endif
+                </button>
+            </x-slot>
+
+            <x-slot name="content">
+                <div class="flex items-center justify-between gap-3 px-4 py-3 border-b border-border">
+                    <div>
+                        <p class="text-sm font-semibold text-text">Notifications</p>
+                        <p class="text-xs text-text-muted">
+                            {{ $unreadNotificationsCount > 0 ? $unreadNotificationsCount.' unread' : 'You\'re all caught up' }}
+                        </p>
+                    </div>
+                    @if ($unreadNotificationsCount > 0)
+                        <form method="POST" action="{{ route('admin.notifications.mark-all-read') }}">
+                            @csrf
+                            <button type="submit" class="inline-flex items-center gap-1 text-xs font-medium text-primary hover:text-primary-hover hover:underline">
+                                Mark all as read
+                            </button>
+                        </form>
+                    @endif
+                </div>
+
+                <div class="max-h-96 overflow-y-auto divide-y divide-border">
+                    @forelse ($recentNotifications as $notification)
+                        <form method="POST" action="{{ route('admin.notifications.read', $notification->id) }}">
+                            @csrf
+                            <button type="submit" class="group flex w-full items-start gap-3 border-l-2 px-4 py-3 text-left transition hover:bg-surface-muted {{ $notification->read_at ? 'border-transparent' : 'border-primary bg-primary-soft' }}">
+                                <span class="relative mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary">
+                                    <x-icon name="mail" class="h-4 w-4" />
+                                    @if (! $notification->read_at)
+                                        <span class="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-red-600 ring-2 ring-surface-elevated"></span>
+                                    @endif
+                                </span>
+                                <div class="min-w-0 flex-1">
+                                    <p class="text-sm text-text">
+                                        New inquiry from <span class="font-semibold">{{ $notification->data['name'] ?? 'Unknown' }}</span>
+                                    </p>
+                                    <p class="text-xs text-text-muted truncate">{{ $notification->data['company'] ?? '' }} &middot; {{ $notification->data['product_interest'] ?? '' }}</p>
+                                    <p class="mt-1 text-xs text-text-muted">{{ $notification->created_at->diffForHumans() }}</p>
+                                </div>
+                            </button>
+                        </form>
+                    @empty
+                        <div class="flex flex-col items-center gap-2 px-4 py-10 text-center">
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-surface-muted text-text-muted">
+                                <x-icon name="bell" class="h-5 w-5" />
+                            </span>
+                            <p class="text-sm text-text-muted">No notifications yet.</p>
+                        </div>
+                    @endforelse
+                </div>
+
+                <a href="{{ route('admin.inquiries.index') }}" class="block px-4 py-3 text-center text-xs font-medium text-primary border-t border-border hover:bg-surface-muted hover:text-primary-hover">
+                    View all inquiries
+                </a>
+            </x-slot>
+        </x-dropdown>
 
         <x-dropdown align="right" width="48">
             <x-slot name="trigger">

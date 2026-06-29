@@ -8,6 +8,8 @@ use App\Models\ContactInquiry;
 use App\Models\EmailRecipient;
 use App\Models\EmailTemplate;
 use App\Models\Setting;
+use App\Models\User;
+use App\Notifications\NewContactInquiry;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -23,6 +25,8 @@ class ContactController extends Controller
         if ($sent) {
             $inquiry->update(['email_sent' => true]);
         }
+
+        User::role('super-admin')->get()->each->notify(new NewContactInquiry($inquiry));
 
         return redirect()->to(url('/').'#get-in-touch')
             ->with('contact_status', 'Thank you for reaching out. Our team will get back to you shortly.');

@@ -114,5 +114,22 @@
             <path d="M14 2.5V8.5h6" />
             <path d="M9 12.5h6M9 16h6" />
             @break
+
+        @case('calendar')
+            <rect x="3" y="4.5" width="18" height="17" rx="2" />
+            <path d="M16 2.5v4M8 2.5v4M3 10.5h18" />
+            @break
+
+        @case('building')
+            <rect x="4" y="3" width="16" height="18" rx="1.5" />
+            <path d="M9 21v-4h6v4" />
+            <path d="M8 8h1.5M8 12h1.5M14.5 8H16M14.5 12H16" />
+            @break
+
+        @case('image')
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <path d="m21 15-5-5L5 21" />
+            @break
     @endswitch
 </svg>

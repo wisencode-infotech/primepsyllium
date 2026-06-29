@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/public/\" --max-time 10)",
+      "Bash(curl -s \"http://localhost/primepsyllium/public/\" --max-time 15 -o /c/xampp8.2/htdocs/primepsyllium/storage/app/verify_before.html)",
+      "Bash(curl -s __TRACKED_VAR__/admin/settings -D unauth_headers.txt -o unauth_body.html -w 'HTTP_CODE:%{http_code}\\\\n')",
+      "Bash(curl -s \"http://localhost/primepsyllium/public/\" --max-time 15 -o verify_after.html)",
+      "Bash(curl -s \"http://localhost/primepsyllium/public/\" --max-time 15)",
+      "Bash(php -l resources/views/backend/settings/edit.blade.php)",
+      "Bash(php -l resources/views/profile/edit.blade.php)",
+      "Bash(php -l resources/views/profile/partials/update-profile-information-form.blade.php)",
+      "Bash(php -l resources/views/profile/partials/update-password-form.blade.php)"
+    ]
+  }
+}

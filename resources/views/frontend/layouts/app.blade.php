@@ -142,12 +142,9 @@
                                 <div class="col-lg-8 order-0 order-lg-5">
                                     <div class="socilas-iconsviewsdesign py-1 d-flex flex-column align-items-center align-items-lg-end">
                                         <div class="footer_socialmedia d-flex justify-content-center justify-content-lg-end flex-wrap gap-2">
-                                            <a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Facebook" class="fb border-lightcolor"><iconify-icon icon="ri:facebook-fill"></iconify-icon></a>
-                                            <a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="instagram" class="insta border-lightcolor"><iconify-icon icon="ri:instagram-line"></iconify-icon></a>
-                                            <a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="whatsapp" class="lnk border-lightcolor"><iconify-icon icon="mingcute:whatsapp-fill"></iconify-icon></a>
-                                            <a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="twitter" class="twi border-lightcolor"><iconify-icon icon="bxl:twitter-x"></iconify-icon></a>
-                                            <a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="linkedin" class="lnk border-lightcolor"><iconify-icon icon="flowbite:linkedin-solid"></iconify-icon></a>
-                                            <a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="teams" class="lnk border-lightcolor"><iconify-icon icon="bi:microsoft-teams"></iconify-icon></a>
+                                            @foreach ($settings->socialLinks() as $link)
+                                                <a href="{{ $link['url'] }}" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="{{ $link['label'] }}" class="{{ $link['class'] }} border-lightcolor"><iconify-icon icon="{{ $link['icon'] }}"></iconify-icon></a>
+                                            @endforeach
                                         </div>
 
                                         <p class="footer-credit-text fts-13 fw-4 subtitle-text-L text-center text-lg-end mt-2 mb-0">Built by <a href="https://wisencode.com" target="_blank" rel="noopener noreferrer" class="secondary-color-L fw-5 text-decoration-none">Wisencode Infotech</a>.</p>

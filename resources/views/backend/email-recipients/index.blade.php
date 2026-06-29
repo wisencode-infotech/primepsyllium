@@ -22,11 +22,11 @@
             Every <strong>active</strong> recipient below receives an email whenever a visitor submits the "Discuss Your Requirements" contact form. Add as many recipients as you need.
         </div>
 
-        <div class="bg-surface-elevated shadow sm:rounded-lg overflow-hidden">
+        <div class="table-shell">
             <div class="overflow-x-auto">
                 <table class="w-full min-w-[640px]">
                     <thead>
-                        <tr class="text-left text-xs font-semibold text-text-muted uppercase tracking-wider border-b border-border">
+                        <tr class="table-head-row">
                             <th class="px-4 sm:px-8 py-3">Name</th>
                             <th class="px-2 py-3">Email</th>
                             <th class="px-2 py-3 w-28">Status</th>
@@ -35,23 +35,23 @@
                     </thead>
                     <tbody>
                         @forelse ($emailRecipients as $emailRecipient)
-                            <tr class="border-b border-border last:border-b-0 hover:bg-surface-muted">
+                            <tr class="table-row">
                                 <td class="px-4 sm:px-8 py-3 text-sm text-text">{{ $emailRecipient->name ?: '—' }}</td>
                                 <td class="px-2 py-3 text-sm text-text">{{ $emailRecipient->email }}</td>
                                 <td class="px-2 py-3">
                                     @if ($emailRecipient->is_active)
-                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-50 text-green-700">Active</span>
+                                        <span class="pill pill-success">Active</span>
                                     @else
-                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-surface-muted text-text-muted">Inactive</span>
+                                        <span class="pill pill-muted">Inactive</span>
                                     @endif
                                 </td>
                                 <td class="px-2 py-3 text-right sm:pr-8">
                                     <div class="flex items-center justify-end gap-3">
-                                        <a href="{{ route('admin.email-recipients.edit', $emailRecipient) }}" class="text-sm text-primary hover:text-primary-hover">Edit</a>
+                                        <a href="{{ route('admin.email-recipients.edit', $emailRecipient) }}" class="row-link">Edit</a>
                                         <form method="POST" action="{{ route('admin.email-recipients.destroy', $emailRecipient) }}" onsubmit="return confirm('Remove this recipient? They will stop receiving contact form notifications.');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-sm text-red-600 hover:underline">Delete</button>
+                                            <button type="submit" class="row-link-danger">Delete</button>
                                         </form>
                                     </div>
                                 </td>

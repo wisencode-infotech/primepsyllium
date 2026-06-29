@@ -38,8 +38,12 @@ export default {
                 danger: {
                     DEFAULT: 'var(--color-danger)',
                     border: 'var(--color-danger-border)',
+                    soft: 'var(--color-danger-soft)',
                 },
-                success: 'var(--color-success)',
+                success: {
+                    DEFAULT: 'var(--color-success)',
+                    soft: 'var(--color-success-soft)',
+                },
             },
         },
     },

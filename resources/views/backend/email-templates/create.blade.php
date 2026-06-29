@@ -5,13 +5,42 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="p-4 sm:p-8 bg-surface-elevated shadow sm:rounded-lg">
-                <form method="POST" action="{{ route('admin.email-templates.store') }}">
-                    @include('backend.email-templates._form')
-                </form>
+    <div
+        x-data="{
+            subject: @js(old('subject', '')),
+            body: @js(old('body', '')),
+            sample: @js($sampleData),
+            renderedSubject() {
+                let value = this.subject || '(No subject yet)';
+                for (const [token, replacement] of Object.entries(this.sample)) {
+                    value = value.split(token).join(replacement);
+                }
+                return value;
+            },
+            renderedBody() {
+                let value = this.body || '<p class=\'opacity-60\'>Your email body preview will appear here&hellip;</p>';
+                for (const [token, replacement] of Object.entries(this.sample)) {
+                    value = value.split(token).join(replacement);
+                }
+                return value;
+            },
+        }"
+        class="grid grid-cols-1 gap-6 lg:grid-cols-3"
+    >
+        @if (session('status'))
+            <div class="lg:col-span-3 p-4 bg-green-50 border border-green-200 text-green-700 rounded-md text-sm">
+                {{ session('status') }}
             </div>
+        @endif
+
+        <div class="lg:col-span-2">
+            <form method="POST" action="{{ route('admin.email-templates.store') }}">
+                @include('backend.email-templates._form')
+            </form>
+        </div>
+
+        <div class="lg:col-span-1">
+            @include('backend.email-templates._preview')
         </div>
     </div>
 </x-backend-layout>

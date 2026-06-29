@@ -4,9 +4,11 @@ use App\Http\Controllers\Admin\CertificationController;
 use App\Http\Controllers\Admin\ContactInquiryController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\EmailBrandSettingController;
 use App\Http\Controllers\Admin\EmailRecipientController;
 use App\Http\Controllers\Admin\EmailTemplateController;
 use App\Http\Controllers\Admin\MediaCenterItemController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ThemeSettingController;
@@ -41,6 +43,10 @@ Route::middleware(['auth', 'verified', 'role:super-admin'])
         Route::put('theme', [ThemeSettingController::class, 'update'])->name('theme.update');
         Route::delete('theme', [ThemeSettingController::class, 'restore'])->name('theme.restore');
 
+        Route::get('email-branding', [EmailBrandSettingController::class, 'edit'])->name('email-branding.edit');
+        Route::put('email-branding', [EmailBrandSettingController::class, 'update'])->name('email-branding.update');
+        Route::delete('email-branding', [EmailBrandSettingController::class, 'restore'])->name('email-branding.restore');
+
         Route::post('media-center-items/reorder', [MediaCenterItemController::class, 'reorder'])->name('media-center-items.reorder');
         Route::resource('media-center-items', MediaCenterItemController::class)->except('show');
 
@@ -50,6 +56,10 @@ Route::middleware(['auth', 'verified', 'role:super-admin'])
         Route::resource('email-templates', EmailTemplateController::class)->except('show');
         Route::resource('email-recipients', EmailRecipientController::class)->except('show');
         Route::resource('inquiries', ContactInquiryController::class)->only(['index', 'show', 'destroy']);
+        Route::post('inquiries/{inquiry}/reply', [ContactInquiryController::class, 'reply'])->name('inquiries.reply');
+
+        Route::post('notifications/mark-all-read', [NotificationController::class, 'markAllAsRead'])->name('notifications.mark-all-read');
+        Route::post('notifications/{notification}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
     });
 
 Route::get('/dashboard', function () {

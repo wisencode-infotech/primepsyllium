@@ -24,11 +24,11 @@
             </div>
         @endif
 
-        <div class="bg-surface-elevated shadow sm:rounded-lg overflow-hidden">
+        <div class="table-shell">
             <div class="overflow-x-auto">
                 <table class="w-full min-w-[720px]">
                     <thead>
-                        <tr class="text-left text-xs font-semibold text-text-muted uppercase tracking-wider border-b border-border">
+                        <tr class="table-head-row">
                             <th class="px-4 sm:px-8 py-3">Name</th>
                             <th class="px-2 py-3">Slug</th>
                             <th class="px-2 py-3">Subject</th>
@@ -38,25 +38,25 @@
                     </thead>
                     <tbody>
                         @forelse ($emailTemplates as $emailTemplate)
-                            <tr class="border-b border-border last:border-b-0 hover:bg-surface-muted">
+                            <tr class="table-row">
                                 <td class="px-4 sm:px-8 py-3 text-sm text-text">{{ $emailTemplate->name }}</td>
                                 <td class="px-2 py-3 text-sm text-text-muted"><code>{{ $emailTemplate->slug }}</code></td>
                                 <td class="px-2 py-3 text-sm text-text-muted truncate max-w-xs">{{ $emailTemplate->subject }}</td>
                                 <td class="px-2 py-3">
                                     @if ($emailTemplate->is_active)
-                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-50 text-green-700">Active</span>
+                                        <span class="pill pill-success">Active</span>
                                     @else
-                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-surface-muted text-text-muted">Inactive</span>
+                                        <span class="pill pill-muted">Inactive</span>
                                     @endif
                                 </td>
                                 <td class="px-2 py-3 text-right sm:pr-8">
                                     <div class="flex items-center justify-end gap-3">
-                                        <a href="{{ route('admin.email-templates.edit', $emailTemplate) }}" class="text-sm text-primary hover:text-primary-hover">Edit</a>
+                                        <a href="{{ route('admin.email-templates.edit', $emailTemplate) }}" class="row-link">Edit</a>
                                         @if ($emailTemplate->slug !== \App\Models\EmailTemplate::CONTACT_INQUIRY_SLUG)
                                             <form method="POST" action="{{ route('admin.email-templates.destroy', $emailTemplate) }}" onsubmit="return confirm('Delete this email template? This cannot be undone.');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="text-sm text-red-600 hover:underline">Delete</button>
+                                                <button type="submit" class="row-link-danger">Delete</button>
                                             </form>
                                         @endif
                                     </div>
