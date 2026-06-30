@@ -15,7 +15,7 @@ class FrontendLayout extends Component
         $activeCountries = Country::query()->active()->ordered()->get();
         $footerCountries = $activeCountries->where('show_in_footer', true)->values();
 
-        $activeProducts = Product::query()->active()->ordered()->get();
+        $activeProducts = Product::query()->active()->ordered()->where('category', 'psyllium')->get();
         $footerProducts = $activeProducts->take(5);
 
         return view('frontend.layouts.app', [

@@ -16,9 +16,10 @@ class ProductController extends Controller
 {
     public function index(): View
     {
-        $products = Product::query()->ordered()->get();
+        $psylliumProducts = Product::query()->where('category', 'psyllium')->ordered()->get();
+        $otherProducts = Product::query()->where('category', 'other')->ordered()->get();
 
-        return view('backend.products.index', compact('products'));
+        return view('backend.products.index', compact('psylliumProducts', 'otherProducts'));
     }
 
     public function create(): View

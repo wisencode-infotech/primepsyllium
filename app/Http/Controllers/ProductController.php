@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function index(): View
     {
-        $products = Product::query()->active()->ordered()->get();
+        $products = Product::query()->active()->ordered()->where('category', 'psyllium')->get();
         $certifications = Certification::query()->active()->ordered()->get();
         $countries = Country::query()->active()->ordered()->get();
 
@@ -25,6 +25,7 @@ class ProductController extends Controller
         $otherProducts = Product::query()
             ->active()
             ->ordered()
+            ->where('category', 'psyllium')
             ->where('id', '!=', $product->id)
             ->get();
 

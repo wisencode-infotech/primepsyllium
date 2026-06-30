@@ -18,6 +18,7 @@ class ProductRequest extends FormRequest
 
         return [
             'name' => ['required', 'string', 'max:255'],
+            'category' => ['required', 'in:psyllium,other'],
             'description' => ['nullable', 'string'],
             'content' => ['nullable', 'string'],
             'image' => [$isCreating ? 'required' : 'nullable', 'image', 'mimes:jpeg,png,jpg,webp,svg', 'max:2048'],

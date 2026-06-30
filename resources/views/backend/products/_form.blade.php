@@ -10,6 +10,23 @@
 </div>
 
 <div class="mt-4">
+    <x-input-label value="Product Category" />
+    <div class="mt-2 flex gap-6">
+        <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="category" value="psyllium" class="text-primary focus:ring-focus"
+                {{ old('category', $product->category ?? 'psyllium') === 'psyllium' ? 'checked' : '' }}>
+            <span class="text-sm text-text">Psyllium Products</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="category" value="other" class="text-primary focus:ring-focus"
+                {{ old('category', $product->category ?? 'psyllium') === 'other' ? 'checked' : '' }}>
+            <span class="text-sm text-text">Other Ingredients</span>
+        </label>
+    </div>
+    <x-input-error class="mt-2" :messages="$errors->get('category')" />
+</div>
+
+<div class="mt-4">
     <x-input-label for="description" value="Short Description (shown on the homepage card)" />
     <textarea id="description" name="description" rows="3" class="mt-1 block w-full border-border focus:border-primary focus:ring-focus rounded-md shadow-sm bg-surface-elevated text-text placeholder:text-text-muted">{{ old('description', $product->description ?? '') }}</textarea>
     <x-input-error class="mt-2" :messages="$errors->get('description')" />

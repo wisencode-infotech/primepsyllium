@@ -64,55 +64,29 @@
     @endif
 
     {{-- other specialty ingredients --}}
-    <section class="primer-product-section py-4 py-lg-5" id="specialty-ingredients">
-        <div class="container py-lg-2">
-            <div class="heading-products text-center">
-                <h6 class="common-icon-title mx-auto fts-14 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Specialty Range</h6>
-                <h2 class="fts-36 fw-5 title-text-L mt-1 mt-lg-2 wow fadeInUp">Other Ingredients</h2>
-                <p class="fts-15 fw-4 subtitle-text-L mt-1 mt-lg-2 wow fadeInUp">Beyond psyllium, we supply a curated range of premium agri-farm ingredients sourced directly from trusted farmers.</p>
-            </div>
-            @php
-                $otherIngredients = [
-                    [
-                        'icon'  => 'mdi:spice',
-                        'title' => 'Turmeric Powder',
-                        'desc'  => 'Premium quality turmeric powder from trusted agri-farm sources, rich in curcumin and ideal for food, pharmaceutical and cosmetic applications.',
-                    ],
-                    [
-                        'icon'  => 'mdi:seed-outline',
-                        'title' => 'Turmeric Whole (Roots)',
-                        'desc'  => 'Premium agri-farm turmeric roots sourced directly from farmers, offering natural colour, aroma and purity for industrial and culinary use.',
-                    ],
-                    [
-                        'icon'  => 'mdi:water-outline',
-                        'title' => 'Gum Arabic',
-                        'desc'  => 'A natural resin tapped from Acacia trees, widely used as an emulsifier, stabiliser and thickener in food, beverage and pharmaceutical industries.',
-                    ],
-                    [
-                        'icon'  => 'mdi:water-check-outline',
-                        'title' => 'White Gum Arabic',
-                        'desc'  => 'A superior grade of Gum Arabic with enhanced whiteness and purity, ideal for high-end food and beverage formulations requiring top-tier quality.',
-                    ],
-                    [
-                        'icon'  => 'mdi:seed',
-                        'title' => 'Chia Seeds',
-                        'desc'  => 'Premium export-quality Chia Seeds rich in omega-3 fatty acids, fibre and antioxidants &mdash; a superfood ingredient for nutraceutical and health food brands.',
-                    ],
-                ];
-            @endphp
-            <div class="row justify-content-center mt-3 mt-lg-4">
-                @foreach ($otherIngredients as $ingredient)
-                    <div class="col-lg-4 col-md-6 mt-3">
-                        <div class="industry-use-card wow fadeInUp">
-                            <iconify-icon icon="{{ $ingredient['icon'] }}"></iconify-icon>
-                            <h4 class="fts-16 fw-6 title-text-L">{{ $ingredient['title'] }}</h4>
-                            <p class="fts-14 fw-4 subtitle-text-L mt-1">{!! $ingredient['desc'] !!}</p>
+    @if ($otherProducts->isNotEmpty())
+        <section class="primer-product-section py-4 py-lg-5" id="specialty-ingredients">
+            <div class="container py-lg-2">
+                <div class="heading-products text-center">
+                    <h6 class="common-icon-title mx-auto fts-14 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Specialty Range</h6>
+                    <h2 class="fts-36 fw-5 title-text-L mt-1 mt-lg-2 wow fadeInUp">Other Ingredients</h2>
+                    <p class="fts-15 fw-4 subtitle-text-L mt-1 mt-lg-2 wow fadeInUp">Beyond psyllium, we supply a curated range of premium agri-farm ingredients sourced directly from trusted farmers.</p>
+                </div>
+                <div class="row justify-content-center mt-3 mt-lg-4">
+                    @foreach ($otherProducts as $product)
+                        <div class="col-lg-4 col-md-6 mt-3">
+                            <a href="{{ route('products.show', $product) }}" class="related-product-card d-block wow fadeInUp">
+                                <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-img">
+                                <h4 class="mt-2 mt-md-3 fts-18 fw-6 title-text-L">{{ $product->name }}</h4>
+                                <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2">{{ $product->description }}</p>
+                                <span class="media-more fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1 justify-content-center mt-1 mt-md-2">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></span>
+                            </a>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     {{-- why choose our ingredients --}}
     <section class="py-4 py-lg-5">
