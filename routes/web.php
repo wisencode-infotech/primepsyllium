@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AccreditationController;
 use App\Http\Controllers\Admin\CertificationController;
 use App\Http\Controllers\Admin\ContactInquiryController;
 use App\Http\Controllers\Admin\CountryController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Admin\ThemeSettingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IngredientsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +26,11 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::get('/about-us', AboutController::class)->name('about.index');
 
+Route::get('/accreditation', AccreditationController::class)->name('accreditation.index');
+
 Route::get('/psyllium', [ProductController::class, 'index'])->name('products.index');
+
+Route::get('/products', IngredientsController::class)->name('ingredients.index');
 
 Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name('products.show');
 

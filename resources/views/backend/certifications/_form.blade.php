@@ -16,7 +16,12 @@
 
 <div class="mt-4 flex items-center gap-2">
     <input id="is_active" name="is_active" type="checkbox" value="1" {{ old('is_active', $certification->is_active ?? true) ? 'checked' : '' }} class="rounded border-border text-primary focus:ring-focus">
-    <x-input-label for="is_active" value="Show this badge on the website" />
+    <x-input-label for="is_active" value="Show this badge on the website (Accreditation page)" />
+</div>
+
+<div class="mt-3 flex items-center gap-2">
+    <input id="show_on_home" name="show_on_home" type="checkbox" value="1" {{ old('show_on_home', $certification->show_on_home ?? true) ? 'checked' : '' }} class="rounded border-border text-primary focus:ring-focus">
+    <x-input-label for="show_on_home" value="Show this badge on the Home page" />
 </div>
 
 <div class="mt-6 flex items-center gap-3">

@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function __invoke(): View
     {
         $products = Product::query()->active()->ordered()->get();
-        $certifications = Certification::query()->active()->ordered()->get();
+        $certifications = Certification::query()->active()->onHome()->ordered()->get();
         $mediaCenterItems = MediaCenterItem::query()->active()->ordered()->get();
         $countries = Country::query()->active()->ordered()->get();
         $settings = Setting::current();

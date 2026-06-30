@@ -17,9 +17,10 @@ class CertificationRequest extends FormRequest
         $isCreating = $this->route('certification') === null;
 
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'logo' => [$isCreating ? 'required' : 'nullable', 'image', 'mimes:jpeg,png,jpg,webp,svg', 'max:2048'],
-            'is_active' => ['boolean'],
+            'name'         => ['required', 'string', 'max:255'],
+            'logo'         => [$isCreating ? 'required' : 'nullable', 'image', 'mimes:jpeg,png,jpg,webp,svg', 'max:2048'],
+            'is_active'    => ['boolean'],
+            'show_on_home' => ['boolean'],
         ];
     }
 }

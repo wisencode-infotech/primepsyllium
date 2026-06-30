@@ -12,11 +12,13 @@ class Certification extends Model
         'logo',
         'sort_order',
         'is_active',
+        'show_on_home',
     ];
 
     protected $casts = [
-        'is_active' => 'boolean',
-        'sort_order' => 'integer',
+        'is_active'    => 'boolean',
+        'show_on_home' => 'boolean',
+        'sort_order'   => 'integer',
     ];
 
     protected $appends = [
@@ -31,6 +33,11 @@ class Certification extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('sort_order');
+    }
+
+    public function scopeOnHome($query)
+    {
+        return $query->where('show_on_home', true);
     }
 
     public function getImageUrlAttribute(): ?string

@@ -63,7 +63,9 @@
       "Bash(curl -s http://localhost/primepsyllium/public/contact -o /tmp/contact_check.html -w \"HTTP:%{http_code}\\\\n\")",
       "Bash(rm -f /tmp/contact_check.html)",
       "Bash(curl -s http://localhost/primepsyllium/public/contact -o /tmp/contact_w.html -w \"HTTP:%{http_code}\\\\n\")",
-      "Bash(grep -n 'col-lg-5\">\\\\s*$\\\\|col-lg-7\"\\\\|col-lg-5\"' /tmp/contact_w.html)"
+      "Bash(grep -n 'col-lg-5\">\\\\s*$\\\\|col-lg-7\"\\\\|col-lg-5\"' /tmp/contact_w.html)",
+      "Bash(python -c \"import sys,json; lines=[l.strip\\(\\) for l in sys.stdin if l.strip\\(\\)]; [print\\(json.dumps\\(json.loads\\(l\\), indent=2\\)[:3000]\\) for l in lines[-5:]]\")",
+      "Bash(python -c ' *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\96250778-6246-4846-8ce0-14c5ca079d56\\scratchpad",

@@ -31,6 +31,7 @@
                                 <th class="px-2 py-3 w-20">Logo</th>
                                 <th class="px-2 py-3">Name</th>
                                 <th class="px-2 py-3 w-28">Status</th>
+                                <th class="px-2 py-3 w-28">Home Page</th>
                                 <th class="px-2 py-3 w-40 text-right sm:pr-8">Actions</th>
                             </tr>
                         </thead>
@@ -51,6 +52,13 @@
                                             <span class="pill pill-muted">Hidden</span>
                                         @endif
                                     </td>
+                                    <td class="px-2 py-3">
+                                        @if ($certification->show_on_home)
+                                            <span class="pill pill-success">Yes</span>
+                                        @else
+                                            <span class="pill pill-muted">No</span>
+                                        @endif
+                                    </td>
                                     <td class="px-2 py-3 text-right sm:pr-8">
                                         <div class="flex items-center justify-end gap-3">
                                             <a href="{{ route('admin.certifications.edit', $certification) }}" class="row-link">Edit</a>
@@ -64,7 +72,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="px-4 sm:px-8 py-6 text-sm text-text-muted text-center">
+                                    <td colspan="6" class="px-4 sm:px-8 py-6 text-sm text-text-muted text-center">
                                         No certifications yet. Click "Add Certification" to create your first one.
                                     </td>
                                 </tr>

@@ -28,8 +28,9 @@ class CertificationController extends Controller
     public function store(CertificationRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        $data['is_active'] = $request->boolean('is_active');
-        $data['sort_order'] = (int) Certification::query()->max('sort_order') + 1;
+        $data['is_active']    = $request->boolean('is_active');
+        $data['show_on_home'] = $request->boolean('show_on_home');
+        $data['sort_order']   = (int) Certification::query()->max('sort_order') + 1;
 
         if ($request->hasFile('logo')) {
             $data['logo'] = $request->file('logo')->store('certifications', 'public');
@@ -48,7 +49,8 @@ class CertificationController extends Controller
     public function update(CertificationRequest $request, Certification $certification): RedirectResponse
     {
         $data = $request->validated();
-        $data['is_active'] = $request->boolean('is_active');
+        $data['is_active']    = $request->boolean('is_active');
+        $data['show_on_home'] = $request->boolean('show_on_home');
 
         if ($request->hasFile('logo')) {
             if ($certification->logo) {
