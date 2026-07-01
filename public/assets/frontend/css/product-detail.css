@@ -201,6 +201,13 @@
   border-radius: 8px;
   font-size: 20px;
 }
+@media only screen and (max-width: 767.98px) {
+  .psyllium-pillar-chip {
+    width: 100%;
+    max-width: 420px;
+    min-width: 0;
+  }
+}
 .industry-use-card{
   background: var(--white-color);
   border: 1px solid #e7e7e7;

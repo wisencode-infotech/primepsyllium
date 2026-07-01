@@ -4,6 +4,18 @@
 .desktop-nav-logo{
   width: 76px;
 }
+.offcanvas-logo {
+  width: 60px;
+}
+.mobile-header {
+  padding-top: 10px;
+}
+.mobile-header .mobile-nav-logo {
+  margin: 0 auto;
+}
+.mobile-nav-spacer {
+  width: 36px;
+}
 .desktop-navbar-list li .desktop-nav-items{
   font-size: 15px;
   padding: 5px 8px;

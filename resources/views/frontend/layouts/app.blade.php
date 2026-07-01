@@ -41,22 +41,28 @@
             {{-- desktop navbar section start --}}
             <nav class="prime-desknav-main py-2">
                 <div class="container">
-                    <div class="inner desktop-nav d-flex justify-content-between gap-2 align-items-center py-1">
-                        <ul class="desktop-navbar-list d-lg-flex d-none align-items-center gap-1">
-                            <li><a href="{{ route('products.index') }}" class="desktop-nav-items">Products</a></li>
-                            <li><a href="{{ route('ingredients.index') }}" class="desktop-nav-items">Ingredients</a></li>
-                            <li><a href="{{ route('accreditation.index') }}" class="desktop-nav-items">Accreditation</a></li>
-                            <li><a href="{{ route('about.index') }}" class="desktop-nav-items">About Us</a></li>
-                            <li><a href="{{ route('blog.index') }}" class="desktop-nav-items {{ request()->routeIs('blog.*') ? 'active' : '' }}">Blog</a></li>
-                            <li><a href="{{ route('contact.index') }}" class="desktop-nav-items">Contact Us</a></li>
-                        </ul>
+                    <div class="inner desktop-nav d-flex justify-content-between gap-2 align-items-center py-1 d-none d-lg-flex">
                         <a href="{{ url('/') }}">
                             <img src="{{ $settings->logo_url ?? asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="desktop-nav-logo">
                         </a>
-                        <div class="right-desknav-talkmenu d-flex align-items-center gap-2">
+                        <div class="d-flex align-items-center gap-2 ms-auto">
+                            <ul class="desktop-navbar-list d-lg-flex d-none align-items-center gap-1 mb-0">
+                                <li><a href="{{ route('products.index') }}" class="desktop-nav-items">Products</a></li>
+                                <li><a href="{{ route('ingredients.index') }}" class="desktop-nav-items">Ingredients</a></li>
+                                <li><a href="{{ route('accreditation.index') }}" class="desktop-nav-items">Accreditation</a></li>
+                                <li><a href="{{ route('about.index') }}" class="desktop-nav-items">About Us</a></li>
+                                <li><a href="{{ route('blog.index') }}" class="desktop-nav-items {{ request()->routeIs('blog.*') ? 'active' : '' }}">Blog</a></li>
+                                <li><a href="{{ route('contact.index') }}" class="desktop-nav-items">Contact Us</a></li>
+                            </ul>
                             <a href="#get-in-touch" class="btn-desknav-talk fts-14 d-lg-flex d-none">Let&rsquo;s Talk <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Let&rsquo;s Talk"></a>
-                            <button class="btn-desknav-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#primeNavOffcanvas" aria-controls="primeNavOffcanvas"><iconify-icon icon="tabler:menu"></iconify-icon></button>
                         </div>
+                    </div>
+                    <div class="mobile-header d-flex d-lg-none align-items-center justify-content-between py-2">
+                        <div class="mobile-nav-spacer"></div>
+                        <a href="{{ url('/') }}" class="mobile-nav-logo text-center">
+                            <img src="{{ $settings->logo_url ?? asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="desktop-nav-logo">
+                        </a>
+                        <button class="btn-desknav-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#primeNavOffcanvas" aria-controls="#primeNavOffcanvas"><iconify-icon icon="tabler:menu"></iconify-icon></button>
                     </div>
                 </div>
 
@@ -65,7 +71,7 @@
                     <div class="offcanvas offcanvas-end" tabindex="-1" id="primeNavOffcanvas" aria-labelledby="primeNavOffcanvasLabel">
                         <div class="prime-nav-heading d-flex align-items-center justify-content-between gap-2 px-3 pt-3 pb-2 mt-1">
                             <a href="{{ url('/') }}">
-                                <img src="{{ $settings->logo_url ?? asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="desktop-nav-logo">
+                                <img src="{{ $settings->logo_url ?? asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="desktop-nav-logo offcanvas-logo">
                             </a>
                             <button type="button" class="btn-close fts-13" data-bs-dismiss="offcanvas" aria-label="Close"><iconify-icon icon="charm:cross" class="fts-26 subtitle-text-L"></iconify-icon></button>
                         </div>
