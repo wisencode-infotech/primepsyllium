@@ -47,6 +47,7 @@
                             <li><a href="{{ route('ingredients.index') }}" class="desktop-nav-items">Ingredients</a></li>
                             <li><a href="{{ route('accreditation.index') }}" class="desktop-nav-items">Accreditation</a></li>
                             <li><a href="{{ route('about.index') }}" class="desktop-nav-items">About Us</a></li>
+                            <li><a href="{{ route('blog.index') }}" class="desktop-nav-items {{ request()->routeIs('blog.*') ? 'active' : '' }}">Blog</a></li>
                             <li><a href="{{ route('contact.index') }}" class="desktop-nav-items">Contact Us</a></li>
                         </ul>
                         <a href="{{ url('/') }}">
@@ -74,6 +75,7 @@
                                 <li><a href="#quality" class="desktop-nav-items mx-0 my-1">Ingredients</a></li>
                                 <li><a href="{{ route('accreditation.index') }}" class="desktop-nav-items mx-0 my-1">Accreditation</a></li>
                                 <li><a href="{{ route('about.index') }}" class="desktop-nav-items mx-0 my-1">About Us</a></li>
+                                <li><a href="{{ route('blog.index') }}" class="desktop-nav-items mx-0 my-1">Blog</a></li>
                                 <li><a href="{{ route('contact.index') }}" class="desktop-nav-items mx-0 my-1">Contact Us</a></li>
                             </ul>
                             <a href="#get-in-touch" class="btn-desknav-talk fts-14 d-flex justify-content-center mt-2 w-100">Let&rsquo;s Talk <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Let&rsquo;s Talk"></a>

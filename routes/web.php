@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccreditationController;
+use App\Http\Controllers\Admin\BlogPostController as AdminBlogPostController;
 use App\Http\Controllers\Admin\CertificationController;
 use App\Http\Controllers\Admin\ContactInquiryController;
 use App\Http\Controllers\Admin\CountryController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ThemeSettingController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
@@ -37,6 +39,8 @@ Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
 
 Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('events.show');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
@@ -75,6 +79,10 @@ Route::middleware(['auth', 'verified', 'role:super-admin'])
         Route::resource('inquiries', ContactInquiryController::class)->only(['index', 'show', 'destroy']);
         Route::post('inquiries/{inquiry}/reply', [ContactInquiryController::class, 'reply'])->name('inquiries.reply');
 
+        Route::resource('blog', AdminBlogPostController::class)->except('show');
+        Route::post('blog/upload-image', [AdminBlogPostController::class, 'uploadImage'])->name('blog.upload-image');
+        Route::delete('blog-attachments/{attachment}', [AdminBlogPostController::class, 'destroyAttachment'])->name('blog.attachments.destroy');
+
         Route::post('notifications/mark-all-read', [NotificationController::class, 'markAllAsRead'])->name('notifications.mark-all-read');
         Route::post('notifications/{notification}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
     });
@@ -87,5 +95,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
+
+// Blog post detail — root-level slug to match old site URL pattern for SEO
+// Must be last so it doesn't shadow any named routes above
+Route::get('/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
 
 require __DIR__.'/auth.php';
