@@ -398,7 +398,6 @@
 /* contact section start */
 .prime-contact-section{
   background: #F6F6F6;
-  padding-bottom: 0 !important;
 }
 .contact-right-bg{
   background: url(../images/packaging.png);
@@ -512,6 +511,186 @@
   border-color: rgba(255, 255, 255, 0.5);
   outline-color: rgba(255, 255, 255, 0.08);
   color: var(--white-color);
+}
+
+/* contact page improvements */
+.contact-success-msg{
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 14px;
+  padding: 16px 20px;
+}
+.contact-success-msg iconify-icon{
+  font-size: 28px;
+  min-width: 28px;
+  color: #10b981;
+  margin-top: 1px;
+}
+.common-contact-field .common-input.is-invalid-field{
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.1);
+}
+.contact-field-error{
+  display: block;
+  color: #ef4444;
+  margin-top: 6px;
+  margin-left: 4px;
+}
+.contact-label-icon{
+  font-size: 15px;
+  vertical-align: middle;
+  opacity: 0.65;
+}
+
+/* info sidebar */
+.contact-info-sidebar{
+  padding-left: 0;
+}
+@media (min-width: 992px){
+  .contact-info-sidebar{
+    padding-left: 16px;
+  }
+}
+.contact-quick-card{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--white-color);
+  border: 1px solid #e7e7e7;
+  border-radius: 14px;
+  padding: 16px 18px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(13,49,50,0.06);
+}
+.contact-quick-card:hover{
+  border-color: rgba(23,73,75,0.3);
+  box-shadow: 0 8px 28px rgba(13,49,50,0.12);
+  transform: translateY(-2px);
+}
+.cqc-icon{
+  height: 44px;
+  width: 44px;
+  min-width: 44px;
+  background: rgba(23,73,75,0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: 20px;
+}
+.cqc-icon--whatsapp{
+  background: rgba(37,211,102,0.10);
+  color: #25d366;
+}
+.contact-quick-card--whatsapp:hover{
+  border-color: rgba(37,211,102,0.4);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.12);
+}
+.cqc-arrow{
+  color: #aab;
+  font-size: 20px;
+  opacity: 0.5;
+  transition: opacity 0.2s, transform 0.2s;
+  min-width: 20px;
+}
+.contact-quick-card:hover .cqc-arrow{
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* process box */
+.contact-process-box{
+  background: var(--white-color);
+  border: 1px solid #e7e7e7;
+  border-radius: 16px;
+  padding: 22px 20px;
+  box-shadow: 0 4px 20px rgba(13,49,50,0.06);
+}
+.contact-process-step{
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.cps-num{
+  height: 30px;
+  width: 30px;
+  min-width: 30px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: var(--white-color);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+/* locations section */
+.contact-locations-section{
+  background: var(--white-color);
+}
+.contact-location-card{
+  background: var(--white-color);
+  border: 1px solid #e7e7e7;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 4px 24px rgba(13,49,50,0.08);
+  transition: box-shadow 0.3s, transform 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.contact-location-card:hover{
+  box-shadow: 0 12px 40px rgba(13,49,50,0.14);
+  transform: translateY(-3px);
+}
+.clc-header{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.clc-icon{
+  height: 48px;
+  width: 48px;
+  min-width: 48px;
+  background: rgba(23,73,75,0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: 24px;
+}
+.clc-map{
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  flex-grow: 1;
+}
+.clc-directions-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(23,73,75,0.06);
+  border: 1px solid rgba(23,73,75,0.18);
+  border-radius: 8px;
+  padding: 9px 18px;
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+  width: fit-content;
+}
+.clc-directions-btn:hover{
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
 }
 
 /* footer section strat  */

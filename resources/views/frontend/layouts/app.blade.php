@@ -107,7 +107,7 @@
                                     <li><a href="{{ route('accreditation.index') }}" class="fts-14">Accreditation</a></li>
                                     <li><a href="{{ route('events.index') }}" class="fts-14">Events</a></li>
                                     <li><a href="{{ route('contact.index') }}" class="fts-14">Contact Us</a></li>
-                                    <li><a href="#" class="fts-14">Blogs</a></li>
+                                    <li><a href="{{ route('blog.index') }}" class="fts-14">Blogs</a></li>
                                 </ul>
                             </div>
                         </div>

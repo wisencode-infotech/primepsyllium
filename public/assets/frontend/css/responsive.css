@@ -364,6 +364,14 @@
     padding-left: 18px;
     padding-right: 18px;
   }
+  .contact-location-card{
+    padding: 18px;
+    border-radius: 16px;
+  }
+  .clc-directions-btn{
+    width: 100%;
+    justify-content: center;
+  }
   .footer-left-logo .footer-logo{
     width: 102px;
   }

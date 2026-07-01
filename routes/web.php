@@ -22,7 +22,18 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IngredientsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+
+// Run via: /run-storage-link?token=prime2024secure
+Route::get('/run-storage-link', function () {
+    $secret = 'prime2024secure';
+    if (request('token') !== $secret) {
+        abort(403, 'Unauthorized');
+    }
+    Artisan::call('storage:link');
+    return '<pre>storage:link done. Public storage symlink created successfully.</pre>';
+});
 
 Route::get('/', HomeController::class)->name('home');
 
