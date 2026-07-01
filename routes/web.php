@@ -96,8 +96,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
+require __DIR__.'/auth.php';
+
 // Blog post detail — root-level slug to match old site URL pattern for SEO
 // Must be last so it doesn't shadow any named routes above
 Route::get('/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
-
-require __DIR__.'/auth.php';
