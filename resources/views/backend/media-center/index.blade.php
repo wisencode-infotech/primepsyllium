@@ -32,6 +32,7 @@
                             <th class="px-2 py-3">Title</th>
                             <th class="px-2 py-3 w-32">Date</th>
                             <th class="px-2 py-3 w-28">Status</th>
+                            <th class="px-2 py-3 w-28">Homepage</th>
                             <th class="px-2 py-3 w-40 text-right sm:pr-8">Actions</th>
                         </tr>
                     </thead>
@@ -53,6 +54,13 @@
                                         <span class="pill pill-muted">Hidden</span>
                                     @endif
                                 </td>
+                                <td class="px-2 py-3">
+                                    @if ($item->show_on_homepage)
+                                        <span class="pill pill-success">Shown</span>
+                                    @else
+                                        <span class="pill pill-muted">Hidden</span>
+                                    @endif
+                                </td>
                                 <td class="px-2 py-3 text-right sm:pr-8">
                                     <div class="flex items-center justify-end gap-3">
                                         <a href="{{ route('admin.media-center-items.edit', $item) }}" class="row-link">Edit</a>
@@ -66,7 +74,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="px-4 sm:px-8 py-6 text-sm text-text-muted text-center">
+                                <td colspan="7" class="px-4 sm:px-8 py-6 text-sm text-text-muted text-center">
                                     No media center items yet. Click "Add Item" to create your first one.
                                 </td>
                             </tr>

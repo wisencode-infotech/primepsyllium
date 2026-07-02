@@ -15,7 +15,7 @@ class HomeController extends Controller
     {
         $products = Product::query()->active()->ordered()->where('category', 'psyllium')->get();
         $certifications = Certification::query()->active()->onHome()->ordered()->get();
-        $mediaCenterItems = MediaCenterItem::query()->active()->ordered()->get();
+        $mediaCenterItems = MediaCenterItem::query()->active()->onHomepage()->ordered()->get();
         $countries = Country::query()->active()->ordered()->get();
         $settings = Setting::current();
 

@@ -24,6 +24,7 @@ class MediaCenterItemRequest extends FormRequest
             'link' => ['nullable', 'url', 'max:255'],
             'image' => [$isCreating ? 'required' : 'nullable', 'image', 'mimes:jpeg,png,jpg,webp,svg', 'max:2048'],
             'is_active' => ['boolean'],
+            'show_on_homepage' => ['boolean'],
         ];
     }
 }

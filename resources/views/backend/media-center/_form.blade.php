@@ -23,7 +23,7 @@
 
 <div class="mt-4">
     <x-input-label for="content" value="Full Details (shown on the event page)" />
-    <div data-quill="#content" class="mt-1"></div>
+    <div data-quill="#content" data-image-upload-url="{{ route('admin.media-center-items.upload-image') }}" class="mt-1"></div>
     <textarea id="content" name="content" class="hidden">{{ old('content', $mediaCenterItem->content ?? '') }}</textarea>
     <x-input-error class="mt-2" :messages="$errors->get('content')" />
 </div>
@@ -42,6 +42,11 @@
 <div class="mt-4 flex items-center gap-2">
     <input id="is_active" name="is_active" type="checkbox" value="1" {{ old('is_active', $mediaCenterItem->is_active ?? true) ? 'checked' : '' }} class="rounded border-border text-primary focus:ring-focus">
     <x-input-label for="is_active" value="Show this item on the website" />
+</div>
+
+<div class="mt-4 flex items-center gap-2">
+    <input id="show_on_homepage" name="show_on_homepage" type="checkbox" value="1" {{ old('show_on_homepage', $mediaCenterItem->show_on_homepage ?? true) ? 'checked' : '' }} class="rounded border-border text-primary focus:ring-focus">
+    <x-input-label for="show_on_homepage" value="Show this item on the homepage" />
 </div>
 
 <div class="mt-6 flex items-center gap-3">

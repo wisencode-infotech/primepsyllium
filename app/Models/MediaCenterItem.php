@@ -20,11 +20,13 @@ class MediaCenterItem extends Model
         'link',
         'sort_order',
         'is_active',
+        'show_on_homepage',
     ];
 
     protected $casts = [
         'event_date' => 'date',
         'is_active' => 'boolean',
+        'show_on_homepage' => 'boolean',
         'sort_order' => 'integer',
     ];
 
@@ -40,6 +42,11 @@ class MediaCenterItem extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('sort_order');
+    }
+
+    public function scopeOnHomepage($query)
+    {
+        return $query->where('show_on_homepage', true);
     }
 
     public function getImageUrlAttribute(): ?string

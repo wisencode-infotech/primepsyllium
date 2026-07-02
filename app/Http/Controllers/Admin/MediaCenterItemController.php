@@ -31,6 +31,7 @@ class MediaCenterItemController extends Controller
         $data = $request->validated();
         $data['slug'] = $this->uniqueSlug($data['title']);
         $data['is_active'] = $request->boolean('is_active');
+        $data['show_on_homepage'] = $request->boolean('show_on_homepage');
         $data['sort_order'] = (int) MediaCenterItem::query()->max('sort_order') + 1;
 
         if ($request->hasFile('image')) {
@@ -51,6 +52,7 @@ class MediaCenterItemController extends Controller
     {
         $data = $request->validated();
         $data['is_active'] = $request->boolean('is_active');
+        $data['show_on_homepage'] = $request->boolean('show_on_homepage');
 
         if ($request->hasFile('image')) {
             if ($media_center_item->image) {
@@ -74,6 +76,20 @@ class MediaCenterItemController extends Controller
         $media_center_item->delete();
 
         return redirect()->route('admin.media-center-items.index')->with('status', 'Media center item deleted successfully.');
+    }
+
+    public function uploadImage(Request $request): JsonResponse
+    {
+        $request->validate([
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp,gif', 'max:4096'],
+        ]);
+
+        $path = $request->file('image')->store('media-center/content', 'public');
+
+        /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+        $disk = Storage::disk('public');
+
+        return response()->json(['url' => $disk->url($path)]);
     }
 
     public function reorder(Request $request): JsonResponse

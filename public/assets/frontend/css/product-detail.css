@@ -101,9 +101,64 @@
 .product-content-section .product-content ol{
   padding-left: 20px;
   margin-bottom: 14px;
+  counter-reset: list-0 list-1 list-2;
 }
 .product-content-section .product-content li{
   margin-bottom: 6px;
+}
+/* Quill stores both bullet and ordered items as <li data-list="..."> inside
+   an <ol>, distinguished only by the data-list attribute, and renders the
+   marker itself via the empty .ql-ui span below - so plain list-style
+   doesn't apply and has to be reconstructed to match the editor. */
+.product-content-section .product-content li[data-list]{
+  list-style-type: none;
+  padding-left: 1.5em;
+  position: relative;
+  counter-reset: list-1 list-2;
+}
+.product-content-section .product-content li[data-list] > .ql-ui{
+  position: absolute;
+}
+.product-content-section .product-content li[data-list] > .ql-ui::before{
+  display: inline-block;
+  margin-left: -1.5em;
+  margin-right: .3em;
+  text-align: right;
+  white-space: nowrap;
+  width: 1.2em;
+}
+.product-content-section .product-content li[data-list="bullet"] > .ql-ui::before{
+  content: '\2022';
+}
+.product-content-section .product-content li[data-list="checked"] > .ql-ui::before{
+  content: '\2611';
+}
+.product-content-section .product-content li[data-list="unchecked"] > .ql-ui::before{
+  content: '\2610';
+}
+.product-content-section .product-content li[data-list="ordered"]{
+  counter-increment: list-0;
+}
+.product-content-section .product-content li[data-list="ordered"] > .ql-ui::before{
+  content: counter(list-0, decimal) '. ';
+}
+.product-content-section .product-content li.ql-indent-1[data-list="ordered"]{
+  counter-increment: list-1;
+}
+.product-content-section .product-content li.ql-indent-1[data-list="ordered"] > .ql-ui::before{
+  content: counter(list-1, lower-alpha) '. ';
+}
+.product-content-section .product-content li.ql-indent-2[data-list="ordered"]{
+  counter-increment: list-2;
+}
+.product-content-section .product-content li.ql-indent-2[data-list="ordered"] > .ql-ui::before{
+  content: counter(list-2, lower-roman) '. ';
+}
+.product-content-section .product-content li.ql-indent-1:not(.ql-direction-rtl){
+  padding-left: 3em;
+}
+.product-content-section .product-content li.ql-indent-2:not(.ql-direction-rtl){
+  padding-left: 4.5em;
 }
 .product-content-section .product-content img{
   max-width: 100%;

@@ -80,6 +80,7 @@ Route::middleware(['auth', 'verified', 'role:super-admin'])
         Route::delete('email-branding', [EmailBrandSettingController::class, 'restore'])->name('email-branding.restore');
 
         Route::post('media-center-items/reorder', [MediaCenterItemController::class, 'reorder'])->name('media-center-items.reorder');
+        Route::post('media-center-items/upload-image', [MediaCenterItemController::class, 'uploadImage'])->name('media-center-items.upload-image');
         Route::resource('media-center-items', MediaCenterItemController::class)->except('show');
 
         Route::post('countries/reorder', [CountryController::class, 'reorder'])->name('countries.reorder');
