@@ -71,7 +71,8 @@
       "Bash(curl -s \"http://localhost/primepsyllium/public/contact\")",
       "Bash(curl -s -b /tmp/contact_cookies.txt -c /tmp/contact_cookies.txt 'http://localhost/primepsyllium/public/contact#get-in-touch')",
       "Bash(curl -s \"http://localhost/primepsyllium/public/how-to-select-the-best-dealer-of-psyllium-husk\" -o /tmp/blogpost.html -w \"%{http_code}\\\\n\")",
-      "Bash(curl -s \"http://localhost/primepsyllium/public/assets/frontend/css/product-detail.css\")"
+      "Bash(curl -s \"http://localhost/primepsyllium/public/assets/frontend/css/product-detail.css\")",
+      "Bash(node screenshot-scroll.js)"
     ],
     "additionalDirectories": [
       "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\96250778-6246-4846-8ce0-14c5ca079d56\\scratchpad",

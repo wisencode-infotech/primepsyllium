@@ -164,7 +164,7 @@
                             <a href="{{ route('blog.show', $related) }}" class="blog-card wow fadeInUp w-100">
                                 <div class="blog-card-thumb-wrap">
                                     @if ($related->featured_image_url)
-                                        <img src="{{ $related->featured_image_url }}" alt="{{ $related->title }}" class="blog-card-thumb">
+                                        <img src="{{ $related->featured_image_url }}" alt="{{ $related->title }}" class="blog-card-thumb" loading="lazy" decoding="async">
                                     @else
                                         <div class="blog-card-thumb-placeholder">
                                             <iconify-icon icon="ph:article"></iconify-icon>

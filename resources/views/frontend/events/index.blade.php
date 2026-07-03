@@ -37,7 +37,7 @@
                         <div class="col-lg-4 col-md-6 mt-3">
                             <a href="{{ $event->link ?: route('events.show', $event) }}" class="related-event-card wow fadeInUp">
                                 @if ($event->image_url)
-                                    <img src="{{ $event->image_url }}" alt="{{ $event->title }}" class="related-event-thumb">
+                                    <img src="{{ $event->image_url }}" alt="{{ $event->title }}" class="related-event-thumb" loading="lazy" decoding="async">
                                 @endif
                                 <div class="related-event-body">
                                     @if ($event->formatted_date)

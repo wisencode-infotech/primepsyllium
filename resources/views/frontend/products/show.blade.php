@@ -96,7 +96,7 @@
                     @foreach ($otherProducts as $otherProduct)
                         <div class="col-lg-4 col-md-6 mt-3">
                             <a href="{{ route('products.show', $otherProduct) }}" class="related-product-card d-block wow fadeInUp">
-                                <img src="{{ $otherProduct->image_url }}" alt="{{ $otherProduct->name }}" class="product-img">
+                                <img src="{{ $otherProduct->image_url }}" alt="{{ $otherProduct->name }}" class="product-img" loading="lazy" decoding="async">
                                 <h4 class="mt-2 mt-md-3 fts-18 fw-6 title-text-L">{{ $otherProduct->name }}</h4>
                                 <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2">{{ $otherProduct->description }}</p>
                             </a>

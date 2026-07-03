@@ -49,7 +49,7 @@
                 @foreach ($products as $product)
                     <div class="col-lg-4 col-md-6 mt-3">
                         <a href="{{ route('products.show', $product) }}" class="related-product-card d-block wow fadeInUp">
-                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-img">
+                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-img" loading="lazy" decoding="async">
                             <h4 class="mt-2 mt-md-3 fts-18 fw-6 title-text-L">{{ $product->name }}</h4>
                             <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2">{{ $product->description }}</p>
                             <span class="media-more fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1 justify-content-center mt-1 mt-md-2">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></span>
@@ -102,7 +102,7 @@
                 <div class="coverage-sliders mt-3 mt-lg-4">
                     @foreach ($certifications as $certification)
                         <div class="media-items">
-                            <img src="{{ $certification->image_url }}" alt="{{ $certification->name }}" class="brand-media-logo">
+                            <img src="{{ $certification->image_url }}" alt="{{ $certification->name }}" class="brand-media-logo" loading="lazy" decoding="async">
                         </div>
                     @endforeach
                 </div>
@@ -122,7 +122,7 @@
                     @foreach ($countries as $country)
                         <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3">
                             <div class="country-chip wow fadeInUp">
-                                <img src="{{ $country->image_url }}" alt="{{ $country->name }}">
+                                <img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">
                                 <span class="fts-14 fw-4 subtitle-text-L">{{ $country->name }}</span>
                             </div>
                         </div>

@@ -45,7 +45,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5 order-5 order-lg-0 mt-3 mt-lg-0">
                     <div class="about-left-layout">
-                        <img src="{{ asset('assets/frontend/images/about-img-bg.png') }}" alt="Prime Psyllium" class="w-100 px-2 px-md-4 px-lg-5 wow zoomIn">
+                        <img src="{{ asset('assets/frontend/images/about-img-bg.webp') }}" alt="Prime Psyllium" class="w-100 px-2 px-md-4 px-lg-5 wow zoomIn" loading="lazy" decoding="async">
                     </div>
                 </div>
                 <div class="col-lg-5 order-0 order-lg-5">
@@ -252,7 +252,7 @@
                 <div class="coverage-sliders mt-3 mt-lg-4">
                     @foreach ($certifications as $certification)
                         <div class="media-items">
-                            <img src="{{ $certification->image_url }}" alt="{{ $certification->name }}" class="brand-media-logo">
+                            <img src="{{ $certification->image_url }}" alt="{{ $certification->name }}" class="brand-media-logo" loading="lazy" decoding="async">
                         </div>
                     @endforeach
                 </div>
@@ -267,7 +267,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-5">
                         <div class="global-left-layout px-2 px-sm-4">
-                            <img src="{{ $settings->global_presence_image_url ?? asset('assets/frontend/images/globe.png') }}" alt="Prime Psyllium global presence" class="w-100 wow zoomIn">
+                            <img src="{{ $settings->global_presence_image_url ?? asset('assets/frontend/images/globe.webp') }}" alt="Prime Psyllium global presence" class="w-100 wow zoomIn" loading="lazy" decoding="async">
                         </div>
                     </div>
                     <div class="col-lg-5">
@@ -277,7 +277,7 @@
                             <p class="fts-15 fw-4 subtitle-text-L mt-3 mt-lg-4 wow fadeInUp">Building long-term relationships with businesses worldwide through quality products, reliable supply and consistent service.</p>
                             <ul class="global-country-list d-flex flex-wrap mt-3 mt-lg-4">
                                 @foreach ($countries as $country)
-                                    <li class="fts-15 fw-4 subtitle-text-L py-1 wow fadeInUp"><img src="{{ $country->image_url }}" alt="{{ $country->name }}">{{ $country->name }}</li>
+                                    <li class="fts-15 fw-4 subtitle-text-L py-1 wow fadeInUp"><img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">{{ $country->name }}</li>
                                 @endforeach
                             </ul>
                         </div>

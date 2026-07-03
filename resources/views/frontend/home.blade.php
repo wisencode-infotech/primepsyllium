@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-lg-6 px-sm-0 mt-4 mt-lg-0">
                     <div class="header-right-layout position-relative">
-                        <img src="{{ asset('assets/frontend/images/hero-img.png') }}" alt="Prime Psyllium" class="w-100 wow zoomIn" style="mix-blend-mode: darken;">
+                        <img src="{{ asset('assets/frontend/images/hero-img.webp') }}" alt="Prime Psyllium" class="w-100 wow zoomIn" style="mix-blend-mode: darken;" fetchpriority="high" decoding="async">
                         <div class="header-step-position-1 fts-14"><iconify-icon icon="iconamoon:certificate-badge-light" class="fts-22 primary-light-color-L"></iconify-icon>FSSC 22000 Certified</div>
                         <div class="header-step-position-2 fts-14"><iconify-icon icon="hugeicons:tags" class="fts-22 primary-light-color-L"></iconify-icon>Bulk &amp; Private Label</div>
                         <div class="header-step-position-3 fts-14"><iconify-icon icon="streamline-ultimate:job-responsibility-bag-hand" class="fts-22 primary-light-color-L"></iconify-icon>Export-Grade Purity</div>
@@ -33,7 +33,7 @@
             <div class="coverage-sliders">
                 @foreach($certifications as $certification)
                     <div class="media-items">
-                        <img src="{{ $certification->image_url }}" alt="{{ $certification->name }}" class="brand-media-logo">
+                        <img src="{{ $certification->image_url }}" alt="{{ $certification->name }}" class="brand-media-logo" loading="lazy" decoding="async">
                     </div>
                 @endforeach
             </div>
@@ -46,7 +46,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5 order-5 order-lg-0 mt-3 mt-lg-0">
                     <div class="about-left-layout">
-                        <img src="{{ asset('assets/frontend/images/about-img-bg.png') }}" alt="Prime Psyllium" class="w-100 px-2 px-md- px-lg-5 wow zoomIn">
+                        <img src="{{ asset('assets/frontend/images/about-img-bg.webp') }}" alt="Prime Psyllium" class="w-100 px-2 px-md- px-lg-5 wow zoomIn" loading="lazy" decoding="async">
                     </div>
                 </div>
                 <div class="col-lg-5 order-0 order-lg-5">
@@ -93,7 +93,7 @@
             <div class="prime-product-slider mt-3 mt-lg-4 pt-3 px-lg-4">
                 @foreach($products as $product)
                     <div class="single-prime-product text-center mx-2">
-                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-img">
+                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-img" loading="lazy" decoding="async">
                         <h4 class="mt-2 mt-md-3 fts-20 fw-6 title-text-L">{{ $product->name }}</h4>
                         <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2">{{ $product->description }}</p>
                         <a href="{{ route('products.show', $product) }}" class="media-more fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1 justify-content-center mt-1 mt-md-2">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
@@ -140,7 +140,7 @@
                             <div class="col-lg-5 mt-3">
                                 <div class="media-center-box p-4">
                                     <div class="footer-steps-box">
-                                        <img src="{{ $item->image_url }}" alt="{{ $item->title }}">
+                                        <img src="{{ $item->image_url }}" alt="{{ $item->title }}" loading="lazy" decoding="async">
                                     </div>
                                     <div class="footer-steps-content mt-3">
                                         <span>{{ $item->formatted_date }}</span>
@@ -163,7 +163,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5">
                     <div class="global-left-layout px-2 px-sm-4">
-                        <img src="{{ $settings->global_presence_image_url ?? asset('assets/frontend/images/globe.png') }}" alt="Prime Psyllium global presence" class="w-100 wow zoomIn">
+                        <img src="{{ $settings->global_presence_image_url ?? asset('assets/frontend/images/globe.webp') }}" alt="Prime Psyllium global presence" class="w-100 wow zoomIn" loading="lazy" decoding="async">
                     </div>
                 </div>
                 <div class="col-lg-5">
@@ -172,7 +172,7 @@
                         <p class="fts-15 fw-4 subtitle-text-L mt-3 mt-lg-4 wow fadeInUp">Building long-term relationships with businesses worldwide through quality products, reliable supply, and consistent service.</p>
                         <ul class="global-country-list d-flex flex-wrap mt-3 mt-lg-4">
                             @foreach($countries as $country)
-                                <li class="fts-15 fw-4 subtitle-text-L py-1 wow fadeInUp"><img src="{{ $country->image_url }}" alt="{{ $country->name }}">{{ $country->name }}</li>
+                                <li class="fts-15 fw-4 subtitle-text-L py-1 wow fadeInUp"><img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">{{ $country->name }}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -184,7 +184,7 @@
     {{-- contact section start --}}
     <section class="prime-contact-section py-4 py-lg-5" id="get-in-touch">
         <div class="contact-right-bg">
-            <img src="{{ asset('assets/frontend/images/packaging.png') }}" alt="" class="w-100 d-md-none">
+            <img src="{{ asset('assets/frontend/images/packaging.webp') }}" alt="" class="w-100 d-md-none" loading="lazy" decoding="async">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-5">

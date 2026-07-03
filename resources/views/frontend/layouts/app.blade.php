@@ -17,9 +17,11 @@
         <meta name="twitter:card" content="{{ config('site.seo.twitter_card') }}">
         <meta name="google-site-verification" content="{{ config('site.seo.site_verification') }}">
         <link rel="icon" type="image/png" href="{{ $settings->favicon_url ?? asset('assets/frontend/icons/favicon.png') }}">
+        <link rel="preconnect" href="https://code.iconify.design">
 
         {{-- Prime Psyllium frontend design --}}
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/frontend/css/common.css') }}?v={{ filemtime(public_path('assets/frontend/css/common.css')) }}">
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/animate.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}?v={{ filemtime(public_path('assets/frontend/css/main.css')) }}">
@@ -167,15 +169,15 @@
                     </div>
                 </div>
             </div>
-            <img src="{{ asset('assets/frontend/images/Footer-bg.png') }}" alt="footer background" class="w-100">
+            <img src="{{ asset('assets/frontend/images/Footer-bg.webp') }}" alt="footer background" class="w-100" loading="lazy" decoding="async">
         </footer>
 
         {{-- all js file include --}}
-        <script src="{{ asset('assets/frontend/js/jQuery.js') }}"></script>
-        <script src="{{ asset('assets/frontend/js/bootstrap.bundle.js') }}"></script>
-        <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
-        <script src="{{ asset('assets/frontend/js/slick.min.js') }}"></script>
-        <script src="{{ asset('assets/frontend/js/wow.js') }}"></script>
-        <script src="{{ asset('assets/frontend/js/main.js') }}?v={{ filemtime(public_path('assets/frontend/js/main.js')) }}"></script>
+        <script src="{{ asset('assets/frontend/js/jQuery.js') }}" defer></script>
+        <script src="{{ asset('assets/frontend/js/bootstrap.bundle.js') }}" defer></script>
+        <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js" defer></script>
+        <script src="{{ asset('assets/frontend/js/slick.min.js') }}" defer></script>
+        <script src="{{ asset('assets/frontend/js/wow.js') }}" defer></script>
+        <script src="{{ asset('assets/frontend/js/main.js') }}?v={{ filemtime(public_path('assets/frontend/js/main.js')) }}" defer></script>
     </body>
 </html>
