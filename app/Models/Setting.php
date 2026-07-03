@@ -27,6 +27,9 @@ class Setting extends Model
         'address',
         'logo',
         'global_presence_image',
+        'company_video',
+        'company_video_thumbnail',
+        'company_video_title',
         'favicon',
         'facebook_url',
         'instagram_url',
@@ -52,6 +55,8 @@ class Setting extends Model
     protected $appends = [
         'logo_url',
         'global_presence_image_url',
+        'company_video_url',
+        'company_video_thumbnail_url',
         'favicon_url',
         'email_logo_url',
     ];
@@ -69,6 +74,16 @@ class Setting extends Model
     public function getGlobalPresenceImageUrlAttribute(): ?string
     {
         return $this->global_presence_image ? Storage::disk('public')->url($this->global_presence_image) : null;
+    }
+
+    public function getCompanyVideoUrlAttribute(): ?string
+    {
+        return $this->company_video ? Storage::disk('public')->url($this->company_video) : null;
+    }
+
+    public function getCompanyVideoThumbnailUrlAttribute(): ?string
+    {
+        return $this->company_video_thumbnail ? Storage::disk('public')->url($this->company_video_thumbnail) : null;
     }
 
     public function getFaviconUrlAttribute(): ?string

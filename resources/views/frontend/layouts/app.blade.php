@@ -53,6 +53,7 @@
                                 <li><a href="{{ route('ingredients.index') }}" class="desktop-nav-items">Ingredients</a></li>
                                 <li><a href="{{ route('accreditation.index') }}" class="desktop-nav-items">Accreditation</a></li>
                                 <li><a href="{{ route('about.index') }}" class="desktop-nav-items">About Us</a></li>
+                                <li><a href="{{ route('gallery.index') }}" class="desktop-nav-items {{ request()->routeIs('gallery.*') ? 'active' : '' }}">Gallery</a></li>
                                 <li><a href="{{ route('blog.index') }}" class="desktop-nav-items {{ request()->routeIs('blog.*') ? 'active' : '' }}">Blog</a></li>
                                 <li><a href="{{ route('contact.index') }}" class="desktop-nav-items">Contact Us</a></li>
                             </ul>
@@ -83,6 +84,7 @@
                                 <li><a href="#quality" class="desktop-nav-items mx-0 my-1">Ingredients</a></li>
                                 <li><a href="{{ route('accreditation.index') }}" class="desktop-nav-items mx-0 my-1">Accreditation</a></li>
                                 <li><a href="{{ route('about.index') }}" class="desktop-nav-items mx-0 my-1">About Us</a></li>
+                                <li><a href="{{ route('gallery.index') }}" class="desktop-nav-items mx-0 my-1">Gallery</a></li>
                                 <li><a href="{{ route('blog.index') }}" class="desktop-nav-items mx-0 my-1">Blog</a></li>
                                 <li><a href="{{ route('contact.index') }}" class="desktop-nav-items mx-0 my-1">Contact Us</a></li>
                             </ul>

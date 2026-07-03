@@ -1,4 +1,4 @@
-@props(['name', 'label' => 'Image', 'value' => null, 'hint' => 'PNG, JPG or WEBP, up to 2MB'])
+@props(['name', 'label' => 'Video', 'value' => null, 'hint' => 'MP4, MOV, WEBM or OGG'])
 
 <div x-data="{ preview: @js($value), fileName: null, original: @js($value), dragging: false }">
     <x-input-label :for="$name" :value="$label" />
@@ -20,11 +20,11 @@
         class="mt-1 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed px-6 py-8 text-center transition hover:border-primary hover:bg-primary-soft"
     >
         <template x-if="preview">
-            <img :src="preview" class="h-28 w-28 rounded-lg border border-border bg-white object-contain p-1">
+            <video :src="preview" class="h-40 w-full max-w-sm rounded-lg border border-border bg-black object-contain" controls @click.stop.prevent></video>
         </template>
         <template x-if="!preview">
             <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary-soft text-primary">
-                <x-icon name="upload" class="h-6 w-6" />
+                <x-icon name="video" class="h-6 w-6" />
             </span>
         </template>
 
@@ -46,8 +46,9 @@
             id="{{ $name }}"
             name="{{ $name }}"
             type="file"
-            accept="image/*"
+            accept="video/*"
             class="hidden"
+            @click.stop
             @change="
                 const file = $event.target.files[0];
                 if (file) {
@@ -59,6 +60,6 @@
     </label>
 
     @if ($value)
-        <p class="mt-1 text-sm text-text-muted">Leave blank to keep the current image.</p>
+        <p class="mt-1 text-sm text-text-muted">Leave blank to keep the current video.</p>
     @endif
 </div>

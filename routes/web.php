@@ -4,12 +4,14 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccreditationController;
 use App\Http\Controllers\Admin\BlogPostController as AdminBlogPostController;
 use App\Http\Controllers\Admin\CertificationController;
+use App\Http\Controllers\Admin\CompanyVideoController;
 use App\Http\Controllers\Admin\ContactInquiryController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\EmailBrandSettingController;
 use App\Http\Controllers\Admin\EmailRecipientController;
 use App\Http\Controllers\Admin\EmailTemplateController;
+use App\Http\Controllers\Admin\GalleryItemController;
 use App\Http\Controllers\Admin\MediaCenterItemController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
@@ -18,6 +20,7 @@ use App\Http\Controllers\Admin\ThemeSettingController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IngredientsController;
 use App\Http\Controllers\ProductController;
@@ -40,6 +43,8 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/about-us', AboutController::class)->name('about.index');
 
 Route::get('/accreditation', AccreditationController::class)->name('accreditation.index');
+
+Route::get('/gallery', GalleryController::class)->name('gallery.index');
 
 Route::get('/psyllium', [ProductController::class, 'index'])->name('products.index');
 
@@ -71,6 +76,9 @@ Route::middleware(['auth', 'verified', 'role:super-admin'])
         Route::get('settings', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
 
+        Route::get('company-video', [CompanyVideoController::class, 'edit'])->name('company-video.edit');
+        Route::put('company-video', [CompanyVideoController::class, 'update'])->name('company-video.update');
+
         Route::get('theme', [ThemeSettingController::class, 'edit'])->name('theme.edit');
         Route::put('theme', [ThemeSettingController::class, 'update'])->name('theme.update');
         Route::delete('theme', [ThemeSettingController::class, 'restore'])->name('theme.restore');
@@ -82,6 +90,9 @@ Route::middleware(['auth', 'verified', 'role:super-admin'])
         Route::post('media-center-items/reorder', [MediaCenterItemController::class, 'reorder'])->name('media-center-items.reorder');
         Route::post('media-center-items/upload-image', [MediaCenterItemController::class, 'uploadImage'])->name('media-center-items.upload-image');
         Route::resource('media-center-items', MediaCenterItemController::class)->except('show');
+
+        Route::post('gallery/reorder', [GalleryItemController::class, 'reorder'])->name('gallery.reorder');
+        Route::resource('gallery', GalleryItemController::class)->except('show');
 
         Route::post('countries/reorder', [CountryController::class, 'reorder'])->name('countries.reorder');
         Route::resource('countries', CountryController::class)->except('show');

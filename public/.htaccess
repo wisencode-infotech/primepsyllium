@@ -51,3 +51,12 @@
         Header set Cache-Control "public, max-age=2592000"
     </FilesMatch>
 </IfModule>
+
+# Raise PHP upload limits for this app only (needed for large company video uploads)
+<IfModule php_module>
+    php_value upload_max_filesize 2048M
+    php_value post_max_size 2048M
+    php_value max_execution_time 600
+    php_value max_input_time 600
+    php_value memory_limit 1024M
+</IfModule>

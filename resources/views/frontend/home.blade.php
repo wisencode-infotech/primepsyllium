@@ -82,6 +82,61 @@
         </div>
     </section>
 
+    {{-- Company video section --}}
+    @if ($settings->company_video_url)
+        @php
+            $companyVideoExtension = strtolower(pathinfo($settings->company_video, PATHINFO_EXTENSION));
+            $companyVideoMime = match ($companyVideoExtension) {
+                'mov' => 'video/quicktime',
+                'webm' => 'video/webm',
+                'ogg' => 'video/ogg',
+                default => 'video/mp4',
+            };
+        @endphp
+        <section class="company-video-section py-4 py-lg-5">
+            <div class="container">
+                <button
+                    type="button"
+                    class="company-video-cover position-relative w-100 border-0 p-0 wow zoomIn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#companyVideoModal"
+                    aria-label="Play company video{{ $settings->company_video_title ? ': '.$settings->company_video_title : '' }}"
+                >
+                    <img src="{{ $settings->company_video_thumbnail_url ?? asset('assets/frontend/images/about-img-bg.webp') }}" alt="{{ $settings->company_video_title ?? 'Prime Psyllium company video' }}" class="w-100 company-video-poster" loading="lazy" decoding="async">
+                    <span class="company-video-play-btn">
+                        <iconify-icon icon="ph:play-fill"></iconify-icon>
+                    </span>
+                    @if ($settings->company_video_title)
+                        <span class="company-video-caption fts-16 fw-5">{{ $settings->company_video_title }}</span>
+                    @endif
+                </button>
+            </div>
+        </section>
+
+        <div class="modal fade company-video-modal" id="companyVideoModal" tabindex="-1" aria-labelledby="companyVideoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <button type="button" class="btn-close company-video-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body p-0">
+                        <video id="companyVideoPlayer" class="w-100" controls playsinline preload="none" poster="{{ $settings->company_video_thumbnail_url }}">
+                            <source src="{{ $settings->company_video_url }}" type="{{ $companyVideoMime }}">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var modalEl = document.getElementById('companyVideoModal');
+                var video = document.getElementById('companyVideoPlayer');
+                if (!modalEl || !video) return;
+                modalEl.addEventListener('shown.bs.modal', function () { video.play(); });
+                modalEl.addEventListener('hidden.bs.modal', function () { video.pause(); video.currentTime = 0; });
+            });
+        </script>
+    @endif
+
     {{-- Premium Psyllium Products section --}}
     <section class="primer-product-section py-4 py-lg-5" id="products">
         <div class="container">
@@ -182,7 +237,7 @@
     </section>
 
     {{-- contact section start --}}
-    <section class="prime-contact-section py-4 py-lg-5" id="get-in-touch">
+    <section class="prime-contact-section pt-4 pt-lg-5" id="get-in-touch">
         <div class="contact-right-bg">
             <img src="{{ asset('assets/frontend/images/packaging.webp') }}" alt="" class="w-100 d-md-none" loading="lazy" decoding="async">
             <div class="container">

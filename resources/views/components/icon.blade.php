@@ -137,5 +137,10 @@
             <polyline points="15 3 21 3 21 9" />
             <line x1="10" y1="14" x2="21" y2="3" />
             @break
+
+        @case('video')
+            <rect x="2.5" y="6" width="14" height="12" rx="2" />
+            <path d="m16.5 10.5 5-3v9l-5-3Z" />
+            @break
     @endswitch
 </svg>

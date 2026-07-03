@@ -37,6 +37,7 @@
                 ['route' => 'admin.products.index', 'pattern' => 'admin.products.*', 'icon' => 'box', 'label' => 'Products'],
                 ['route' => 'admin.certifications.index', 'pattern' => 'admin.certifications.*', 'icon' => 'badge', 'label' => 'Certifications'],
                 ['route' => 'admin.media-center-items.index', 'pattern' => 'admin.media-center-items.*', 'icon' => 'newspaper', 'label' => 'Media Center'],
+                ['route' => 'admin.gallery.index', 'pattern' => 'admin.gallery.*', 'icon' => 'image', 'label' => 'Gallery'],
                 ['route' => 'admin.blog.index', 'pattern' => 'admin.blog.*', 'icon' => 'document', 'label' => 'Blog'],
                 ['route' => 'admin.countries.index', 'pattern' => 'admin.countries.*', 'icon' => 'globe', 'label' => 'Countries'],
                 ['route' => 'admin.inquiries.index', 'pattern' => 'admin.inquiries.*', 'icon' => 'mail', 'label' => 'Inquiries'],
@@ -50,6 +51,7 @@
                         ['route' => 'admin.email-recipients.index', 'pattern' => 'admin.email-recipients.*', 'icon' => 'users', 'label' => 'Email Recipients'],
                     ],
                 ],
+                ['route' => 'admin.company-video.edit', 'pattern' => 'admin.company-video.*', 'icon' => 'video', 'label' => 'Company Video'],
                 ['route' => 'admin.theme.edit', 'pattern' => 'admin.theme.*', 'icon' => 'palette', 'label' => 'Brand Theme'],
                 ['route' => 'admin.settings.edit', 'pattern' => 'admin.settings.*', 'icon' => 'settings', 'label' => 'Settings'],
             ];
