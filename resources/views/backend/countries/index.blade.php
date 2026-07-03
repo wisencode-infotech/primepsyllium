@@ -40,6 +40,7 @@
                                 <th class="px-2 py-3">Name</th>
                                 <th class="px-2 py-3 w-28">Status</th>
                                 <th class="px-2 py-3 w-28">Footer</th>
+                                <th class="px-2 py-3 w-28">Page</th>
                                 <th class="px-2 py-3 w-40 text-right sm:pr-8">Actions</th>
                             </tr>
                         </thead>
@@ -67,6 +68,13 @@
                                             <span class="pill pill-muted">—</span>
                                         @endif
                                     </td>
+                                    <td class="px-2 py-3">
+                                        @if ($country->has_page)
+                                            <a href="{{ $country->url }}" target="_blank" class="pill pill-success">Live</a>
+                                        @else
+                                            <span class="pill pill-muted">—</span>
+                                        @endif
+                                    </td>
                                     <td class="px-2 py-3 text-right sm:pr-8">
                                         <div class="flex items-center justify-end gap-3">
                                             <a href="{{ route('admin.countries.edit', $country) }}" class="row-link">Edit</a>
@@ -80,7 +88,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="px-4 sm:px-8 py-6 text-sm text-text-muted text-center">
+                                    <td colspan="7" class="px-4 sm:px-8 py-6 text-sm text-text-muted text-center">
                                         No countries yet. Click "Add Country" to create your first one.
                                     </td>
                                 </tr>

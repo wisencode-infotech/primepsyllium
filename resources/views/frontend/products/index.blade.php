@@ -121,10 +121,17 @@
                 <div class="row justify-content-center mt-3 mt-lg-4">
                     @foreach ($countries as $country)
                         <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3">
-                            <div class="country-chip wow fadeInUp">
-                                <img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">
-                                <span class="fts-14 fw-4 subtitle-text-L">{{ $country->name }}</span>
-                            </div>
+                            @if ($country->has_page)
+                                <a href="{{ $country->url }}" class="country-chip d-block wow fadeInUp">
+                                    <img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">
+                                    <span class="fts-14 fw-4 subtitle-text-L">{{ $country->name }}</span>
+                                </a>
+                            @else
+                                <div class="country-chip wow fadeInUp">
+                                    <img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">
+                                    <span class="fts-14 fw-4 subtitle-text-L">{{ $country->name }}</span>
+                                </div>
+                            @endif
                         </div>
                     @endforeach
                 </div>

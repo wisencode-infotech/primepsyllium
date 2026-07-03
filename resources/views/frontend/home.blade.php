@@ -151,7 +151,7 @@
                         <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-img" loading="lazy" decoding="async">
                         <h3 class="mt-2 mt-md-3 fts-20 fw-6 title-text-L">{{ $product->name }}</h3>
                         <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2">{{ $product->description }}</p>
-                        <a href="{{ route('products.show', $product) }}" class="media-more fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1 justify-content-center mt-1 mt-md-2">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
+                        <a href="{{ route('products.show', $product) }}" class="media-more fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1 justify-content-center mt-1 mt-md-2">Read More<span class="visually-hidden"> about {{ $product->name }}</span> <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
                     </div>
                 @endforeach
             </div>
@@ -201,7 +201,7 @@
                                         <span>{{ $item->formatted_date }}</span>
                                         <h3 class="fts-16 fw-6 title-text-L">{{ $item->title }}</h3>
                                         <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{ $item->description }}</p>
-                                        <a href="{{ $item->link ?: route('events.show', $item) }}" class="media-more mt-1 mt-md-2 fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
+                                        <a href="{{ $item->link ?: route('events.show', $item) }}" class="media-more mt-1 mt-md-2 fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1">Read More<span class="visually-hidden"> about {{ $item->title }}</span> <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +227,13 @@
                         <p class="fts-15 fw-4 subtitle-text-L mt-3 mt-lg-4 wow fadeInUp">Building long-term relationships with businesses worldwide through quality products, reliable supply, and consistent service.</p>
                         <ul class="global-country-list d-flex flex-wrap mt-3 mt-lg-4">
                             @foreach($countries as $country)
-                                <li class="fts-15 fw-4 subtitle-text-L py-1 wow fadeInUp"><img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">{{ $country->name }}</li>
+                                <li class="fts-15 fw-4 subtitle-text-L py-1 wow fadeInUp">
+                                    @if ($country->has_page)
+                                        <a href="{{ $country->url }}" class="d-flex align-items-center gap-1 text-reset text-decoration-none"><img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">{{ $country->name }}</a>
+                                    @else
+                                        <img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">{{ $country->name }}
+                                    @endif
+                                </li>
                             @endforeach
                         </ul>
                     </div>

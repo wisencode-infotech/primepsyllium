@@ -19,12 +19,15 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ThemeSettingController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CountryController as FrontendCountryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IngredientsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Models\BlogPost;
+use App\Models\Country;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -121,6 +124,17 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// Blog post detail — root-level slug to match old site URL pattern for SEO
-// Must be last so it doesn't shadow any named routes above
-Route::get('/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
+// Root-level slug catch-all — resolves to a Country detail page (/usa, /canada, ...)
+// first, falling back to a Blog post (matches old site URL patterns for SEO).
+// Must be last so it doesn't shadow any named routes above.
+Route::get('/{slug}', function (string $slug) {
+    $country = Country::query()->where('slug', $slug)->active()->withPage()->first();
+
+    if ($country) {
+        return app(FrontendCountryController::class)->show($country);
+    }
+
+    $post = BlogPost::query()->where('slug', $slug)->firstOrFail();
+
+    return app(BlogController::class)->show($post);
+})->name('page.show');

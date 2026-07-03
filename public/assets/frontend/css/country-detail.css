@@ -1,0 +1,80 @@
+.country-hero-section {
+    background-color: var(--primary-color, #17494b);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.country-hero-section:not([style*="background-image"]) {
+    background: linear-gradient(135deg, var(--primary-color, #17494b), var(--secondary-color, #496727));
+}
+
+.country-hero-section .common-icon-title,
+.country-hero-section h1,
+.country-hero-section .product-breadcrumb a,
+.country-hero-section .product-breadcrumb span {
+    color: #fff;
+}
+
+.country-hero-section .product-breadcrumb a {
+    opacity: 0.85;
+}
+
+.country-hero-flag {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #fff;
+    padding: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.city-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border-color, #ABAFC7);
+    background: var(--white-color, #fff);
+    color: var(--black-color, #1a1a1a);
+}
+
+.city-chip iconify-icon {
+    font-size: 16px;
+    color: var(--primary-color, #17494b);
+}
+
+.country-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.country-faq-item {
+    border: 1px solid var(--border-color, #ABAFC7);
+    border-radius: 12px;
+    padding: 16px 20px;
+}
+
+.country-faq-item summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.country-faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.country-faq-item summary::after {
+    content: '+';
+    float: right;
+    font-size: 20px;
+    line-height: 1;
+    color: var(--primary-color, #17494b);
+}
+
+.country-faq-item[open] summary::after {
+    content: '\2212';
+}

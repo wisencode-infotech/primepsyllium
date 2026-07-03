@@ -9,6 +9,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class CountryController extends Controller
@@ -30,10 +31,18 @@ class CountryController extends Controller
         $data = $request->validated();
         $data['is_active'] = $request->boolean('is_active');
         $data['show_in_footer'] = $request->boolean('show_in_footer');
+        $data['has_page'] = $request->boolean('has_page');
         $data['sort_order'] = (int) Country::query()->max('sort_order') + 1;
+        $data['slug'] = $this->uniqueSlug($data['name']);
+        $data['cities'] = $this->parseCities($request->input('cities'));
+        $data['faqs'] = $this->parseFaqs($request->input('faqs', []));
 
         if ($request->hasFile('flag')) {
             $data['flag'] = $request->file('flag')->store('countries', 'public');
+        }
+
+        if ($request->hasFile('banner_image')) {
+            $data['banner_image'] = $request->file('banner_image')->store('countries', 'public');
         }
 
         Country::query()->create($data);
@@ -51,6 +60,9 @@ class CountryController extends Controller
         $data = $request->validated();
         $data['is_active'] = $request->boolean('is_active');
         $data['show_in_footer'] = $request->boolean('show_in_footer');
+        $data['has_page'] = $request->boolean('has_page');
+        $data['cities'] = $this->parseCities($request->input('cities'));
+        $data['faqs'] = $this->parseFaqs($request->input('faqs', []));
 
         if ($request->hasFile('flag')) {
             if ($country->flag) {
@@ -58,6 +70,14 @@ class CountryController extends Controller
             }
 
             $data['flag'] = $request->file('flag')->store('countries', 'public');
+        }
+
+        if ($request->hasFile('banner_image')) {
+            if ($country->banner_image) {
+                Storage::disk('public')->delete($country->banner_image);
+            }
+
+            $data['banner_image'] = $request->file('banner_image')->store('countries', 'public');
         }
 
         $country->update($data);
@@ -69,6 +89,10 @@ class CountryController extends Controller
     {
         if ($country->flag) {
             Storage::disk('public')->delete($country->flag);
+        }
+
+        if ($country->banner_image) {
+            Storage::disk('public')->delete($country->banner_image);
         }
 
         $country->delete();
@@ -85,5 +109,44 @@ class CountryController extends Controller
         }
 
         return response()->json(['status' => 'ok']);
+    }
+
+    private function uniqueSlug(string $name): string
+    {
+        $slug = Str::slug($name);
+        $original = $slug;
+        $suffix = 2;
+
+        while (Country::query()->where('slug', $slug)->exists()) {
+            $slug = $original.'-'.$suffix;
+            $suffix++;
+        }
+
+        return $slug;
+    }
+
+    private function parseCities(?string $cities): array
+    {
+        if (! $cities) {
+            return [];
+        }
+
+        return collect(preg_split('/[\r\n,]+/', $cities))
+            ->map(fn ($city) => trim($city))
+            ->filter()
+            ->values()
+            ->all();
+    }
+
+    private function parseFaqs(array $faqs): array
+    {
+        return collect($faqs)
+            ->map(fn ($faq) => [
+                'question' => trim($faq['question'] ?? ''),
+                'answer' => trim($faq['answer'] ?? ''),
+            ])
+            ->filter(fn ($faq) => $faq['question'] !== '' && $faq['answer'] !== '')
+            ->values()
+            ->all();
     }
 }

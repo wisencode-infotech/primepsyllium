@@ -157,6 +157,18 @@
                 if (event.key === 'ArrowLeft') showItem(currentIndex - 1);
                 if (event.key === 'ArrowRight') showItem(currentIndex + 1);
             });
+
+            // swipe left/right to navigate on touch devices
+            var touchStartX = 0;
+            var modalBody = modalEl.querySelector('.modal-body');
+            modalBody.addEventListener('touchstart', function (event) {
+                touchStartX = event.changedTouches[0].clientX;
+            }, { passive: true });
+            modalBody.addEventListener('touchend', function (event) {
+                var deltaX = event.changedTouches[0].clientX - touchStartX;
+                if (Math.abs(deltaX) < 40) return;
+                showItem(currentIndex + (deltaX < 0 ? 1 : -1));
+            }, { passive: true });
         });
     </script>
 </x-frontend-layout>

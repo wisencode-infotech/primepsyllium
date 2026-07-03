@@ -34,6 +34,7 @@ class BlogPost extends Model
 
     protected $appends = [
         'featured_image_url',
+        'url',
     ];
 
     public function scopeActive(Builder $query): Builder
@@ -67,6 +68,11 @@ class BlogPost extends Model
         $disk = Storage::disk('public');
 
         return $disk->url($this->featured_image);
+    }
+
+    public function getUrlAttribute(): string
+    {
+        return url($this->slug);
     }
 
     public function getFormattedDateAttribute(): ?string

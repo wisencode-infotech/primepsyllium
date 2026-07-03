@@ -142,7 +142,7 @@
                                 <h3 class="fts-18 fw-7 title-text-L pe-lg-4">Countries</h3>
                                 <ul class="ui-footer-links mt-lg-2 mt-1">
                                     @foreach ($footerCountries as $footerCountry)
-                                        <li><a href="#our-global-presence" class="fts-14">{{ $footerCountry->name }}</a></li>
+                                        <li><a href="{{ $footerCountry->has_page ? $footerCountry->url : '#our-global-presence' }}" class="fts-14">{{ $footerCountry->name }}</a></li>
                                     @endforeach
                                     @if ($footerCountriesRemaining > 0)
                                         <li><a href="#our-global-presence" class="fts-14">+{{ $footerCountriesRemaining }} countries</a></li>

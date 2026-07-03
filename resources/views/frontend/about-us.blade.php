@@ -45,7 +45,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5 order-5 order-lg-0 mt-3 mt-lg-0">
                     <div class="about-left-layout">
-                        <img src="{{ asset('assets/frontend/images/about-img-bg.webp') }}" alt="Prime Psyllium" class="w-100 px-2 px-md-4 px-lg-5 wow zoomIn" loading="lazy" decoding="async">
+                        <img src="{{ asset('assets/frontend/images/about-founder.webp') }}" alt="Haji NoorBhai KamalBhai Moriya, founding patriarch of Prime Psyllium" class="w-100 px-2 px-md-4 px-lg-5 wow zoomIn" loading="lazy" decoding="async">
+                        <p class="fts-14 fw-5 title-text-L text-center mt-2 wow fadeInUp">Haji NoorBhai KamalBhai Moriya &mdash; Our Founding Patriarch</p>
                     </div>
                 </div>
                 <div class="col-lg-5 order-0 order-lg-5">
@@ -53,7 +54,7 @@
                         <h6 class="common-icon-title fts-14 wow fadeInUp"><iconify-icon icon="icon-park-solid:factory-building"></iconify-icon>Who We Are</h6>
                         <h2 class="fts-36 fw-5 title-text-L mt-1 mt-lg-2 wow fadeInUp">Prime Psyllium</h2>
                         <h4 class="fts-16 fw-5 title-text-L mt-2 mt-lg-3 wow fadeInUp">Top Rated Psyllium Products Manufacturer &amp; Supplier</h4>
-                        <p class="fts-15 fw-4 subtitle-text-L mt-2 mt-lg-3 wow fadeInUp">Prime Psyllium has been a trusted psyllium manufacturer and supplier in India since 2018, built on decades of industry expertise. Our founder has been actively involved in the psyllium business since 1995, bringing deep knowledge and experience across sourcing, processing and global supply.</p>
+                        <p class="fts-15 fw-4 subtitle-text-L mt-2 mt-lg-3 wow fadeInUp">Our roots trace back to Haji NoorBhai KamalBhai Moriya, who began cultivating and trading seeds in the 1950s and laid the foundation of the family&rsquo;s legacy in agriculture. That legacy carries through four generations to Prime Psyllium, a trusted psyllium manufacturer and supplier in India since 2018.</p>
                         <p class="fts-15 fw-4 subtitle-text-L mt-2 mt-lg-3 wow fadeInUp">Every batch we ship is sustainably processed and 100% naturally refined, backed by export-grade quality and consistent purity that meets international standards.</p>
                     </div>
                 </div>
@@ -95,7 +96,7 @@
                         <div class="timeline-item wow fadeInUp">
                             <span class="timeline-year">1950s</span>
                             <h4 class="fts-16 fw-6 title-text-L">A Family Begins in Agriculture</h4>
-                            <p class="fts-14 fw-4 subtitle-text-L">Our great-grandfather, Haji NoorBhai Moriya, began cultivating and trading cumin seeds, expanding cultivation across 40 villages.</p>
+                            <p class="fts-14 fw-4 subtitle-text-L">Our great-grandfather, Haji NoorBhai KamalBhai Moriya, began cultivating and trading cumin seeds, expanding cultivation across 40 villages.</p>
                         </div>
                         <div class="timeline-item wow fadeInUp">
                             <span class="timeline-year">1970</span>
@@ -277,7 +278,13 @@
                             <p class="fts-15 fw-4 subtitle-text-L mt-3 mt-lg-4 wow fadeInUp">Building long-term relationships with businesses worldwide through quality products, reliable supply and consistent service.</p>
                             <ul class="global-country-list d-flex flex-wrap mt-3 mt-lg-4">
                                 @foreach ($countries as $country)
-                                    <li class="fts-15 fw-4 subtitle-text-L py-1 wow fadeInUp"><img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">{{ $country->name }}</li>
+                                    <li class="fts-15 fw-4 subtitle-text-L py-1 wow fadeInUp">
+                                        @if ($country->has_page)
+                                            <a href="{{ $country->url }}" class="d-flex align-items-center gap-1 text-reset text-decoration-none"><img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">{{ $country->name }}</a>
+                                        @else
+                                            <img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">{{ $country->name }}
+                                        @endif
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>

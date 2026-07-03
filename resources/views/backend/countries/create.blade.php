@@ -5,13 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-            <div class="p-4 sm:p-8 bg-surface-elevated shadow sm:rounded-lg">
-                <form method="POST" action="{{ route('admin.countries.store') }}" enctype="multipart/form-data">
-                    @include('backend.countries._form')
-                </form>
-            </div>
-        </div>
-    </div>
+    <form method="POST" action="{{ route('admin.countries.store') }}" enctype="multipart/form-data">
+        @include('backend.countries._form')
+    </form>
 </x-backend-layout>

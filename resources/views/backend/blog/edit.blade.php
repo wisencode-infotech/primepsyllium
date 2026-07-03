@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-text leading-tight">
                 Edit Post
             </h2>
-            <a href="{{ route('blog.show', $blogPost) }}" target="_blank" class="inline-flex items-center gap-1 text-xs text-text-muted hover:text-text border border-border rounded-md px-2.5 py-1 transition">
+            <a href="{{ $blogPost->url }}" target="_blank" class="inline-flex items-center gap-1 text-xs text-text-muted hover:text-text border border-border rounded-md px-2.5 py-1 transition">
                 <x-icon name="external-link" class="h-3.5 w-3.5" />
                 View on site
             </a>

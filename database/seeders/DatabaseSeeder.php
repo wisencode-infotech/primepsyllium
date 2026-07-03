@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             SettingSeeder::class,
             MediaCenterItemSeeder::class,
             CountrySeeder::class,
+            CountryPageContentSeeder::class,
             EmailTemplateSeeder::class,
             EmailRecipientSeeder::class,
         ]);

@@ -161,7 +161,7 @@
                 <div class="row mt-3 mt-lg-4">
                     @foreach ($relatedPosts as $related)
                         <div class="col-lg-4 col-md-6 mt-3 d-flex">
-                            <a href="{{ route('blog.show', $related) }}" class="blog-card wow fadeInUp w-100">
+                            <a href="{{ $related->url }}" class="blog-card wow fadeInUp w-100">
                                 <div class="blog-card-thumb-wrap">
                                     @if ($related->featured_image_url)
                                         <img src="{{ $related->featured_image_url }}" alt="{{ $related->title }}" class="blog-card-thumb" loading="lazy" decoding="async">

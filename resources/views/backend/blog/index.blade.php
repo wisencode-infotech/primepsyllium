@@ -71,7 +71,7 @@
                                 </td>
                                 <td class="px-2 py-3 text-right sm:pr-8">
                                     <div class="flex items-center justify-end gap-3">
-                                        <a href="{{ route('blog.show', $post) }}" target="_blank" class="row-link text-text-muted" title="View on site">
+                                        <a href="{{ $post->url }}" target="_blank" class="row-link text-text-muted" title="View on site">
                                             <x-icon name="external-link" class="h-4 w-4" />
                                         </a>
                                         <a href="{{ route('admin.blog.edit', $post) }}" class="row-link">Edit</a>

@@ -89,11 +89,25 @@
       "Bash(node -e \"require\\('playwright'\\)\")",
       "Bash('C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\ms-playwright\\\\ffmpeg-1011\\\\ffmpeg-win64.exe' -y -loop 1 -i 'C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--xampp8-2-htdocs-primepsyllium\\\\0a4f92d9-cb47-428a-b88c-130d432af5c5\\\\scratchpad\\\\pw-test/sample.jpg' -t 2 -c:v libvpx -b:v 300k -pix_fmt yuv420p 'C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--xampp8-2-htdocs-primepsyllium\\\\0a4f92d9-cb47-428a-b88c-130d432af5c5\\\\scratchpad\\\\pw-test/sample.webm')",
       "Bash(php -r 'echo mime_content_type\\('\\\\''__TRACKED_VAR__/sample.mp4'\\\\''\\) . PHP_EOL;')",
-      "Bash(node verify.js)"
+      "Bash(node verify.js)",
+      "Bash(node -e ' *)",
+      "Bash(node gallery-grid-debug.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://localhost/primepsyllium/public/usa\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://primepsyllium.test/usa\")",
+      "Bash(curl -s \"http://localhost/primepsyllium/public/usa\")",
+      "Bash(node gallery-css-debug.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/public/how-to-select-the-best-dealer-of-psyllium-husk\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/public/this-does-not-exist-xyz\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/public/about-us\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/public/blog\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/public/admin/countries\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/public/admin/countries/create\")",
+      "Bash(rm -f /c/Users/USER/AppData/Local/Temp/claude/c--xampp8-2-htdocs-primepsyllium/d1ab7bf6-d000-4292-93ce-bb9d8bddbbd4/scratchpad/*.js /c/Users/USER/AppData/Local/Temp/claude/c--xampp8-2-htdocs-primepsyllium/d1ab7bf6-d000-4292-93ce-bb9d8bddbbd4/scratchpad/*.png)"
     ],
     "additionalDirectories": [
       "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\96250778-6246-4846-8ce0-14c5ca079d56\\scratchpad",
-      "\\tmp"
+      "\\tmp",
+      "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\d1ab7bf6-d000-4292-93ce-bb9d8bddbbd4\\scratchpad"
     ]
   }
 }
