@@ -18,7 +18,7 @@
   color: var(--primary-color);
 }
 .product-breadcrumb span{
-  color: var(--primary-light-color);
+  color: var(--primary-light-text);
 }
 .product-breadcrumb .current{
   color: var(--primary-color);
@@ -76,7 +76,7 @@
 }
 .product-feature-chip iconify-icon{
   font-size: 18px;
-  color: var(--primary-light-color);
+  color: var(--primary-light-text);
 }
 
 /* content */

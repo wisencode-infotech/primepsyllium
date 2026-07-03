@@ -205,7 +205,7 @@
                                 <h6 class="fts-13 fw-5 subtitle-text-L text-uppercase mb-2 ms-1">Follow Us</h6>
                                 <div class="footer_socialmedia d-flex flex-wrap gap-2">
                                     @foreach ($settings->socialLinks() as $link)
-                                        <a href="{{ $link['url'] }}" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="{{ $link['label'] }}" class="{{ $link['class'] }} border-lightcolor"><iconify-icon icon="{{ $link['icon'] }}"></iconify-icon></a>
+                                        <a href="{{ $link['url'] }}" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="{{ $link['label'] }}" aria-label="{{ $link['label'] }}" class="{{ $link['class'] }} border-lightcolor"><iconify-icon icon="{{ $link['icon'] }}"></iconify-icon></a>
                                     @endforeach
                                 </div>
                             </div>

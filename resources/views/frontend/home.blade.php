@@ -6,12 +6,12 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="header-left-layout text-center text-lg-start">
-                        <h6 class="common-icon-title fts-14 mx-auto mx-lg-0 wow fadeIn"><iconify-icon icon="icon-park-solid:factory-building"></iconify-icon>Your Fiber Partner Since 1995</h6>
+                        <p class="common-icon-title fts-14 mx-auto mx-lg-0 wow fadeIn"><iconify-icon icon="icon-park-solid:factory-building"></iconify-icon>Your Fiber Partner Since 1995</p>
                         <h1 class="fts-54 fw-6 title-text-L mt-3 mt-lg-4 wow fadeIn">Pure fiber, refined for the world.</h1>
                         <p class="fts-15 fw-4 subtitle-text-L mt-3 mt-lg-4 wow fadeIn">We deliver reliable, high-quality psyllium solutions that boost performance, reduce costs and support a greener future.</p>
                         <div class="hero-actions d-flex align-items-center justify-content-center justify-content-lg-start flex-wrap gap-2 gap-md-3 mt-3 mt-lg-4 wow fadeIn">
-                            <a href="#get-in-touch" class="common-bg-btn fts-14">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Request a Quote"></a>
-                            <a href="#products" class="common-border-btn fts-14">Explore Products <img src="{{ asset('assets/frontend/images/arrow-primary.png') }}" alt="Explore Products"></a>
+                            <a href="#get-in-touch" class="common-bg-btn fts-14">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt=""></a>
+                            <a href="#products" class="common-border-btn fts-14">Explore Products <img src="{{ asset('assets/frontend/images/arrow-primary.png') }}" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -51,9 +51,9 @@
                 </div>
                 <div class="col-lg-5 order-0 order-lg-5">
                     <div class="about-right-layout mt-lg-4">
-                        <h6 class="common-icon-title fts-14 wow fadeInUp"><iconify-icon icon="icon-park-solid:factory-building"></iconify-icon>About us</h6>
+                        <p class="common-icon-title fts-14 wow fadeInUp"><iconify-icon icon="icon-park-solid:factory-building"></iconify-icon>About us</p>
                         <h2 class="fts-46 fw-5 title-text-L mt-1 mt-lg-2 wow fadeInUp">Prime Psyllium</h2>
-                        <h4 class="fts-16 fw-5 title-text-L mt-2 mt-lg-3 wow fadeInUp">Top Rated Psyllium Products Manufacturer &amp; Supplier</h4>
+                        <h3 class="fts-16 fw-5 title-text-L mt-2 mt-lg-3 wow fadeInUp">Top Rated Psyllium Products Manufacturer &amp; Supplier</h3>
                         <p class="fts-15 fw-4 subtitle-text-L mt-2 mt-lg-3 wow fadeInUp">Prime Psyllium has been a trusted Psyllium manufacturer and supplier in India since 2018, built on decades of industry expertise. Our founder has been actively involved in the psyllium business since 1995, bringing deep knowledge and experience across sourcing, processing, and global supply.</p>
                         <a href="#products" class="secondary-more fts-14 mt-2 mt-lg-3 fw-5 wow fadeInUp">Learn More <img src="{{ asset('assets/frontend/images/arrow-secondary.png') }}" alt=""></a>
                     </div>
@@ -63,17 +63,17 @@
                 <div class="col-lg-10">
                     <div class="about-experiance-flex d-flex flex-wrap flex-md-nowrap">
                         <div class="single-about-exp d-md-flex px-3 px-md-0 justify-content-center gap-2 align-items-center wow fadeInUp">
-                            <h4 class="d-flex fts-32 fw-5 title-text-L">30 <span class="primary-light-color-L">+</span></h4>
+                            <h3 class="d-flex fts-32 fw-5 title-text-L">30 <span class="primary-light-color-L">+</span></h3>
                             <p class="fts-14 fw-4 subtitle-text-L">Years of Industry <br> Expertise</p>
                         </div>
                         <div class="about-center-line"></div>
                         <div class="single-about-exp d-md-flex px-3 px-md-0 justify-content-center gap-2 align-items-center wow fadeInUp">
-                            <h4 class="d-flex fts-32 fw-5 title-text-L">100 <span class="primary-light-color-L">%</span></h4>
+                            <h3 class="d-flex fts-32 fw-5 title-text-L">100 <span class="primary-light-color-L">%</span></h3>
                             <p class="fts-14 fw-4 subtitle-text-L">Natural, Chemical <br> Free Sourcing</p>
                         </div>
                         <div class="about-center-line d-none d-md-block"></div>
                         <div class="single-about-exp re-size d-flex justify-content-center gap-2 align-items-center wow fadeInUp">
-                            <h4 class="d-flex fts-32 fw-5 title-text-L">14 <span class="primary-light-color-L">+</span></h4>
+                            <h3 class="d-flex fts-32 fw-5 title-text-L">14 <span class="primary-light-color-L">+</span></h3>
                             <p class="fts-14 fw-4 subtitle-text-L">Countries Served <br> Worldwide</p>
                         </div>
                     </div>
@@ -141,7 +141,7 @@
     <section class="primer-product-section py-4 py-lg-5" id="products">
         <div class="container">
             <div class="heading-products text-center">
-                <h6 class="common-icon-title mx-auto fts-14 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Our Products</h6>
+                <p class="common-icon-title mx-auto fts-14 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Our Products</p>
                 <h2 class="fts-46 fw-5 title-text-L mt-1 mt-lg-2 wow fadeInUp">Premium Psyllium Products</h2>
                 <p class="fts-15 fw-4 subtitle-text-L mt-1 mt-lg-2 wow fadeInUp">Psyllium that brings nature&rsquo;s wellness to every product. Clean, pure and backed by trust.</p>
             </div>
@@ -149,7 +149,7 @@
                 @foreach($products as $product)
                     <div class="single-prime-product text-center mx-2">
                         <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-img" loading="lazy" decoding="async">
-                        <h4 class="mt-2 mt-md-3 fts-20 fw-6 title-text-L">{{ $product->name }}</h4>
+                        <h3 class="mt-2 mt-md-3 fts-20 fw-6 title-text-L">{{ $product->name }}</h3>
                         <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2">{{ $product->description }}</p>
                         <a href="{{ route('products.show', $product) }}" class="media-more fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1 justify-content-center mt-1 mt-md-2">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
                     </div>
@@ -164,7 +164,7 @@
             <div class="row">
                 <div class="col-lg-5 pe-lg-5">
                     <div class="driven-trust-box p-4 p-md-5">
-                        <h6 class="common-icon-title fts-14"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Who We Are</h6>
+                        <p class="common-icon-title fts-14"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Who We Are</p>
                         <h2 class="fts-46 fw-5 white-color-L mt-2 mt-lg-3">Rooted in Quality. Driven by Trust.</h2>
                         <p class="fts-15 fw-4 white-color-L mt-2 mt-lg-3">Prime Psyllium is a trusted supplier of premium psyllium products, serving businesses worldwide with a commitment to quality, consistency, and dependable partnerships.</p>
                         <div class="d-flex flex-wrap flex-md-nowrap gap-2 mt-2 mt-lg-4">
@@ -177,7 +177,7 @@
                                 <p class="fts-14 fw-4 white-color-L">Sustainably Processed</p>
                             </div>
                         </div>
-                        <a href="#get-in-touch" class="common-bg-btn bg-white fts-14 mt-2 mt-lg-3">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Request a Quote"></a>
+                        <a href="#get-in-touch" class="common-bg-btn bg-white fts-14 mt-2 mt-lg-3">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -187,7 +187,7 @@
     {{-- media center section start --}}
     <div class="media-center-section pt-4 pt-lg-5" id="media-center">
         <div class="container">
-            <h6 class="common-icon-title mx-auto fts-14 mb-3 mb-lg-4 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Media Center</h6>
+            <h2 class="common-icon-title mx-auto fts-14 mb-3 mb-lg-4 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Media Center</h2>
             <div class="row">
                 <div class="col-xxl-10 mx-auto mt-lg-2">
                     <div class="row justify-content-center">
@@ -199,7 +199,7 @@
                                     </div>
                                     <div class="footer-steps-content mt-3">
                                         <span>{{ $item->formatted_date }}</span>
-                                        <h4 class="fts-16 fw-6 title-text-L">{{ $item->title }}</h4>
+                                        <h3 class="fts-16 fw-6 title-text-L">{{ $item->title }}</h3>
                                         <p class="fts-14 fw-4 subtitle-text-L mt-1 mt-md-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{ $item->description }}</p>
                                         <a href="{{ $item->link ?: route('events.show', $item) }}" class="media-more mt-1 mt-md-2 fts-14 fw-4 primary-light-color-L text-decoration-underline d-flex align-items-center gap-1">Read More <img src="{{ asset('assets/frontend/images/arrow-light.png') }}" alt=""></a>
                                     </div>
@@ -223,7 +223,7 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="global-right-layout mt-3">
-                        <h6 class="common-icon-title fts-14 mb-3 mb-lg-4 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Our Global Presence</h6>
+                        <h2 class="common-icon-title fts-14 mb-3 mb-lg-4 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Our Global Presence</h2>
                         <p class="fts-15 fw-4 subtitle-text-L mt-3 mt-lg-4 wow fadeInUp">Building long-term relationships with businesses worldwide through quality products, reliable supply, and consistent service.</p>
                         <ul class="global-country-list d-flex flex-wrap mt-3 mt-lg-4">
                             @foreach($countries as $country)
@@ -244,7 +244,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-5">
                         <div class="contact-left-layout">
-                            <h6 class="common-icon-title fts-14 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Get in Touch</h6>
+                            <p class="common-icon-title fts-14 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Get in Touch</p>
                             <h2 class="fts-54 fw-5 title-text-L mt-2 mt-lg-3 wow fadeInUp">Discuss Your Requirements.</h2>
                             <div class="contact-form-prime contact-form-card mt-3 mt-lg-4">
                                 @if (session('contact_status'))

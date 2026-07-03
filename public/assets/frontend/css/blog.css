@@ -104,7 +104,7 @@
   justify-content: center;
   background: #f0f5f3;
   font-size: 40px;
-  color: var(--primary-light-color);
+  color: var(--primary-light-text);
 }
 .blog-card-category {
   position: absolute;
@@ -131,7 +131,7 @@
 }
 .blog-card-meta iconify-icon {
   font-size: 13px;
-  color: var(--primary-light-color);
+  color: var(--primary-light-text);
 }
 .blog-card-title {
   line-height: 1.4;

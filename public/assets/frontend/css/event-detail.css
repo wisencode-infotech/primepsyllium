@@ -70,7 +70,7 @@
 }
 .event-prevnext-card iconify-icon{
   font-size: 20px;
-  color: var(--primary-light-color);
+  color: var(--primary-light-text);
   min-width: 20px;
 }
 

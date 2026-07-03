@@ -136,7 +136,7 @@
                         <h3 class="fts-28 fw-5 white-color-L mt-2 mt-lg-3 wow fadeInUp">Meeting us at a trade show? Let&rsquo;s schedule a time to talk.</h3>
                     </div>
                     <div class="col-lg-4 text-center text-lg-end mt-3 mt-lg-0">
-                        <a href="{{ route('home') }}#get-in-touch" class="common-bg-btn bg-white fts-14 d-inline-flex wow fadeInUp">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Request a Quote"></a>
+                        <a href="{{ route('home') }}#get-in-touch" class="common-bg-btn bg-white fts-14 d-inline-flex wow fadeInUp">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt=""></a>
                     </div>
                 </div>
             </div>

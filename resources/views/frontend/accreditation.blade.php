@@ -34,7 +34,7 @@
             </div>
 
             <div class="hero-actions d-flex align-items-center justify-content-center flex-wrap gap-2 gap-md-3 mt-3 mt-lg-4 wow fadeIn">
-                <a href="{{ route('home') }}#get-in-touch" class="common-bg-btn fts-14">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Request a Quote"></a>
+                <a href="{{ route('home') }}#get-in-touch" class="common-bg-btn fts-14">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt=""></a>
                 <a href="#certifications" class="common-border-btn fts-14">View Certificates <img src="{{ asset('assets/frontend/images/arrow-primary.png') }}" alt="View Certificates"></a>
             </div>
         </div>
@@ -114,7 +114,7 @@
                                 <p class="fts-14 fw-4 white-color-L">Sustainably Processed</p>
                             </div>
                         </div>
-                        <a href="{{ route('home') }}#get-in-touch" class="common-bg-btn bg-white fts-14 mt-2 mt-lg-3">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Request a Quote"></a>
+                        <a href="{{ route('home') }}#get-in-touch" class="common-bg-btn bg-white fts-14 mt-2 mt-lg-3">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -157,7 +157,7 @@
                         <h3 class="fts-28 fw-5 white-color-L mt-2 mt-lg-3 wow fadeInUp">Ready to partner with a certified, trusted psyllium supplier?</h3>
                     </div>
                     <div class="col-lg-4 text-center text-lg-end mt-3 mt-lg-0">
-                        <a href="{{ route('home') }}#get-in-touch" class="common-bg-btn bg-white fts-14 d-inline-flex wow fadeInUp">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Request a Quote"></a>
+                        <a href="{{ route('home') }}#get-in-touch" class="common-bg-btn bg-white fts-14 d-inline-flex wow fadeInUp">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt=""></a>
                     </div>
                 </div>
             </div>

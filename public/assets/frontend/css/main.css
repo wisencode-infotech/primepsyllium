@@ -185,7 +185,7 @@
   align-items: center;
   gap: 6px;
   font-weight: 400;
-  color: var(--primary-light-color);
+  color: var(--primary-light-text);
   border: 1px dashed var(--primary-light-color);
   padding: 0px 18px 0px 0px;
   border-radius: 8px;

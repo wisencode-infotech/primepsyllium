@@ -32,7 +32,7 @@
             </div>
 
             <div class="hero-actions d-flex align-items-center justify-content-center flex-wrap gap-2 gap-md-3 mt-3 mt-lg-4 wow fadeIn">
-                <a href="{{ route('home') }}#get-in-touch" class="common-bg-btn fts-14">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Request a Quote"></a>
+                <a href="{{ route('home') }}#get-in-touch" class="common-bg-btn fts-14">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt=""></a>
                 <a href="#psyllium-range" class="common-border-btn fts-14">Browse Ingredients <img src="{{ asset('assets/frontend/images/arrow-primary.png') }}" alt="Browse Ingredients"></a>
             </div>
         </div>
@@ -130,7 +130,7 @@
                         <h3 class="fts-28 fw-5 white-color-L mt-2 mt-lg-3 wow fadeInUp">Need a custom ingredient solution? Let&rsquo;s talk.</h3>
                     </div>
                     <div class="col-lg-4 text-center text-lg-end mt-3 mt-lg-0">
-                        <a href="{{ route('home') }}#get-in-touch" class="common-bg-btn bg-white fts-14 d-inline-flex wow fadeInUp">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Request a Quote"></a>
+                        <a href="{{ route('home') }}#get-in-touch" class="common-bg-btn bg-white fts-14 d-inline-flex wow fadeInUp">Request a Quote <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt=""></a>
                     </div>
                 </div>
             </div>

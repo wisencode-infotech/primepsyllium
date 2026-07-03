@@ -177,6 +177,7 @@ textarea{
   --primary-color: #17494b;
   --secondary-color: #496727;
   --primary-light-color: #a3c1b5;
+  --primary-light-text: #4d7560;
   --review-color: #EDA017;
   --white-color: #FFFFFF;
   --black-color: #000000;
@@ -258,7 +259,7 @@ textarea{
   background: var(--primary-color);
 }
 .primary-light-color-L{
-  color: var(--primary-light-color);
+  color: var(--primary-light-text);
 }
 .primary-light-bgcolor-L{
   background: var(--primary-light-color);

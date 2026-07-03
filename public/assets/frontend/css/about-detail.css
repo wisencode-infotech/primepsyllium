@@ -130,7 +130,7 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--primary-light-color);
+  color: var(--primary-light-text);
   margin-top: 4px;
   line-height: 1.4;
 }

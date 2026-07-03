@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>{{ config('site.seo.title') }}</title>
         <meta name="description" content="{{ config('site.seo.description') }}">
@@ -57,7 +57,7 @@
                                 <li><a href="{{ route('blog.index') }}" class="desktop-nav-items {{ request()->routeIs('blog.*') ? 'active' : '' }}">Blog</a></li>
                                 <li><a href="{{ route('contact.index') }}" class="desktop-nav-items">Contact Us</a></li>
                             </ul>
-                            <a href="#get-in-touch" class="btn-desknav-talk fts-14 d-lg-flex d-none">Let&rsquo;s Talk <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Let&rsquo;s Talk"></a>
+                            <a href="#get-in-touch" class="btn-desknav-talk fts-14 d-lg-flex d-none">Let&rsquo;s Talk <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt=""></a>
                         </div>
                     </div>
                     <div class="mobile-header d-flex d-lg-none align-items-center justify-content-between py-2">
@@ -65,7 +65,7 @@
                         <a href="{{ url('/') }}" class="mobile-nav-logo text-center">
                             <img src="{{ $settings->logo_url ?? asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="desktop-nav-logo">
                         </a>
-                        <button class="btn-desknav-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#primeNavOffcanvas" aria-controls="#primeNavOffcanvas"><iconify-icon icon="tabler:menu"></iconify-icon></button>
+                        <button class="btn-desknav-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#primeNavOffcanvas" aria-controls="primeNavOffcanvas" aria-label="Open navigation menu"><iconify-icon icon="tabler:menu"></iconify-icon></button>
                     </div>
                 </div>
 
@@ -73,6 +73,7 @@
                 <div class="prime-nav-sidebar">
                     <div class="offcanvas offcanvas-end" tabindex="-1" id="primeNavOffcanvas" aria-labelledby="primeNavOffcanvasLabel">
                         <div class="prime-nav-heading d-flex align-items-center justify-content-between gap-2 px-3 pt-3 pb-2 mt-1">
+                            <span id="primeNavOffcanvasLabel" class="visually-hidden">Site navigation</span>
                             <a href="{{ url('/') }}">
                                 <img src="{{ $settings->logo_url ?? asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="desktop-nav-logo offcanvas-logo">
                             </a>
@@ -88,13 +89,15 @@
                                 <li><a href="{{ route('blog.index') }}" class="desktop-nav-items mx-0 my-1">Blog</a></li>
                                 <li><a href="{{ route('contact.index') }}" class="desktop-nav-items mx-0 my-1">Contact Us</a></li>
                             </ul>
-                            <a href="#get-in-touch" class="btn-desknav-talk fts-14 d-flex justify-content-center mt-2 w-100">Let&rsquo;s Talk <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt="Let&rsquo;s Talk"></a>
+                            <a href="#get-in-touch" class="btn-desknav-talk fts-14 d-flex justify-content-center mt-2 w-100">Let&rsquo;s Talk <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt=""></a>
                         </div>
                     </div>
                 </div>
             </nav>
 
-            {{ $slot }}
+            <main>
+                {{ $slot }}
+            </main>
         </div>
 
         {{-- footer section start --}}
@@ -111,7 +114,7 @@
                         </div>
                         <div class="col-xl-2 col-lg-2 col-md-6 col-6">
                             <div class="single-motorfooter-links mb-3 mb-lg-0">
-                                <h4 class="fts-18 fw-7 title-text-L">Company</h4>
+                                <h3 class="fts-18 fw-7 title-text-L">Company</h3>
                                 <ul class="ui-footer-links mt-lg-2 mt-1">
                                     <li><a href="{{ route('about.index') }}" class="fts-14">About Us</a></li>
                                     <li><a href="{{ route('accreditation.index') }}" class="fts-14">Accreditation</a></li>
@@ -123,7 +126,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 col-6">
                             <div class="single-motorfooter-links mb-3 mb-lg-0">
-                                <h4 class="fts-18 fw-7 title-text-L">Psyllium Products</h4>
+                                <h3 class="fts-18 fw-7 title-text-L">Psyllium Products</h3>
                                 <ul class="ui-footer-links mt-lg-2 mt-1">
                                     @foreach ($footerProducts as $footerProduct)
                                         <li><a href="{{ route('products.show', $footerProduct) }}" class="fts-14">{{ $footerProduct->name }}</a></li>
@@ -136,7 +139,7 @@
                         </div>
                         <div class="col-xl-2 col-lg-4 col-md-6 col-6">
                             <div class="single-motorfooter-links mb-3 mb-lg-0">
-                                <h4 class="fts-18 fw-7 title-text-L pe-lg-4">Countries</h4>
+                                <h3 class="fts-18 fw-7 title-text-L pe-lg-4">Countries</h3>
                                 <ul class="ui-footer-links mt-lg-2 mt-1">
                                     @foreach ($footerCountries as $footerCountry)
                                         <li><a href="#our-global-presence" class="fts-14">{{ $footerCountry->name }}</a></li>
@@ -159,7 +162,7 @@
                                     <div class="socilas-iconsviewsdesign py-1 d-flex flex-column align-items-center align-items-lg-end">
                                         <div class="footer_socialmedia d-flex justify-content-center justify-content-lg-end flex-wrap gap-2">
                                             @foreach ($settings->socialLinks() as $link)
-                                                <a href="{{ $link['url'] }}" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="{{ $link['label'] }}" class="{{ $link['class'] }} border-lightcolor"><iconify-icon icon="{{ $link['icon'] }}"></iconify-icon></a>
+                                                <a href="{{ $link['url'] }}" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="{{ $link['label'] }}" aria-label="{{ $link['label'] }}" class="{{ $link['class'] }} border-lightcolor"><iconify-icon icon="{{ $link['icon'] }}"></iconify-icon></a>
                                             @endforeach
                                         </div>
 
