@@ -93,7 +93,7 @@
 
     {{-- market demand --}}
     @if ($country->market_demand_content)
-        <section class="primer-product-section py-4 py-lg-5">
+        <section class="product-content-section primer-product-section py-4 py-lg-5">
             <div class="container py-lg-2">
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
@@ -134,7 +134,7 @@
 
     {{-- export capability --}}
     @if ($country->export_capability_content)
-        <section class="primer-product-section py-4 py-lg-5">
+        <section class="product-content-section primer-product-section py-4 py-lg-5">
             <div class="container py-lg-2">
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
@@ -153,7 +153,7 @@
 
     {{-- quality standards --}}
     @if ($country->quality_standards_content)
-        <section class="py-4 py-lg-5">
+        <section class="product-content-section py-4 py-lg-5">
             <div class="container py-lg-2">
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
@@ -172,7 +172,7 @@
 
     {{-- export logistics --}}
     @if ($country->export_logistics_content)
-        <section class="primer-product-section py-4 py-lg-5">
+        <section class="product-content-section primer-product-section py-4 py-lg-5">
             <div class="container py-lg-2">
                 <div class="row justify-content-center">
                     <div class="col-lg-9">

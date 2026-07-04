@@ -164,6 +164,13 @@
   max-width: 100%;
   border-radius: 12px;
 }
+/* Strip any inline background-color that Quill preserves from pasted content */
+.product-content-section .product-content p,
+.product-content-section .product-content span,
+.product-content-section .product-content div,
+.product-content-section .product-content li{
+  background-color: transparent !important;
+}
 .product-specs-box{
   background: #F6F6F6;
   border-radius: 16px;
