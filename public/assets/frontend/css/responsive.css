@@ -212,10 +212,11 @@
     width: 100% !important;
   }
   .prime-contact-section{
-    padding-bottom: 32px !important;
+    padding-bottom: 0 !important;
   }
   .contact-info-strip{
     padding: 10px 0 12px;
+    margin-bottom: 0;
   }
   .contact-info-strip .container{
     padding-left: 18px;

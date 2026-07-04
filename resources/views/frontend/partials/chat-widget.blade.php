@@ -7,7 +7,7 @@
     <div id="ppsy-chat-panel" class="ppsy-chat-panel" role="dialog" aria-label="Chat with {{ config('app.name') }}" hidden>
         <div class="ppsy-chat-header">
             <div class="ppsy-chat-header-title">
-                <img src="{{ $settings->logo_url ?? asset('assets/frontend/images/brand-logo.png') }}" alt="" class="ppsy-chat-header-logo">
+                <img src="{{ $settings->favicon_url ?? asset('assets/frontend/icons/favicon.png') }}" alt="" class="ppsy-chat-header-logo">
                 <div>
                     <p class="ppsy-chat-header-name">{{ config('app.name') }} Assistant</p>
                     <p class="ppsy-chat-header-status">Ask about our products &amp; certifications</p>
