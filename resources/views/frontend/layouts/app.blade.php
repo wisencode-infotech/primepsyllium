@@ -52,6 +52,7 @@
                                 <li><a href="{{ route('products.index') }}" class="desktop-nav-items">Products</a></li>
                                 <li><a href="{{ route('ingredients.index') }}" class="desktop-nav-items">Ingredients</a></li>
                                 <li><a href="{{ route('accreditation.index') }}" class="desktop-nav-items">Accreditation</a></li>
+                                <li><a href="{{ route('applications.index') }}" class="desktop-nav-items">Applications</a></li>
                                 <li><a href="{{ route('about.index') }}" class="desktop-nav-items">About Us</a></li>
                                 <li><a href="{{ route('gallery.index') }}" class="desktop-nav-items {{ request()->routeIs('gallery.*') ? 'active' : '' }}">Gallery</a></li>
                                 <li><a href="{{ route('blog.index') }}" class="desktop-nav-items {{ request()->routeIs('blog.*') ? 'active' : '' }}">Blog</a></li>
@@ -84,6 +85,7 @@
                                 <li><a href="{{ route('products.index') }}" class="desktop-nav-items mx-0 my-1">Products</a></li>
                                 <li><a href="#quality" class="desktop-nav-items mx-0 my-1">Ingredients</a></li>
                                 <li><a href="{{ route('accreditation.index') }}" class="desktop-nav-items mx-0 my-1">Accreditation</a></li>
+                                <li><a href="{{ route('applications.index') }}" class="desktop-nav-items mx-0 my-1">Applications</a></li>
                                 <li><a href="{{ route('about.index') }}" class="desktop-nav-items mx-0 my-1">About Us</a></li>
                                 <li><a href="{{ route('gallery.index') }}" class="desktop-nav-items mx-0 my-1">Gallery</a></li>
                                 <li><a href="{{ route('blog.index') }}" class="desktop-nav-items mx-0 my-1">Blog</a></li>
@@ -118,6 +120,7 @@
                                 <ul class="ui-footer-links mt-lg-2 mt-1">
                                     <li><a href="{{ route('about.index') }}" class="fts-14">About Us</a></li>
                                     <li><a href="{{ route('accreditation.index') }}" class="fts-14">Accreditation</a></li>
+                                    <li><a href="{{ route('applications.index') }}" class="fts-14">Applications</a></li>
                                     <li><a href="{{ route('events.index') }}" class="fts-14">Events</a></li>
                                     <li><a href="{{ route('contact.index') }}" class="fts-14">Contact Us</a></li>
                                     <li><a href="{{ route('blog.index') }}" class="fts-14">Blogs</a></li>

@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ThemeSettingController;
+use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController as FrontendCountryController;
@@ -46,6 +47,8 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/about-us', AboutController::class)->name('about.index');
 
 Route::get('/accreditation', AccreditationController::class)->name('accreditation.index');
+
+Route::get('/applications', ApplicationsController::class)->name('applications.index');
 
 Route::get('/gallery', GalleryController::class)->name('gallery.index');
 

@@ -102,7 +102,20 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/public/blog\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/public/admin/countries\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/public/admin/countries/create\")",
-      "Bash(rm -f /c/Users/USER/AppData/Local/Temp/claude/c--xampp8-2-htdocs-primepsyllium/d1ab7bf6-d000-4292-93ce-bb9d8bddbbd4/scratchpad/*.js /c/Users/USER/AppData/Local/Temp/claude/c--xampp8-2-htdocs-primepsyllium/d1ab7bf6-d000-4292-93ce-bb9d8bddbbd4/scratchpad/*.png)"
+      "Bash(rm -f /c/Users/USER/AppData/Local/Temp/claude/c--xampp8-2-htdocs-primepsyllium/d1ab7bf6-d000-4292-93ce-bb9d8bddbbd4/scratchpad/*.js /c/Users/USER/AppData/Local/Temp/claude/c--xampp8-2-htdocs-primepsyllium/d1ab7bf6-d000-4292-93ce-bb9d8bddbbd4/scratchpad/*.png)",
+      "Bash(php -l app/Http/Controllers/ApplicationsController.php)",
+      "Bash(php -l resources/views/frontend/applications.blade.php)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost/primepsyllium/public/applications)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://primepsyllium.test/applications)",
+      "Bash(curl -s http://localhost/primepsyllium/public/applications)",
+      "Bash(curl -s -A \"Mozilla/5.0\" https://primepsyllium.com/applications/ -o /tmp/applications.html)",
+      "Bash(curl -s -o /dev/null -w \"HTTP:%{http_code} SIZE:%{size_download}\\\\n\" -A \"Mozilla/5.0\" https://primepsyllium.com/applications/)",
+      "Bash(curl -s -o /tmp/app.html -w 'HTTP:%{http_code} SIZE:%{size_download}\\\\n' -H 'User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' https://primepsyllium.com/applications/)",
+      "Bash(cygpath -w /tmp/app.html)",
+      "Bash(which chromium-cli *)",
+      "Read(//c//**)",
+      "Bash(where chrome *)",
+      "Bash(node -e \"console.log\\(require.resolve\\('puppeteer'\\)\\)\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\96250778-6246-4846-8ce0-14c5ca079d56\\scratchpad",

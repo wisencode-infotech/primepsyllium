@@ -51,7 +51,7 @@
             <div class="row justify-content-center mt-3 mt-lg-4">
                 @php
                     $pillars = [
-                        ['icon' => 'mdi:food-safety-outline', 'title' => 'Food Safety Standards', 'desc' => 'We adhere to internationally recognized food safety management systems, ensuring every batch meets strict hygiene and safety requirements.'],
+                        ['icon' => 'mdi:food-apple-outline', 'title' => 'Food Safety Standards', 'desc' => 'We adhere to internationally recognized food safety management systems, ensuring every batch meets strict hygiene and safety requirements.'],
                         ['icon' => 'mdi:medal-outline', 'title' => 'Consistent Product Quality', 'desc' => 'Our certifications validate that our manufacturing processes deliver consistent, export-grade quality from batch to batch.'],
                         ['icon' => 'mdi:earth', 'title' => 'Global Market Access', 'desc' => 'Our accreditations are recognized across USA, Canada, Europe and beyond — enabling frictionless import and distribution for our partners.'],
                         ['icon' => 'mdi:leaf-circle-outline', 'title' => 'Natural &amp; Sustainable', 'desc' => 'Certified processes ensure our psyllium is 100% naturally refined, chemical-free and produced in an environmentally responsible manner.'],

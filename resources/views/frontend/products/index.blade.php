@@ -70,23 +70,28 @@
             <div class="row justify-content-center mt-3 mt-lg-4">
                 @php
                     $industries = [
-                        ['icon' => 'fluent:pill-24-filled', 'title' => 'Pharmaceutical', 'desc' => 'Laxative formulations &amp; fiber-based medicines'],
-                        ['icon' => 'mdi:silverware-fork-knife', 'title' => 'Food & Beverage', 'desc' => 'Bakery, dairy and beverage fiber fortification'],
-                        ['icon' => 'mdi:pill-multiple', 'title' => 'Nutraceuticals', 'desc' => 'Dietary fiber supplements &amp; functional foods'],
-                        ['icon' => 'mdi:flower-outline', 'title' => 'Cosmetics', 'desc' => 'Natural thickening &amp; stabilizing agent'],
-                        ['icon' => 'mdi:factory', 'title' => 'Industrial', 'desc' => 'Binding &amp; gelling agent for technical uses'],
-                        ['icon' => 'mdi:cow', 'title' => 'Animal Feed', 'desc' => 'Fiber-rich additive for livestock nutrition'],
+                        ['icon' => 'fluent:pill-24-filled', 'title' => 'Pharmaceutical', 'desc' => 'Laxative formulations &amp; fiber-based medicines', 'anchor' => 'pharmaceutical'],
+                        ['icon' => 'mdi:silverware-fork-knife', 'title' => 'Food & Beverage', 'desc' => 'Bakery, dairy and beverage fiber fortification', 'anchor' => 'food-beverage'],
+                        ['icon' => 'mdi:pill-multiple', 'title' => 'Nutraceuticals', 'desc' => 'Dietary fiber supplements &amp; functional foods', 'anchor' => 'dietary-supplement'],
+                        ['icon' => 'mdi:flower-outline', 'title' => 'Cosmetics', 'desc' => 'Natural thickening &amp; stabilizing agent', 'anchor' => 'cosmetic'],
+                        ['icon' => 'mdi:factory', 'title' => 'Industrial', 'desc' => 'Binding &amp; gelling agent for technical uses', 'anchor' => 'industrial'],
+                        ['icon' => 'mdi:cow', 'title' => 'Animal Feed', 'desc' => 'Fiber-rich additive for livestock nutrition', 'anchor' => 'pet-food'],
                     ];
                 @endphp
                 @foreach ($industries as $industry)
                     <div class="col-lg-4 col-md-6 mt-3">
-                        <div class="industry-use-card wow fadeInUp">
-                            <iconify-icon icon="{{ $industry['icon'] }}"></iconify-icon>
-                            <h4 class="fts-16 fw-6 title-text-L">{{ $industry['title'] }}</h4>
-                            <p class="fts-14 fw-4 subtitle-text-L mt-1">{!! $industry['desc'] !!}</p>
-                        </div>
+                        <a href="{{ route('applications.index') }}#{{ $industry['anchor'] }}" class="text-decoration-none d-block">
+                            <div class="industry-use-card wow fadeInUp">
+                                <iconify-icon icon="{{ $industry['icon'] }}"></iconify-icon>
+                                <h4 class="fts-16 fw-6 title-text-L">{{ $industry['title'] }}</h4>
+                                <p class="fts-14 fw-4 subtitle-text-L mt-1">{!! $industry['desc'] !!}</p>
+                            </div>
+                        </a>
                     </div>
                 @endforeach
+            </div>
+            <div class="text-center mt-3 mt-lg-4">
+                <a href="{{ route('applications.index') }}" class="common-border-btn fts-14">View All Applications <img src="{{ asset('assets/frontend/images/arrow-primary.png') }}" alt="View All Applications"></a>
             </div>
         </div>
     </section>
