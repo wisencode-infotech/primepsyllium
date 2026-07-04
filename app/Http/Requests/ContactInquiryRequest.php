@@ -20,6 +20,8 @@ class ContactInquiryRequest extends FormRequest
             'email' => ['required', 'email', 'max:255'],
             'product_interest' => ['required', 'string', 'max:255'],
             'message' => ['required', 'string', 'max:5000'],
+            'source' => ['nullable', 'string', 'in:website_form,chatbot'],
+            'session_id' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

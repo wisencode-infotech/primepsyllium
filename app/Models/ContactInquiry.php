@@ -14,6 +14,7 @@ class ContactInquiry extends Model
         'product_interest',
         'message',
         'email_sent',
+        'source',
     ];
 
     protected $casts = [

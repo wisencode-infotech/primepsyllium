@@ -50,6 +50,17 @@ class Setting extends Model
         'email_background_color',
         'email_button_color',
         'email_button_text_color',
+        'chat_gateway_url',
+        'chat_gateway_secret',
+        'chat_gateway_timeout',
+    ];
+
+    protected $casts = [
+        'chat_gateway_secret' => 'encrypted',
+    ];
+
+    protected $hidden = [
+        'chat_gateway_secret',
     ];
 
     protected $appends = [

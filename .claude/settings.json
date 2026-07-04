@@ -115,12 +115,28 @@
       "Bash(which chromium-cli *)",
       "Read(//c//**)",
       "Bash(where chrome *)",
-      "Bash(node -e \"console.log\\(require.resolve\\('puppeteer'\\)\\)\")"
+      "Bash(node -e \"console.log\\(require.resolve\\('puppeteer'\\)\\)\")",
+      "Bash(python -c \"import reportlab; print\\('reportlab', reportlab.Version\\)\")",
+      "Bash(python -m pip show charset-normalizer)",
+      "Bash(python -m pip install --force-reinstall --no-cache-dir charset-normalizer)",
+      "Bash('/c/Program Files \\(x86\\)/Microsoft/Edge/Application/msedge.exe' --headless --disable-gpu --no-pdf-header-footer '--print-to-pdf=C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--xampp8-2-htdocs-primepsyllium\\\\37e5c52e-f1aa-4a44-9d82-fb3c496e9762\\\\scratchpad\\\\AI-Chatbot-Implementation-Structure.pdf' 'C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--xampp8-2-htdocs-primepsyllium\\\\37e5c52e-f1aa-4a44-9d82-fb3c496e9762\\\\scratchpad\\\\AI-Chatbot-Implementation-Structure.html')",
+      "Bash(cd \"c:/xampp8.2/htdocs/primepsyllium\" && ls resources/views/frontend/layouts && echo \"---\" && sed -n '1,200p' resources/views/frontend/layouts/*.blade.php 2>/dev/null | head -150)",
+      "Bash(php -r \"require 'vendor/autoload.php'; var_dump\\(class_exists\\('Str'\\)\\);\")",
+      "Bash(composer require *)",
+      "Bash(composer install *)",
+      "Bash(npx wrangler *)",
+      "Bash(php -r \"echo json_encode\\(json_decode\\(file_get_contents\\('php://stdin'\\)\\), JSON_PRETTY_PRINT\\);\")",
+      "Bash(curl -v https://primepsyllium-ai-gateway.hasanmoriya429.workers.dev/health)",
+      "Bash(curl -s -X POST https://primepsyllium-ai-gateway.hasanmoriya429.workers.dev/chat -H 'Content-Type: application/json' -H 'X-Gateway-Secret: __CMDSUB_OUTPUT__' -d '{\"session_id\":\"debug-test-2\",\"message\":\"Tell me about your Psyllium Husk Powder product\"}' -w '\\\\nHTTP %{http_code}\\\\n')",
+      "Bash(php -r ' *)",
+      "Bash(npx tsc *)",
+      "PowerShell(php artisan tinker --execute=\"print_r\\(Schema::getColumnListing\\('countries'\\)\\);\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\96250778-6246-4846-8ce0-14c5ca079d56\\scratchpad",
       "\\tmp",
-      "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\d1ab7bf6-d000-4292-93ce-bb9d8bddbbd4\\scratchpad"
+      "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\d1ab7bf6-d000-4292-93ce-bb9d8bddbbd4\\scratchpad",
+      "C:\\xampp8.2\\htdocs\\primepsyllium\\resources\\views\\frontend\\layouts"
     ]
   }
 }

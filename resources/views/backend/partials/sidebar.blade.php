@@ -42,6 +42,16 @@
                 ['route' => 'admin.countries.index', 'pattern' => 'admin.countries.*', 'icon' => 'globe', 'label' => 'Countries'],
                 ['route' => 'admin.inquiries.index', 'pattern' => 'admin.inquiries.*', 'icon' => 'mail', 'label' => 'Inquiries'],
                 [
+                    'label' => 'AI Chatbot',
+                    'icon' => 'chat',
+                    'patterns' => ['admin.knowledge-documents.*', 'admin.chat-logs.*', 'admin.ai-chatbot-settings.*'],
+                    'children' => [
+                        ['route' => 'admin.knowledge-documents.index', 'pattern' => 'admin.knowledge-documents.*', 'icon' => 'document', 'label' => 'Knowledge Base'],
+                        ['route' => 'admin.chat-logs.index', 'pattern' => 'admin.chat-logs.*', 'icon' => 'chat', 'label' => 'Chat Logs'],
+                        ['route' => 'admin.ai-chatbot-settings.edit', 'pattern' => 'admin.ai-chatbot-settings.*', 'icon' => 'settings', 'label' => 'Settings'],
+                    ],
+                ],
+                [
                     'label' => 'Emails',
                     'icon' => 'mail',
                     'patterns' => ['admin.email-branding.*', 'admin.email-templates.*', 'admin.email-recipients.*'],

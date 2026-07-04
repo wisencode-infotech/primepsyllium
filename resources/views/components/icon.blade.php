@@ -142,5 +142,9 @@
             <rect x="2.5" y="6" width="14" height="12" rx="2" />
             <path d="m16.5 10.5 5-3v9l-5-3Z" />
             @break
+
+        @case('chat')
+            <path d="M21 12a8 8 0 0 1-8 8H6l-3 2 .8-3.6A8 8 0 1 1 21 12Z" />
+            @break
     @endswitch
 </svg>

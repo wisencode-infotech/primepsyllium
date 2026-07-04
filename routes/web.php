@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccreditationController;
 use App\Http\Controllers\Admin\BlogPostController as AdminBlogPostController;
 use App\Http\Controllers\Admin\CertificationController;
+use App\Http\Controllers\Admin\ChatbotSettingController;
 use App\Http\Controllers\Admin\CompanyVideoController;
 use App\Http\Controllers\Admin\ContactInquiryController;
 use App\Http\Controllers\Admin\CountryController;
@@ -14,11 +15,14 @@ use App\Http\Controllers\Admin\EmailTemplateController;
 use App\Http\Controllers\Admin\GalleryItemController;
 use App\Http\Controllers\Admin\MediaCenterItemController;
 use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\ChatLogController;
+use App\Http\Controllers\Admin\KnowledgeDocumentController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ThemeSettingController;
 use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController as FrontendCountryController;
 use App\Http\Controllers\EventController;
@@ -67,6 +71,8 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
+Route::post('/api/chat', [ChatController::class, 'send'])->middleware('throttle:chat')->name('chat.send');
+
 Route::middleware(['auth', 'verified', 'role:super-admin'])
     ->prefix('admin')
     ->name('admin.')
@@ -107,6 +113,14 @@ Route::middleware(['auth', 'verified', 'role:super-admin'])
         Route::resource('email-recipients', EmailRecipientController::class)->except('show');
         Route::resource('inquiries', ContactInquiryController::class)->only(['index', 'show', 'destroy']);
         Route::post('inquiries/{inquiry}/reply', [ContactInquiryController::class, 'reply'])->name('inquiries.reply');
+
+        Route::resource('knowledge-documents', KnowledgeDocumentController::class)->only(['index', 'create', 'store', 'destroy']);
+
+        Route::delete('chat-logs/clear-all', [ChatLogController::class, 'clearAll'])->name('chat-logs.clear-all');
+        Route::resource('chat-logs', ChatLogController::class)->only(['index', 'show', 'destroy']);
+
+        Route::get('ai-chatbot-settings', [ChatbotSettingController::class, 'edit'])->name('ai-chatbot-settings.edit');
+        Route::put('ai-chatbot-settings', [ChatbotSettingController::class, 'update'])->name('ai-chatbot-settings.update');
 
         Route::resource('blog', AdminBlogPostController::class)->except('show');
         Route::post('blog/upload-image', [AdminBlogPostController::class, 'uploadImage'])->name('blog.upload-image');

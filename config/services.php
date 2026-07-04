@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'chat_gateway' => [
+        'url' => env('CHAT_GATEWAY_URL'),
+        'secret' => env('CHAT_GATEWAY_SECRET'),
+        'timeout' => env('CHAT_GATEWAY_TIMEOUT', 15),
+    ],
+
 ];

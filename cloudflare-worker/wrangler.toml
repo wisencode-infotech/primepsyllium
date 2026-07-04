@@ -1,0 +1,34 @@
+name = "primepsyllium-ai-gateway"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+[ai]
+binding = "AI"
+
+[[vectorize]]
+binding = "VECTORIZE_KB"
+index_name = "primepsyllium-kb"
+
+[[vectorize]]
+binding = "VECTORIZE_CACHE"
+index_name = "primepsyllium-chat-cache"
+
+[[kv_namespaces]]
+binding = "CACHE_KV"
+id = "7e3c7cb785524a14b687c71420f7e766"
+preview_id = "cf8415efc78f48cdab80e2468ec6f086"
+
+[vars]
+LLM_PROVIDER = "workers-ai"
+EMBEDDING_MODEL = "@cf/baai/bge-base-en-v1.5"
+EMBEDDING_DIMENSIONS = "768"
+CHAT_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+CACHE_TTL_SECONDS = "21600"
+SEMANTIC_CACHE_THRESHOLD = "0.94"
+RETRIEVAL_TOP_K = "5"
+RETRIEVAL_MIN_SCORE = "0.55"
+CHUNK_SIZE_TOKENS = "400"
+CHUNK_OVERLAP_TOKENS = "60"
+
+# GATEWAY_SHARED_SECRET must be set via `wrangler secret put GATEWAY_SHARED_SECRET`
+# GROQ_API_KEY / GEMINI_API_KEY (future providers) also via `wrangler secret put`, never stored here.
