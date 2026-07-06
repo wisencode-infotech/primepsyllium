@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GalleryItemRequest;
+use App\Models\GalleryCategory;
 use App\Models\GalleryItem;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -15,14 +16,16 @@ class GalleryItemController extends Controller
 {
     public function index(): View
     {
-        $galleryItems = GalleryItem::query()->ordered()->get();
+        $galleryItems = GalleryItem::query()->with('category')->ordered()->get();
 
         return view('backend.gallery.index', compact('galleryItems'));
     }
 
     public function create(): View
     {
-        return view('backend.gallery.create');
+        $galleryCategories = GalleryCategory::query()->orderBy('name')->get();
+
+        return view('backend.gallery.create', compact('galleryCategories'));
     }
 
     public function store(GalleryItemRequest $request): RedirectResponse
@@ -57,7 +60,9 @@ class GalleryItemController extends Controller
 
     public function edit(GalleryItem $gallery): View
     {
-        return view('backend.gallery.edit', ['galleryItem' => $gallery]);
+        $galleryCategories = GalleryCategory::query()->orderBy('name')->get();
+
+        return view('backend.gallery.edit', ['galleryItem' => $gallery, 'galleryCategories' => $galleryCategories]);
     }
 
     public function update(GalleryItemRequest $request, GalleryItem $gallery): RedirectResponse

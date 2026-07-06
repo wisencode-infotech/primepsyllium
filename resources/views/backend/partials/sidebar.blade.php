@@ -37,7 +37,15 @@
                 ['route' => 'admin.products.index', 'pattern' => 'admin.products.*', 'icon' => 'box', 'label' => 'Products'],
                 ['route' => 'admin.certifications.index', 'pattern' => 'admin.certifications.*', 'icon' => 'badge', 'label' => 'Certifications'],
                 ['route' => 'admin.media-center-items.index', 'pattern' => 'admin.media-center-items.*', 'icon' => 'newspaper', 'label' => 'Media Center'],
-                ['route' => 'admin.gallery.index', 'pattern' => 'admin.gallery.*', 'icon' => 'image', 'label' => 'Gallery'],
+                [
+                    'label' => 'Gallery',
+                    'icon' => 'image',
+                    'patterns' => ['admin.gallery.*', 'admin.gallery-categories.*'],
+                    'children' => [
+                        ['route' => 'admin.gallery.index', 'pattern' => 'admin.gallery.*', 'icon' => 'image', 'label' => 'Gallery Items'],
+                        ['route' => 'admin.gallery-categories.index', 'pattern' => 'admin.gallery-categories.*', 'icon' => 'badge', 'label' => 'Categories'],
+                    ],
+                ],
                 ['route' => 'admin.blog.index', 'pattern' => 'admin.blog.*', 'icon' => 'document', 'label' => 'Blog'],
                 ['route' => 'admin.countries.index', 'pattern' => 'admin.countries.*', 'icon' => 'globe', 'label' => 'Countries'],
                 ['route' => 'admin.inquiries.index', 'pattern' => 'admin.inquiries.*', 'icon' => 'mail', 'label' => 'Inquiries'],

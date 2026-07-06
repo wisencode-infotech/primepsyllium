@@ -30,6 +30,7 @@
                             <th class="px-4 sm:px-8 py-3 w-10"></th>
                             <th class="px-2 py-3 w-20">Preview</th>
                             <th class="px-2 py-3">Title</th>
+                            <th class="px-2 py-3 w-40">Category</th>
                             <th class="px-2 py-3 w-24">Type</th>
                             <th class="px-2 py-3 w-28">Status</th>
                             <th class="px-2 py-3 w-40 text-right sm:pr-8">Actions</th>
@@ -46,6 +47,9 @@
                                     @endif
                                 </td>
                                 <td class="px-2 py-3 text-sm text-text">{{ $item->title ?: '—' }}</td>
+                                <td class="px-2 py-3">
+                                    <span class="pill pill-muted">{{ $item->category->name ?? '—' }}</span>
+                                </td>
                                 <td class="px-2 py-3">
                                     @if ($item->type === 'video')
                                         <span class="pill pill-muted inline-flex items-center gap-1"><x-icon name="video" class="h-3.5 w-3.5" /> Video</span>
@@ -73,7 +77,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="px-4 sm:px-8 py-6 text-sm text-text-muted text-center">
+                                <td colspan="7" class="px-4 sm:px-8 py-6 text-sm text-text-muted text-center">
                                     No gallery items yet. Click "Add Item" to create your first one.
                                 </td>
                             </tr>

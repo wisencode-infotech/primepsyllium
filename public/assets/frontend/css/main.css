@@ -751,14 +751,18 @@
   display: block;
   border-radius: 20px;
   overflow: hidden;
+}
+.company-video-trigger{
+  display: block;
   cursor: pointer;
 }
 .company-video-poster{
+  width: 100%;
   height: 460px;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
-.company-video-cover:hover .company-video-poster{
+.company-video-cover:hover .company-video-trigger .company-video-poster{
   transform: scale(1.03);
 }
 .company-video-cover::after{
@@ -766,6 +770,14 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
+.company-video-cover.is-playing::after{
+  content: none;
+}
+.company-video-cover.is-playing .company-video-play-btn,
+.company-video-cover.is-playing .company-video-caption{
+  display: none;
 }
 .company-video-play-btn{
   position: absolute;
@@ -803,25 +815,6 @@
   z-index: 2;
   color: var(--white-color);
   text-align: left;
-}
-.company-video-modal .modal-content{
-  background: var(--black-color);
-  border-radius: 16px;
-  overflow: hidden;
-  border: none;
-}
-.company-video-modal .modal-body video{
-  max-height: 80vh;
-  display: block;
-  background: var(--black-color);
-}
-.company-video-modal-close{
-  position: absolute;
-  top: -40px;
-  right: 0;
-  filter: brightness(0) invert(1);
-  opacity: 1;
-  z-index: 3;
 }
 @media (max-width: 767px){
   .company-video-poster{

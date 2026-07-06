@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\EmailBrandSettingController;
 use App\Http\Controllers\Admin\EmailRecipientController;
 use App\Http\Controllers\Admin\EmailTemplateController;
+use App\Http\Controllers\Admin\GalleryCategoryController;
 use App\Http\Controllers\Admin\GalleryItemController;
 use App\Http\Controllers\Admin\MediaCenterItemController;
 use App\Http\Controllers\Admin\NotificationController;
@@ -55,6 +56,7 @@ Route::get('/accreditation', AccreditationController::class)->name('accreditatio
 Route::get('/applications', ApplicationsController::class)->name('applications.index');
 
 Route::get('/gallery', GalleryController::class)->name('gallery.index');
+Route::get('/gallery/items', [GalleryController::class, 'items'])->name('gallery.items');
 
 Route::get('/psyllium', [ProductController::class, 'index'])->name('products.index');
 
@@ -105,6 +107,7 @@ Route::middleware(['auth', 'verified', 'role:super-admin'])
 
         Route::post('gallery/reorder', [GalleryItemController::class, 'reorder'])->name('gallery.reorder');
         Route::resource('gallery', GalleryItemController::class)->except('show');
+        Route::resource('gallery-categories', GalleryCategoryController::class)->except('show');
 
         Route::post('countries/reorder', [CountryController::class, 'reorder'])->name('countries.reorder');
         Route::resource('countries', CountryController::class)->except('show');

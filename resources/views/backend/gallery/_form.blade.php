@@ -11,6 +11,19 @@
     </div>
 
     <div class="mt-4">
+        <div class="flex items-center justify-between">
+            <x-input-label for="gallery_category_id" value="Category" />
+            <a href="{{ route('admin.gallery-categories.index') }}" class="text-xs text-primary hover:underline">+ Manage Categories</a>
+        </div>
+        <select id="gallery_category_id" name="gallery_category_id" class="mt-1 block w-full border-border focus:border-primary focus:ring-focus rounded-md shadow-sm bg-surface-elevated text-text">
+            @foreach ($galleryCategories as $galleryCategoryOption)
+                <option value="{{ $galleryCategoryOption->id }}" {{ (int) old('gallery_category_id', $galleryItem->gallery_category_id ?? '') === $galleryCategoryOption->id ? 'selected' : '' }}>{{ $galleryCategoryOption->name }}</option>
+            @endforeach
+        </select>
+        <x-input-error class="mt-2" :messages="$errors->get('gallery_category_id')" />
+    </div>
+
+    <div class="mt-4">
         <x-input-label value="Type" />
         <div class="mt-1 flex gap-3">
             <label class="flex items-center gap-2 rounded-lg border border-border px-4 py-2 cursor-pointer" :class="type === 'image' ? 'border-primary bg-primary-soft' : ''">

@@ -1,4 +1,4 @@
-@props(['name', 'label' => 'Image', 'value' => null, 'hint' => 'PNG, JPG or WEBP, up to 2MB'])
+@props(['name', 'label' => 'Image', 'value' => null, 'hint' => 'PNG, JPG or WEBP'])
 
 <div x-data="{ preview: @js($value), fileName: null, original: @js($value), dragging: false }">
     <x-input-label :for="$name" :value="$label" />

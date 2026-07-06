@@ -130,7 +130,22 @@
       "Bash(curl -s -X POST https://primepsyllium-ai-gateway.hasanmoriya429.workers.dev/chat -H 'Content-Type: application/json' -H 'X-Gateway-Secret: __CMDSUB_OUTPUT__' -d '{\"session_id\":\"debug-test-2\",\"message\":\"Tell me about your Psyllium Husk Powder product\"}' -w '\\\\nHTTP %{http_code}\\\\n')",
       "Bash(php -r ' *)",
       "Bash(npx tsc *)",
-      "PowerShell(php artisan tinker --execute=\"print_r\\(Schema::getColumnListing\\('countries'\\)\\);\")"
+      "PowerShell(php artisan tinker --execute=\"print_r\\(Schema::getColumnListing\\('countries'\\)\\);\")",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost/primepsyllium/public/gallery\" -UseBasicParsing; $r.Content | Select-String -Pattern \"gallery-filter-tab|Exception|error\" -SimpleMatch | Select-Object -First 20)",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost/primepsyllium/public/gallery\" -UseBasicParsing; $r.Content | Select-String -Pattern \"gallery-filter-tab\" -SimpleMatch)",
+      "PowerShell(php artisan make:migration add_gallery_category_id_to_gallery_items_table --table=gallery_items)",
+      "PowerShell(php artisan migrate --path=database/migrations/2026_07_06_081939_create_gallery_categories_table.php --path=database/migrations/2026_07_06_082003_add_gallery_category_id_to_gallery_items_table.php)",
+      "PowerShell(php artisan route:list --name=gallery)",
+      "PowerShell(php artisan tinker \"C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--xampp8-2-htdocs-primepsyllium\\\\0ded5730-15c6-408e-a733-998dff3cc207\\\\scratchpad\\\\check_gallery2.php\")",
+      "PowerShell(php artisan tinker \"C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--xampp8-2-htdocs-primepsyllium\\\\0ded5730-15c6-408e-a733-998dff3cc207\\\\scratchpad\\\\check_gallery3.php\")",
+      "PowerShell(php artisan tinker \"C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--xampp8-2-htdocs-primepsyllium\\\\0ded5730-15c6-408e-a733-998dff3cc207\\\\scratchpad\\\\check_delete_protection.php\")",
+      "Bash(php -l \"/c/xampp8.2/htdocs/primepsyllium/app/Http/Controllers/GalleryController.php\")",
+      "PowerShell(php artisan tinker \"C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--xampp8-2-htdocs-primepsyllium\\\\0ded5730-15c6-408e-a733-998dff3cc207\\\\scratchpad\\\\check_counts.php\")",
+      "PowerShell(php artisan tinker \"C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--xampp8-2-htdocs-primepsyllium\\\\0ded5730-15c6-408e-a733-998dff3cc207\\\\scratchpad\\\\check_cats.php\")",
+      "Bash(rm -f \"C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--xampp8-2-htdocs-primepsyllium\\\\0ded5730-15c6-408e-a733-998dff3cc207\\\\scratchpad\\\\check_counts.php\" \\\\ *)",
+      "Bash(curl -s \"http://localhost/primepsyllium/public/gallery\" -o /tmp/gallery_live.html -w \"status:%{http_code}\\\\n\")",
+      "Bash(python3 -c \"import playwright\")",
+      "Bash(node test_gallery_click.js)"
     ],
     "additionalDirectories": [
       "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\96250778-6246-4846-8ce0-14c5ca079d56\\scratchpad",

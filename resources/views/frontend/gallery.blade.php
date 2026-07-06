@@ -23,46 +23,52 @@
         </div>
     </section>
 
+    {{-- category filters --}}
+    @if ($categories->isNotEmpty())
+        <section class="gallery-filter-section py-2 py-lg-3">
+            <div class="container-fluid px-lg-5">
+                <div class="gallery-filter-tabs d-flex align-items-center flex-wrap gap-2 wow fadeIn">
+                    <a href="{{ route('gallery.index') }}" data-category-id="" class="gallery-filter-tab {{ !$activeCategory ? 'active' : '' }}">
+                        All
+                    </a>
+                    @foreach ($categories as $cat)
+                        <a href="{{ route('gallery.index', ['category' => $cat->id]) }}" data-category-id="{{ $cat->id }}" class="gallery-filter-tab {{ $activeCategory?->id === $cat->id ? 'active' : '' }}">
+                            {{ $cat->name }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+
     {{-- gallery grid --}}
     <section class="gallery-section py-4 py-lg-5">
         <div class="container-fluid px-lg-5 py-lg-2">
-            @if ($galleryItems->isEmpty())
-                <div class="text-center py-5 wow fadeIn">
-                    <p class="fts-15 fw-4 subtitle-text-L mb-0">Our gallery is being updated. Please check back soon.</p>
-                </div>
-            @else
-                <div class="gallery-bento">
-                    @foreach ($galleryItems as $item)
-                        @php
-                            $thumb = $item->type === 'video' ? $item->video_thumbnail_url : $item->image_url;
-                            $src = $item->type === 'video' ? $item->video_url : $item->image_url;
-                        @endphp
-                        <button
-                            type="button"
-                            class="gallery-item wow zoomIn"
-                            data-type="{{ $item->type }}"
-                            data-src="{{ $src }}"
-                            data-thumb="{{ $thumb }}"
-                            data-title="{{ $item->title }}"
-                        >
-                            <img src="{{ $thumb }}" alt="{{ $item->title ?: 'Prime Psyllium gallery' }}" loading="lazy" decoding="async">
+            <div id="galleryEmptyState" class="text-center py-5 wow fadeIn" style="{{ $galleryItems->isEmpty() ? '' : 'display: none;' }}">
+                <p class="fts-15 fw-4 subtitle-text-L mb-0" id="galleryEmptyStateText">
+                    @if ($activeCategory)
+                        No items in <strong>{{ $activeCategory->name }}</strong> yet. <a href="{{ route('gallery.index') }}" class="primary-color-L text-decoration-underline">View all photos</a>
+                    @else
+                        Our gallery is being updated. Please check back soon.
+                    @endif
+                </p>
+            </div>
 
-                            @if ($item->type === 'video')
-                                <span class="gallery-item-tag"><iconify-icon icon="ph:play-fill"></iconify-icon>Video</span>
-                            @endif
+            <div id="galleryGrid" class="gallery-bento" style="{{ $galleryItems->isEmpty() ? 'display: none;' : '' }}">
+                @include('frontend.gallery._items')
+            </div>
 
-                            <span class="gallery-item-overlay">
-                                <span class="gallery-item-icon @if($item->type === 'video') gallery-item-play @endif">
-                                    <iconify-icon icon="{{ $item->type === 'video' ? 'ph:play-fill' : 'ph:arrows-out-simple-bold' }}"></iconify-icon>
-                                </span>
-                                @if ($item->title)
-                                    <span class="gallery-item-title fts-14 fw-5">{{ $item->title }}</span>
-                                @endif
-                            </span>
-                        </button>
-                    @endforeach
-                </div>
-            @endif
+            <div class="text-center mt-4 mt-lg-5">
+                <button
+                    type="button"
+                    id="galleryLoadMore"
+                    class="gallery-load-more-btn fts-14 fw-5"
+                    data-next-page="{{ $galleryItems->currentPage() + 1 }}"
+                    style="{{ $galleryItems->hasMorePages() ? '' : 'display: none;' }}"
+                >
+                    Load More
+                </button>
+            </div>
         </div>
     </section>
 
@@ -91,17 +97,31 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var items = Array.from(document.querySelectorAll('.gallery-item'));
+            var galleryItemsUrl = '{{ route('gallery.items') }}';
+            var galleryIndexUrl = '{{ route('gallery.index') }}';
+
+            var grid = document.getElementById('galleryGrid');
+            var emptyState = document.getElementById('galleryEmptyState');
+            var emptyStateText = document.getElementById('galleryEmptyStateText');
+            var loadMoreBtn = document.getElementById('galleryLoadMore');
+            var filterTabs = Array.from(document.querySelectorAll('.gallery-filter-tab'));
 
             var modalEl = document.getElementById('galleryLightboxModal');
             var imageEl = document.getElementById('galleryLightboxImage');
             var videoEl = document.getElementById('galleryLightboxVideo');
             var titleEl = document.getElementById('galleryLightboxTitle');
             var countEl = document.getElementById('galleryLightboxCount');
-            if (!modalEl) return;
+            if (!modalEl || !grid) return;
             var modal = new bootstrap.Modal(modalEl);
 
+            var items = [];
             var currentIndex = 0;
+            var activeCategoryId = '{{ $activeCategory?->id ?? '' }}';
+
+            function refreshItems() {
+                items = Array.from(grid.querySelectorAll('.gallery-item'));
+            }
+            refreshItems();
 
             function showItem(index) {
                 if (!items.length) return;
@@ -128,11 +148,14 @@
                 countEl.textContent = (currentIndex + 1) + ' / ' + items.length;
             }
 
-            items.forEach(function (item, index) {
-                item.addEventListener('click', function () {
-                    showItem(index);
-                    modal.show();
-                });
+            // event delegation so items added via AJAX (filter/load more) open the lightbox too
+            grid.addEventListener('click', function (event) {
+                var target = event.target.closest('.gallery-item');
+                if (!target) return;
+                var index = items.indexOf(target);
+                if (index === -1) return;
+                showItem(index);
+                modal.show();
             });
 
             modalEl.querySelector('.gallery-lightbox-prev').addEventListener('click', function () {
@@ -169,6 +192,90 @@
                 if (Math.abs(deltaX) < 40) return;
                 showItem(currentIndex + (deltaX < 0 ? 1 : -1));
             }, { passive: true });
+
+            // --- AJAX category filter + load more ---
+
+            function setActiveTab(categoryId) {
+                filterTabs.forEach(function (tab) {
+                    tab.classList.toggle('active', tab.dataset.categoryId === String(categoryId || ''));
+                });
+            }
+
+            function categoryLabel(categoryId) {
+                var tab = filterTabs.find(function (t) { return t.dataset.categoryId === String(categoryId || ''); });
+                return tab ? tab.textContent.trim() : '';
+            }
+
+            function fetchItems(categoryId, page, append) {
+                var url = new URL(galleryItemsUrl, window.location.origin);
+                if (categoryId) url.searchParams.set('category', categoryId);
+                url.searchParams.set('page', page);
+
+                grid.classList.add('is-loading');
+                if (loadMoreBtn) loadMoreBtn.disabled = true;
+
+                return fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' } })
+                    .then(function (response) { return response.json(); })
+                    .then(function (data) {
+                        if (append) {
+                            grid.insertAdjacentHTML('beforeend', data.html);
+                        } else {
+                            grid.innerHTML = data.html;
+                        }
+                        refreshItems();
+
+                        var hasAnyItems = append ? items.length > 0 : data.total > 0;
+                        grid.style.display = hasAnyItems ? '' : 'none';
+                        emptyState.style.display = hasAnyItems ? 'none' : '';
+                        if (!hasAnyItems) {
+                            var label = categoryLabel(categoryId);
+                            emptyStateText.innerHTML = label
+                                ? 'No items in <strong>' + label + '</strong> yet. <a href="' + galleryIndexUrl + '" class="primary-color-L text-decoration-underline">View all photos</a>'
+                                : 'Our gallery is being updated. Please check back soon.';
+                        }
+
+                        if (loadMoreBtn) {
+                            loadMoreBtn.style.display = data.has_more ? '' : 'none';
+                            loadMoreBtn.dataset.nextPage = data.next_page;
+                            loadMoreBtn.dataset.category = categoryId || '';
+                            loadMoreBtn.disabled = false;
+                        }
+                        grid.classList.remove('is-loading');
+                    })
+                    .catch(function () {
+                        grid.classList.remove('is-loading');
+                        if (loadMoreBtn) loadMoreBtn.disabled = false;
+                    });
+            }
+
+            filterTabs.forEach(function (tab) {
+                tab.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    var categoryId = tab.dataset.categoryId;
+                    if (categoryId === activeCategoryId) return;
+
+                    activeCategoryId = categoryId;
+                    setActiveTab(categoryId);
+                    fetchItems(categoryId, 1, false);
+
+                    var newUrl = categoryId ? (galleryIndexUrl + '?category=' + categoryId) : galleryIndexUrl;
+                    window.history.pushState({ category: categoryId }, '', newUrl);
+                });
+            });
+
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function () {
+                    var nextPage = loadMoreBtn.dataset.nextPage || 2;
+                    fetchItems(loadMoreBtn.dataset.category || activeCategoryId, nextPage, true);
+                });
+            }
+
+            window.addEventListener('popstate', function (event) {
+                var categoryId = (event.state && event.state.category) || '';
+                activeCategoryId = categoryId;
+                setActiveTab(categoryId);
+                fetchItems(categoryId, 1, false);
+            });
         });
     </script>
 </x-frontend-layout>

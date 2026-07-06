@@ -19,6 +19,7 @@ class GalleryItemRequest extends FormRequest
 
         return [
             'title' => ['nullable', 'string', 'max:255'],
+            'gallery_category_id' => ['required', 'exists:gallery_categories,id'],
             'type' => ['required', 'in:image,video'],
             'image' => [$isCreating && ! $isVideo ? 'required' : 'nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'video' => [$isCreating && $isVideo ? 'required' : 'nullable', 'mimes:mp4,mov,webm,ogg'],
