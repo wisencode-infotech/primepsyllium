@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
 
 class Setting extends Model
@@ -53,10 +54,12 @@ class Setting extends Model
         'chat_gateway_url',
         'chat_gateway_secret',
         'chat_gateway_timeout',
+        'default_gallery_category_id',
     ];
 
     protected $casts = [
         'chat_gateway_secret' => 'encrypted',
+        'default_gallery_category_id' => 'integer',
     ];
 
     protected $hidden = [
@@ -75,6 +78,11 @@ class Setting extends Model
     public static function current(): self
     {
         return static::query()->first() ?? new static();
+    }
+
+    public function defaultGalleryCategory(): BelongsTo
+    {
+        return $this->belongsTo(GalleryCategory::class, 'default_gallery_category_id');
     }
 
     public function getLogoUrlAttribute(): ?string

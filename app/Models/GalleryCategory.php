@@ -9,7 +9,17 @@ class GalleryCategory extends Model
 {
     protected $fillable = [
         'name',
+        'sort_order',
     ];
+
+    protected $casts = [
+        'sort_order' => 'integer',
+    ];
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('sort_order');
+    }
 
     public function galleryItems(): HasMany
     {

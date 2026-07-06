@@ -47,6 +47,16 @@ Route::get('/run-storage-link', function () {
     return '<pre>storage:link done. Public storage symlink created successfully.</pre>';
 });
 
+// Run via: /run-migrate?token=prime2024secure
+Route::get('/run-migrate', function () {
+    $secret = 'prime2024secure';
+    if (request('token') !== $secret) {
+        abort(403, 'Unauthorized');
+    }
+    Artisan::call('migrate', ['--force' => true]);
+    return '<pre>'.e(Artisan::output()).'</pre>';
+});
+
 Route::get('/', HomeController::class)->name('home');
 
 Route::get('/about-us', AboutController::class)->name('about.index');
@@ -107,6 +117,10 @@ Route::middleware(['auth', 'verified', 'role:super-admin'])
 
         Route::post('gallery/reorder', [GalleryItemController::class, 'reorder'])->name('gallery.reorder');
         Route::resource('gallery', GalleryItemController::class)->except('show');
+
+        Route::post('gallery-categories/reorder', [GalleryCategoryController::class, 'reorder'])->name('gallery-categories.reorder');
+        Route::delete('gallery-categories/default', [GalleryCategoryController::class, 'clearDefault'])->name('gallery-categories.clear-default');
+        Route::post('gallery-categories/{gallery_category}/default', [GalleryCategoryController::class, 'setDefault'])->name('gallery-categories.set-default');
         Route::resource('gallery-categories', GalleryCategoryController::class)->except('show');
 
         Route::post('countries/reorder', [CountryController::class, 'reorder'])->name('countries.reorder');

@@ -28,7 +28,7 @@
         <section class="gallery-filter-section py-2 py-lg-3">
             <div class="container-fluid px-lg-5">
                 <div class="gallery-filter-tabs d-flex align-items-center flex-wrap gap-2 wow fadeIn">
-                    <a href="{{ route('gallery.index') }}" data-category-id="" class="gallery-filter-tab {{ !$activeCategory ? 'active' : '' }}">
+                    <a href="{{ route('gallery.index', ['category' => 'all']) }}" data-category-id="" class="gallery-filter-tab {{ !$activeCategory ? 'active' : '' }}">
                         All
                     </a>
                     @foreach ($categories as $cat)
@@ -47,7 +47,7 @@
             <div id="galleryEmptyState" class="text-center py-5 wow fadeIn" style="{{ $galleryItems->isEmpty() ? '' : 'display: none;' }}">
                 <p class="fts-15 fw-4 subtitle-text-L mb-0" id="galleryEmptyStateText">
                     @if ($activeCategory)
-                        No items in <strong>{{ $activeCategory->name }}</strong> yet. <a href="{{ route('gallery.index') }}" class="primary-color-L text-decoration-underline">View all photos</a>
+                        No items in <strong>{{ $activeCategory->name }}</strong> yet. <a href="{{ route('gallery.index', ['category' => 'all']) }}" class="primary-color-L text-decoration-underline">View all photos</a>
                     @else
                         Our gallery is being updated. Please check back soon.
                     @endif
@@ -208,7 +208,7 @@
 
             function fetchItems(categoryId, page, append) {
                 var url = new URL(galleryItemsUrl, window.location.origin);
-                if (categoryId) url.searchParams.set('category', categoryId);
+                url.searchParams.set('category', categoryId || 'all');
                 url.searchParams.set('page', page);
 
                 grid.classList.add('is-loading');
@@ -230,7 +230,7 @@
                         if (!hasAnyItems) {
                             var label = categoryLabel(categoryId);
                             emptyStateText.innerHTML = label
-                                ? 'No items in <strong>' + label + '</strong> yet. <a href="' + galleryIndexUrl + '" class="primary-color-L text-decoration-underline">View all photos</a>'
+                                ? 'No items in <strong>' + label + '</strong> yet. <a href="' + galleryIndexUrl + '?category=all" class="primary-color-L text-decoration-underline">View all photos</a>'
                                 : 'Our gallery is being updated. Please check back soon.';
                         }
 
@@ -258,7 +258,7 @@
                     setActiveTab(categoryId);
                     fetchItems(categoryId, 1, false);
 
-                    var newUrl = categoryId ? (galleryIndexUrl + '?category=' + categoryId) : galleryIndexUrl;
+                    var newUrl = galleryIndexUrl + '?category=' + (categoryId || 'all');
                     window.history.pushState({ category: categoryId }, '', newUrl);
                 });
             });
