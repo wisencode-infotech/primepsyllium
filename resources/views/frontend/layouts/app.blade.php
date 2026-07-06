@@ -85,7 +85,7 @@
                         <div class="prime-nav-body px-3">
                             <ul class="desktop-navbar-list mt-2">
                                 <li><a href="{{ route('products.index') }}" class="desktop-nav-items mx-0 my-1">Products</a></li>
-                                <li><a href="#quality" class="desktop-nav-items mx-0 my-1">Ingredients</a></li>
+                                <li><a href="{{ route('ingredients.index') }}" class="desktop-nav-items mx-0 my-1">Ingredients</a></li>
                                 <li><a href="{{ route('accreditation.index') }}" class="desktop-nav-items mx-0 my-1">Accreditation</a></li>
                                 <li><a href="{{ route('applications.index') }}" class="desktop-nav-items mx-0 my-1">Applications</a></li>
                                 <li><a href="{{ route('about.index') }}" class="desktop-nav-items mx-0 my-1">About Us</a></li>

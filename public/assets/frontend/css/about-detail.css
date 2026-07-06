@@ -57,11 +57,20 @@
   border-radius: 20px;
   padding: 32px 28px;
   height: 100%;
+  overflow: hidden;
   transition: all 0.3s;
 }
 .mission-vision-card:hover{
   box-shadow: 1px 3px 35px 5px #00000014;
   transform: translateY(-4px);
+}
+.mission-vision-card .cert-logo{
+  height: 80px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  margin: 0 auto 16px;
+  display: block;
 }
 .mission-vision-card iconify-icon{
   height: 52px;
@@ -141,5 +150,12 @@
   }
   .timeline-item::before{
     left: -34px;
+  }
+  .mission-vision-card{
+    padding: 20px 14px;
+  }
+  .mission-vision-card .cert-logo{
+    height: 56px;
+    margin-bottom: 10px;
   }
 }

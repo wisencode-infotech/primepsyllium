@@ -83,7 +83,7 @@
                     @foreach ($certifications as $certification)
                         <div class="col-lg-2 col-md-4 col-6 mt-3">
                             <div class="mission-vision-card text-center wow fadeInUp">
-                                <img src="{{ $certification->image_url }}" alt="{{ $certification->name }}" style="height: 80px; max-width: 140px; object-fit: contain; margin: 0 auto 16px; display: block;" loading="lazy" decoding="async">
+                                <img src="{{ $certification->image_url }}" alt="{{ $certification->name }}" class="cert-logo" loading="lazy" decoding="async">
                                 @if ($certification->name)
                                     <p class="fts-13 fw-5 subtitle-text-L mb-0">{{ $certification->name }}</p>
                                 @endif
