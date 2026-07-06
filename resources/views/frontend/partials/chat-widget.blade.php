@@ -31,7 +31,14 @@
             <input type="hidden" name="source" value="chatbot">
             <input type="hidden" name="session_id" id="ppsy-chat-escalation-session">
             <input type="hidden" name="product_interest" value="General Enquiry (via Chatbot)">
-            <p class="ppsy-chat-escalation-hint">Let our team follow up with you directly:</p>
+            <div class="ppsy-chat-escalation-header">
+                <p class="ppsy-chat-escalation-hint">Let our team follow up with you directly:</p>
+                <button type="button" id="ppsy-chat-escalation-close" class="ppsy-chat-escalation-close" aria-label="Close form">
+                    <iconify-icon icon="tabler:x"></iconify-icon>
+                </button>
+            </div>
+
+            <p id="ppsy-chat-escalation-error" class="ppsy-chat-escalation-error" hidden></p>
 
             <label class="ppsy-chat-field-label" for="ppsy-chat-escalation-name">Your name</label>
             <input type="text" name="name" id="ppsy-chat-escalation-name" placeholder="John Doe" required class="ppsy-chat-input-field">

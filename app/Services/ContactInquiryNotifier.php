@@ -51,7 +51,7 @@ class ContactInquiryNotifier
         try {
             Mail::to(array_shift($recipients))
                 ->bcc($recipients)
-                ->send(new ContactInquiryNotification($inquiry, $rendered['subject'], $rendered['body']));
+                ->queue(new ContactInquiryNotification($inquiry, $rendered['subject'], $rendered['body']));
 
             return true;
         } catch (\Throwable $e) {

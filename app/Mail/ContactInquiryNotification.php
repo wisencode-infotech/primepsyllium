@@ -4,12 +4,14 @@ namespace App\Mail;
 
 use App\Models\ContactInquiry;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Throwable;
 
-class ContactInquiryNotification extends Mailable
+class ContactInquiryNotification extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -35,5 +37,10 @@ class ContactInquiryNotification extends Mailable
                 'inquiry' => $this->inquiry,
             ],
         );
+    }
+
+    public function failed(Throwable $exception): void
+    {
+        $this->inquiry->update(['email_sent' => false]);
     }
 }

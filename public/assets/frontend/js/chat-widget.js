@@ -32,6 +32,8 @@
         var escalationForm = document.getElementById('ppsy-chat-escalation');
         var escalationSessionField = document.getElementById('ppsy-chat-escalation-session');
         var escalationMessageField = document.getElementById('ppsy-chat-escalation-message');
+        var escalationCloseBtn = document.getElementById('ppsy-chat-escalation-close');
+        var escalationErrorEl = document.getElementById('ppsy-chat-escalation-error');
         var sessionId = getSessionId();
         var sending = false;
 
@@ -151,6 +153,28 @@
             form.hidden = true;
         }
 
+        function hideEscalationError() {
+            if (escalationErrorEl) {
+                escalationErrorEl.hidden = true;
+                escalationErrorEl.textContent = '';
+            }
+        }
+
+        function showEscalationError(message) {
+            if (escalationErrorEl) {
+                escalationErrorEl.textContent = message;
+                escalationErrorEl.hidden = false;
+            }
+        }
+
+        function hideEscalationForm() {
+            escalationForm.hidden = true;
+            form.hidden = false;
+            escalationForm.reset();
+            escalationSessionField.value = sessionId;
+            hideEscalationError();
+        }
+
         function sendMessage(message) {
             if (sending || !message) {
                 return;
@@ -219,10 +243,48 @@
             }
         });
 
-        escalationForm.addEventListener('submit', function () {
+        escalationCloseBtn.addEventListener('click', hideEscalationForm);
+
+        escalationForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
             var button = escalationForm.querySelector('.ppsy-chat-send');
+            var buttonLabel = button.querySelector('span');
+
+            hideEscalationError();
             button.disabled = true;
-            button.querySelector('span').textContent = 'Sending…';
+            buttonLabel.textContent = 'Sending…';
+
+            fetch(escalationForm.action, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'X-CSRF-TOKEN': config.csrfToken,
+                },
+                body: new FormData(escalationForm),
+            })
+                .then(function (response) {
+                    return response.json().then(function (data) {
+                        return { ok: response.ok, data: data };
+                    });
+                })
+                .then(function (result) {
+                    if (result.ok) {
+                        hideEscalationForm();
+                        appendMessage('assistant', result.data.message || 'Thank you for reaching out. Our team will get back to you shortly.');
+                    } else {
+                        var errors = result.data.errors;
+                        var message = (errors && Object.values(errors)[0][0]) || result.data.message || 'Something went wrong. Please try again.';
+                        showEscalationError(message);
+                    }
+                })
+                .catch(function () {
+                    showEscalationError("I'm having trouble connecting right now — please try again shortly.");
+                })
+                .finally(function () {
+                    button.disabled = false;
+                    buttonLabel.textContent = 'Send to our team';
+                });
         });
     });
 })();

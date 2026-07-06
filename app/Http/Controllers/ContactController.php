@@ -8,6 +8,7 @@ use App\Models\ContactInquiry;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Services\ContactInquiryNotifier;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -21,7 +22,7 @@ class ContactController extends Controller
         ]);
     }
 
-    public function store(ContactInquiryRequest $request, ContactInquiryNotifier $notifier): RedirectResponse
+    public function store(ContactInquiryRequest $request, ContactInquiryNotifier $notifier): RedirectResponse|JsonResponse
     {
         $inquiry = ContactInquiry::query()->create($request->validated());
 
@@ -35,7 +36,13 @@ class ContactController extends Controller
                 ]);
         }
 
+        $message = 'Thank you for reaching out. Our team will get back to you shortly.';
+
+        if ($request->wantsJson()) {
+            return response()->json(['message' => $message]);
+        }
+
         return redirect()->to(url()->previous(url('/')).'#get-in-touch')
-            ->with('contact_status', 'Thank you for reaching out. Our team will get back to you shortly.');
+            ->with('contact_status', $message);
     }
 }

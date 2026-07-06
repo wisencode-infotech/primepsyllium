@@ -27,9 +27,7 @@
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}?v={{ filemtime(public_path('assets/frontend/css/main.css')) }}">
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/responsive.css') }}">
-        @if (request()->routeIs('home'))
-            <link rel="stylesheet" href="{{ asset('assets/frontend/css/chat-widget.css') }}?v={{ filemtime(public_path('assets/frontend/css/chat-widget.css')) }}">
-        @endif
+        <link rel="stylesheet" href="{{ asset('assets/frontend/css/chat-widget.css') }}?v={{ filemtime(public_path('assets/frontend/css/chat-widget.css')) }}">
         @stack('styles')
 
         {{-- Admin-configurable brand theme colors override the defaults baked into common.css --}}
@@ -184,9 +182,7 @@
             <img src="{{ asset('assets/frontend/images/Footer-bg.webp') }}" alt="footer background" class="w-100" loading="lazy" decoding="async">
         </footer>
 
-        @if (request()->routeIs('home'))
-            @include('frontend.partials.chat-widget')
-        @endif
+        @include('frontend.partials.chat-widget')
 
         {{-- all js file include --}}
         <script src="{{ asset('assets/frontend/js/jQuery.js') }}" defer></script>
@@ -195,8 +191,6 @@
         <script src="{{ asset('assets/frontend/js/slick.min.js') }}" defer></script>
         <script src="{{ asset('assets/frontend/js/wow.js') }}" defer></script>
         <script src="{{ asset('assets/frontend/js/main.js') }}?v={{ filemtime(public_path('assets/frontend/js/main.js')) }}" defer></script>
-        @if (request()->routeIs('home'))
-            <script src="{{ asset('assets/frontend/js/chat-widget.js') }}?v={{ filemtime(public_path('assets/frontend/js/chat-widget.js')) }}" defer></script>
-        @endif
+        <script src="{{ asset('assets/frontend/js/chat-widget.js') }}?v={{ filemtime(public_path('assets/frontend/js/chat-widget.js')) }}" defer></script>
     </body>
 </html>
