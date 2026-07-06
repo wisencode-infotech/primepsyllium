@@ -242,7 +242,7 @@
     </section>
 
     {{-- contact section start --}}
-    <section class="prime-contact-section pt-4 pt-lg-5" id="get-in-touch">
+    <section class="prime-contact-section prime-contact-section--flush pt-4 pt-lg-5" id="get-in-touch">
         <div class="contact-right-bg">
             <img src="{{ asset('assets/frontend/images/packaging.webp') }}" alt="" class="w-100 d-md-none" loading="lazy" decoding="async">
             <div class="container">
