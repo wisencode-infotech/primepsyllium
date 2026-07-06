@@ -14,11 +14,20 @@ use Illuminate\View\View;
 
 class GalleryItemController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $galleryItems = GalleryItem::query()->with('category')->ordered()->get();
+        $categoryId = $request->integer('category') ?: null;
 
-        return view('backend.gallery.index', compact('galleryItems'));
+        $galleryItems = GalleryItem::query()
+            ->with('category')
+            ->category($categoryId)
+            ->ordered()
+            ->paginate(20)
+            ->withQueryString();
+
+        $galleryCategories = GalleryCategory::query()->orderBy('name')->get();
+
+        return view('backend.gallery.index', compact('galleryItems', 'galleryCategories', 'categoryId'));
     }
 
     public function create(): View
@@ -135,8 +144,15 @@ class GalleryItemController extends Controller
     {
         $ids = $request->input('order', []);
 
+        // Reassign only the sort_order slots already held by these rows, so
+        // reordering within one page of a paginated list can't collide with
+        // sort_order values belonging to items on other pages.
+        $slots = GalleryItem::query()->whereIn('id', $ids)->pluck('sort_order')->sort()->values();
+
         foreach ($ids as $index => $id) {
-            GalleryItem::query()->whereKey($id)->update(['sort_order' => $index]);
+            if (isset($slots[$index])) {
+                GalleryItem::query()->whereKey($id)->update(['sort_order' => $slots[$index]]);
+            }
         }
 
         return response()->json(['status' => 'ok']);

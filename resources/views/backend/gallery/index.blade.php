@@ -6,7 +6,16 @@
     </x-slot>
 
     <div class="max-w-5xl mx-auto">
-        <div class="mb-4 flex items-center justify-end">
+        <div class="mb-4 flex items-center justify-between gap-3">
+            <form method="GET" action="{{ route('admin.gallery.index') }}">
+                <select name="category" onchange="this.form.submit()" class="border-border focus:border-primary focus:ring-focus rounded-md shadow-sm bg-surface-elevated text-text text-sm">
+                    <option value="">All Categories</option>
+                    @foreach ($galleryCategories as $galleryCategory)
+                        <option value="{{ $galleryCategory->id }}" {{ $categoryId === $galleryCategory->id ? 'selected' : '' }}>{{ $galleryCategory->name }}</option>
+                    @endforeach
+                </select>
+            </form>
+
             <a href="{{ route('admin.gallery.create') }}" class="inline-flex items-center px-4 py-2 bg-primary border border-primary-border rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-hover transition ease-in-out duration-150">
                 Add Item
             </a>
@@ -43,7 +52,7 @@
                                 <td class="px-2 py-3">
                                     @php $thumb = $item->type === 'video' ? $item->video_thumbnail_url : $item->image_url; @endphp
                                     @if ($thumb)
-                                        <img src="{{ $thumb }}" alt="{{ $item->title }}" class="h-12 w-12 object-cover rounded-md border border-border">
+                                        <img src="{{ $thumb }}" alt="{{ $item->title }}" loading="lazy" decoding="async" class="h-12 w-12 object-cover rounded-md border border-border">
                                     @endif
                                 </td>
                                 <td class="px-2 py-3 text-sm text-text">{{ $item->title ?: '—' }}</td>
@@ -85,6 +94,10 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+
+        <div class="mt-4">
+            {{ $galleryItems->links() }}
         </div>
     </div>
 

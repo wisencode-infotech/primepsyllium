@@ -145,7 +145,8 @@
       "Bash(rm -f \"C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--xampp8-2-htdocs-primepsyllium\\\\0ded5730-15c6-408e-a733-998dff3cc207\\\\scratchpad\\\\check_counts.php\" \\\\ *)",
       "Bash(curl -s \"http://localhost/primepsyllium/public/gallery\" -o /tmp/gallery_live.html -w \"status:%{http_code}\\\\n\")",
       "Bash(python3 -c \"import playwright\")",
-      "Bash(node test_gallery_click.js)"
+      "Bash(node test_gallery_click.js)",
+      "Bash(php -l app/Http/Controllers/Admin/GalleryItemController.php)"
     ],
     "additionalDirectories": [
       "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\96250778-6246-4846-8ce0-14c5ca079d56\\scratchpad",
