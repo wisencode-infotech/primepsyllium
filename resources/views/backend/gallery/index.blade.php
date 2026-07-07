@@ -50,7 +50,7 @@
                             <tr draggable="true" data-id="{{ $item->id }}" class="table-row cursor-move">
                                 <td class="px-4 sm:px-8 py-3 text-text-muted">&#x2630;</td>
                                 <td class="px-2 py-3">
-                                    @php $thumb = $item->type === 'video' ? $item->video_thumbnail_url : $item->image_url; @endphp
+                                    @php $thumb = $item->type === 'video' ? $item->video_thumbnail_thumb_url : $item->image_thumb_url; @endphp
                                     @if ($thumb)
                                         <img src="{{ $thumb }}" alt="{{ $item->title }}" loading="lazy" decoding="async" class="h-12 w-12 object-cover rounded-md border border-border">
                                     @endif

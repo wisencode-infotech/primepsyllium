@@ -39,7 +39,7 @@
     </div>
 
     <div class="mt-4" x-show="type === 'image'" style="display: none;">
-        <x-image-upload name="image" label="Image" :value="$galleryItem->image_url ?? null" />
+        <x-image-upload name="image" label="Image" :value="$galleryItem->image_thumb_url ?? null" />
         <x-input-error class="mt-2" :messages="$errors->get('image')" />
     </div>
 
@@ -48,7 +48,7 @@
         <x-input-error class="mt-2" :messages="$errors->get('video')" />
 
         <div class="mt-4">
-            <x-image-upload name="video_thumbnail" label="Video Thumbnail" hint="Shown in the gallery grid before the video plays" :value="$galleryItem->video_thumbnail_url ?? null" />
+            <x-image-upload name="video_thumbnail" label="Video Thumbnail" hint="Shown in the gallery grid before the video plays" :value="$galleryItem->video_thumbnail_thumb_url ?? null" />
             <x-input-error class="mt-2" :messages="$errors->get('video_thumbnail')" />
         </div>
     </div>
