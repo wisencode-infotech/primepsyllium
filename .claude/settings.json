@@ -152,7 +152,9 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/storage/gallery/kjKRrn1OjKCbXGcjIET4hEORBOGFyTg0bT7Nzv3j.jpg\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/storage/gallery/J50ojBpdLXpjWlu4hwRKosGdJrzU1i9a5tfa4Ves.webp\")",
       "Bash(node shimmer-shot.js)",
-      "Bash(node shimmer-debug.js)"
+      "Bash(node shimmer-debug.js)",
+      "Bash(php -r \"print_r\\(gd_info\\(\\)\\);\")",
+      "Bash(php -l app/Services/GalleryThumbnailer.php)"
     ],
     "additionalDirectories": [
       "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\96250778-6246-4846-8ce0-14c5ca079d56\\scratchpad",

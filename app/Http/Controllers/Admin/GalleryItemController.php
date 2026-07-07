@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\GalleryItemRequest;
 use App\Models\GalleryCategory;
 use App\Models\GalleryItem;
+use App\Services\GalleryThumbnailer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -52,6 +53,7 @@ class GalleryItemController extends Controller
 
             if ($request->hasFile('video_thumbnail')) {
                 $data['video_thumbnail'] = $request->file('video_thumbnail')->store('gallery', 'public');
+                GalleryThumbnailer::generate($data['video_thumbnail']);
             }
         } else {
             $data['video'] = null;
@@ -59,6 +61,7 @@ class GalleryItemController extends Controller
 
             if ($request->hasFile('image')) {
                 $data['image'] = $request->file('image')->store('gallery', 'public');
+                GalleryThumbnailer::generate($data['image']);
             }
         }
 
@@ -82,6 +85,7 @@ class GalleryItemController extends Controller
         if ($data['type'] === 'video') {
             if ($gallery->image) {
                 Storage::disk('public')->delete($gallery->image);
+                GalleryThumbnailer::delete($gallery->image);
             }
             $data['image'] = null;
 
@@ -97,8 +101,10 @@ class GalleryItemController extends Controller
             if ($request->hasFile('video_thumbnail')) {
                 if ($gallery->video_thumbnail) {
                     Storage::disk('public')->delete($gallery->video_thumbnail);
+                    GalleryThumbnailer::delete($gallery->video_thumbnail);
                 }
                 $data['video_thumbnail'] = $request->file('video_thumbnail')->store('gallery', 'public');
+                GalleryThumbnailer::generate($data['video_thumbnail']);
             } else {
                 $data['video_thumbnail'] = $gallery->video_thumbnail;
             }
@@ -108,6 +114,7 @@ class GalleryItemController extends Controller
             }
             if ($gallery->video_thumbnail) {
                 Storage::disk('public')->delete($gallery->video_thumbnail);
+                GalleryThumbnailer::delete($gallery->video_thumbnail);
             }
             $data['video'] = null;
             $data['video_thumbnail'] = null;
@@ -115,8 +122,10 @@ class GalleryItemController extends Controller
             if ($request->hasFile('image')) {
                 if ($gallery->image) {
                     Storage::disk('public')->delete($gallery->image);
+                    GalleryThumbnailer::delete($gallery->image);
                 }
                 $data['image'] = $request->file('image')->store('gallery', 'public');
+                GalleryThumbnailer::generate($data['image']);
             } else {
                 $data['image'] = $gallery->image;
             }
@@ -129,6 +138,12 @@ class GalleryItemController extends Controller
 
     public function destroy(GalleryItem $gallery): RedirectResponse
     {
+        foreach ([$gallery->image, $gallery->video_thumbnail] as $file) {
+            if ($file) {
+                GalleryThumbnailer::delete($file);
+            }
+        }
+
         foreach ([$gallery->image, $gallery->video, $gallery->video_thumbnail] as $file) {
             if ($file) {
                 Storage::disk('public')->delete($file);

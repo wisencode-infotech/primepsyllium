@@ -1,6 +1,6 @@
 @foreach ($galleryItems as $item)
     @php
-        $thumb = $item->type === 'video' ? $item->video_thumbnail_url : $item->image_url;
+        $thumb = $item->type === 'video' ? $item->video_thumbnail_thumb_url : $item->image_thumb_url;
         $src = $item->type === 'video' ? $item->video_url : $item->image_url;
     @endphp
     <button

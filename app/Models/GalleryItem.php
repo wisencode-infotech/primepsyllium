@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\GalleryThumbnailer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
@@ -28,6 +29,8 @@ class GalleryItem extends Model
         'image_url',
         'video_url',
         'video_thumbnail_url',
+        'image_thumb_url',
+        'video_thumbnail_thumb_url',
     ];
 
     public function scopeActive($query)
@@ -73,5 +76,32 @@ class GalleryItem extends Model
     public function getVideoThumbnailUrlAttribute(): ?string
     {
         return $this->video_thumbnail ? Storage::disk('public')->url($this->video_thumbnail) : null;
+    }
+
+    /**
+     * Resized/compressed version of the image for the gallery grid. Falls back
+     * to the original if a thumbnail hasn't been generated yet.
+     */
+    public function getImageThumbUrlAttribute(): ?string
+    {
+        return $this->thumbUrlFor($this->image);
+    }
+
+    public function getVideoThumbnailThumbUrlAttribute(): ?string
+    {
+        return $this->thumbUrlFor($this->video_thumbnail);
+    }
+
+    private function thumbUrlFor(?string $path): ?string
+    {
+        if (! $path) {
+            return null;
+        }
+
+        $thumbPath = GalleryThumbnailer::thumbPath($path);
+
+        return Storage::disk('public')->exists($thumbPath)
+            ? Storage::disk('public')->url($thumbPath)
+            : Storage::disk('public')->url($path);
     }
 }
