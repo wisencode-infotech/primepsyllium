@@ -44,18 +44,24 @@
     {{-- gallery grid --}}
     <section class="gallery-section py-4 py-lg-5">
         <div class="container-fluid px-lg-5 py-lg-2">
-            <div id="galleryEmptyState" class="text-center py-5 wow fadeIn" style="{{ $galleryItems->isEmpty() ? '' : 'display: none;' }}">
-                <p class="fts-15 fw-4 subtitle-text-L mb-0" id="galleryEmptyStateText">
-                    @if ($activeCategory)
-                        No items in <strong>{{ $activeCategory->name }}</strong> yet. <a href="{{ route('gallery.index', ['category' => 'all']) }}" class="primary-color-L text-decoration-underline">View all photos</a>
-                    @else
-                        Our gallery is being updated. Please check back soon.
-                    @endif
-                </p>
-            </div>
+            <div class="gallery-grid-wrapper">
+                <div id="galleryLoaderOverlay" class="gallery-loader-overlay">
+                    <span class="gallery-spinner"></span>
+                </div>
 
-            <div id="galleryGrid" class="gallery-bento" style="{{ $galleryItems->isEmpty() ? 'display: none;' : '' }}">
-                @include('frontend.gallery._items')
+                <div id="galleryEmptyState" class="text-center py-5 wow fadeIn" style="{{ $galleryItems->isEmpty() ? '' : 'display: none;' }}">
+                    <p class="fts-15 fw-4 subtitle-text-L mb-0" id="galleryEmptyStateText">
+                        @if ($activeCategory)
+                            No items in <strong>{{ $activeCategory->name }}</strong> yet. <a href="{{ route('gallery.index', ['category' => 'all']) }}" class="primary-color-L text-decoration-underline">View all photos</a>
+                        @else
+                            Our gallery is being updated. Please check back soon.
+                        @endif
+                    </p>
+                </div>
+
+                <div id="galleryGrid" class="gallery-bento" style="{{ $galleryItems->isEmpty() ? 'display: none;' : '' }}">
+                    @include('frontend.gallery._items')
+                </div>
             </div>
 
             <div class="text-center mt-4 mt-lg-5">
@@ -104,7 +110,26 @@
             var emptyState = document.getElementById('galleryEmptyState');
             var emptyStateText = document.getElementById('galleryEmptyStateText');
             var loadMoreBtn = document.getElementById('galleryLoadMore');
+            var loaderOverlay = document.getElementById('galleryLoaderOverlay');
+            var loadMoreDefaultText = loadMoreBtn ? loadMoreBtn.textContent.trim() : '';
             var filterTabs = Array.from(document.querySelectorAll('.gallery-filter-tab'));
+
+            // shows a shimmer skeleton on each tile until its own image finishes loading
+            function bindImageLoaders(scope) {
+                Array.from(scope.querySelectorAll('.gallery-item')).forEach(function (item) {
+                    var img = item.querySelector('img');
+                    if (!img || item.dataset.loaderBound) return;
+                    item.dataset.loaderBound = '1';
+
+                    if (img.complete && img.naturalWidth > 0) {
+                        item.classList.add('is-loaded');
+                        return;
+                    }
+                    var markLoaded = function () { item.classList.add('is-loaded'); };
+                    img.addEventListener('load', markLoaded, { once: true });
+                    img.addEventListener('error', markLoaded, { once: true });
+                });
+            }
 
             var modalEl = document.getElementById('galleryLightboxModal');
             var imageEl = document.getElementById('galleryLightboxImage');
@@ -122,6 +147,7 @@
                 items = Array.from(grid.querySelectorAll('.gallery-item'));
             }
             refreshItems();
+            bindImageLoaders(grid);
 
             function showItem(index) {
                 if (!items.length) return;
@@ -214,6 +240,12 @@
                 grid.classList.add('is-loading');
                 if (loadMoreBtn) loadMoreBtn.disabled = true;
 
+                if (append) {
+                    if (loadMoreBtn) loadMoreBtn.innerHTML = '<span class="gallery-btn-spinner"></span>Loading...';
+                } else if (loaderOverlay) {
+                    loaderOverlay.classList.add('show');
+                }
+
                 return fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' } })
                     .then(function (response) { return response.json(); })
                     .then(function (data) {
@@ -223,6 +255,7 @@
                             grid.innerHTML = data.html;
                         }
                         refreshItems();
+                        bindImageLoaders(grid);
 
                         var hasAnyItems = append ? items.length > 0 : data.total > 0;
                         grid.style.display = hasAnyItems ? '' : 'none';
@@ -238,13 +271,15 @@
                             loadMoreBtn.style.display = data.has_more ? '' : 'none';
                             loadMoreBtn.dataset.nextPage = data.next_page;
                             loadMoreBtn.dataset.category = categoryId || '';
-                            loadMoreBtn.disabled = false;
                         }
-                        grid.classList.remove('is-loading');
                     })
-                    .catch(function () {
+                    .finally(function () {
                         grid.classList.remove('is-loading');
-                        if (loadMoreBtn) loadMoreBtn.disabled = false;
+                        if (loaderOverlay) loaderOverlay.classList.remove('show');
+                        if (loadMoreBtn) {
+                            loadMoreBtn.disabled = false;
+                            loadMoreBtn.textContent = loadMoreDefaultText;
+                        }
                     });
             }
 

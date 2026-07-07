@@ -146,7 +146,13 @@
       "Bash(curl -s \"http://localhost/primepsyllium/public/gallery\" -o /tmp/gallery_live.html -w \"status:%{http_code}\\\\n\")",
       "Bash(python3 -c \"import playwright\")",
       "Bash(node test_gallery_click.js)",
-      "Bash(php -l app/Http/Controllers/Admin/GalleryItemController.php)"
+      "Bash(php -l app/Http/Controllers/Admin/GalleryItemController.php)",
+      "Bash(node check.js)",
+      "Bash(node check4.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/storage/gallery/kjKRrn1OjKCbXGcjIET4hEORBOGFyTg0bT7Nzv3j.jpg\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost/primepsyllium/storage/gallery/J50ojBpdLXpjWlu4hwRKosGdJrzU1i9a5tfa4Ves.webp\")",
+      "Bash(node shimmer-shot.js)",
+      "Bash(node shimmer-debug.js)"
     ],
     "additionalDirectories": [
       "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\96250778-6246-4846-8ce0-14c5ca079d56\\scratchpad",
