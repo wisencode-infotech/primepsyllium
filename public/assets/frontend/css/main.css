@@ -347,7 +347,7 @@
 
 /* Rooted in Quality. Driven by Trust. section */
 .quality-trusted-section{
-  background: url(../images/Who-We-Are.png) no-repeat;
+  background: url(../images/Who-We-Are.webp) no-repeat;
   background-size: cover;
 }
 .driven-trust-box{
@@ -410,7 +410,7 @@
   background: #F6F6F6;
 }
 .contact-right-bg{
-  background: url(../images/packaging.png);
+  background: url(../images/packaging.webp);
   background-size: 45%;
   background-repeat: no-repeat;
   background-position: center right;

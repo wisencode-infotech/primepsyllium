@@ -154,7 +154,8 @@
       "Bash(node shimmer-shot.js)",
       "Bash(node shimmer-debug.js)",
       "Bash(php -r \"print_r\\(gd_info\\(\\)\\);\")",
-      "Bash(php -l app/Services/GalleryThumbnailer.php)"
+      "Bash(php -l app/Services/GalleryThumbnailer.php)",
+      "Bash(php -r \"var_dump\\(function_exists\\('imagewebp'\\)\\);\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\USER\\AppData\\Local\\Temp\\claude\\c--xampp8-2-htdocs-primepsyllium\\96250778-6246-4846-8ce0-14c5ca079d56\\scratchpad",

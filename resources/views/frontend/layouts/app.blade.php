@@ -20,6 +20,11 @@
         <link rel="icon" type="image/png" href="{{ $settings->favicon_url ?? asset('assets/frontend/icons/favicon.png') }}">
         <link rel="preconnect" href="https://code.iconify.design">
 
+        {{-- Preload LCP hero image and critical fonts so the browser can fetch them before parsing render-blocking CSS --}}
+        <link rel="preload" as="image" href="{{ asset('assets/frontend/images/hero-img.webp') }}" fetchpriority="high">
+        <link rel="preload" as="font" type="font/woff2" href="{{ asset('assets/frontend/fonts/InterDisplay-Regular.woff2') }}" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="{{ asset('assets/frontend/fonts/InterDisplay-SemiBold.woff2') }}" crossorigin>
+
         {{-- Prime Psyllium frontend design --}}
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/common.css') }}?v={{ filemtime(public_path('assets/frontend/css/common.css')) }}">
