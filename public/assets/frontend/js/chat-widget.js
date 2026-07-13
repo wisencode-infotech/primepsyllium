@@ -39,17 +39,28 @@
 
         escalationSessionField.value = sessionId;
 
+        var mobileQuery = window.matchMedia('(max-width: 640px)');
+
         function openPanel() {
             widget.classList.add('is-open');
             panel.hidden = false;
             toggleBtn.setAttribute('aria-expanded', 'true');
-            input.focus();
+
+            if (mobileQuery.matches) {
+                // Full-screen on mobile: freeze the page behind the panel and
+                // let the user tap the input themselves instead of forcing
+                // the keyboard open.
+                document.body.classList.add('ppsy-chat-lock');
+            } else {
+                input.focus();
+            }
         }
 
         function closePanel() {
             widget.classList.remove('is-open');
             panel.hidden = true;
             toggleBtn.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('ppsy-chat-lock');
         }
 
         toggleBtn.addEventListener('click', function () {
