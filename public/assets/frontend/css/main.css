@@ -705,7 +705,7 @@
 
 /* footer section strat  */
 .footer-left-logo .footer-logo{
-  width: 140px;
+  width: 100px;
 }
 .ui-footer-links li a{
   color: var(--subtitle-text);
