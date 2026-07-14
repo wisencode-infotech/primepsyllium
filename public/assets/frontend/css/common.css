@@ -350,6 +350,9 @@ textarea{
 .fts-42{
   font-size: 42px;
 }
+.fts-40{
+  font-size: 40px;
+}
 .fts-38{
   font-size: 38px;
 }
@@ -437,6 +440,9 @@ textarea{
   .fts-42 {
     font-size: 40px;
   }
+  .fts-40 {
+    font-size: 38px;
+  }
   .fts-38 {
     font-size: 36px;
   }
@@ -484,6 +490,9 @@ textarea{
   }
   .fts-42 {
     font-size: 28px;
+  }
+  .fts-40 {
+    font-size: 26px;
   }
   .fts-38 {
     font-size: 26px;

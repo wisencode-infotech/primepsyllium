@@ -95,7 +95,7 @@
         <section class="company-video-section py-4 py-lg-5">
             <div class="container">
                 <div class="heading-products text-center mb-3 mb-lg-4">
-                    <h2 class="fts-46 fw-5 title-text-L wow fadeInUp">PRIME FARM, PRIME QUALITY<sup class="company-video-tm">&trade;</sup></h2>
+                    <h2 class="fts-40 fw-5 title-text-L wow fadeInUp">Prime Farm, Prime Quality<sup class="company-video-tm">&trade;</sup></h2>
                 </div>
                 <div class="company-video-cover position-relative w-100 wow zoomIn" id="companyVideoCover">
                     <div class="company-video-trigger" id="companyVideoTrigger" role="button" tabindex="0" aria-label="Play company video{{ $settings->company_video_title ? ': '.$settings->company_video_title : '' }}">
