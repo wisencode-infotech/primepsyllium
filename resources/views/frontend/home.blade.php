@@ -94,6 +94,9 @@
         @endphp
         <section class="company-video-section py-4 py-lg-5">
             <div class="container">
+                <div class="heading-products text-center mb-3 mb-lg-4">
+                    <h2 class="fts-46 fw-5 title-text-L wow fadeInUp">PRIME FARM, PRIME QUALITY<sup class="company-video-tm">&trade;</sup></h2>
+                </div>
                 <div class="company-video-cover position-relative w-100 wow zoomIn" id="companyVideoCover">
                     <div class="company-video-trigger" id="companyVideoTrigger" role="button" tabindex="0" aria-label="Play company video{{ $settings->company_video_title ? ': '.$settings->company_video_title : '' }}">
                         <img src="{{ $settings->company_video_thumbnail_url ?? asset('assets/frontend/images/about-img-bg.webp') }}" alt="{{ $settings->company_video_title ?? 'Prime Psyllium company video' }}" class="w-100 company-video-poster" loading="lazy" decoding="async">
@@ -244,7 +247,7 @@
     {{-- contact section start --}}
     <section class="prime-contact-section prime-contact-section--flush pt-4 pt-lg-5" id="get-in-touch">
         <div class="contact-right-bg">
-            <img src="{{ asset('assets/frontend/images/packaging.webp') }}" alt="" class="w-100 d-md-none" loading="lazy" decoding="async">
+            <img src="{{ asset('assets/frontend/images/packaging.png') }}" alt="" class="contact-plant-mobile d-md-none" loading="lazy" decoding="async">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-5">

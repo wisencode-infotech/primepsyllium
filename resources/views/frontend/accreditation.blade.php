@@ -25,7 +25,6 @@
             <div class="row justify-content-center mt-3 mt-lg-4">
                 <div class="col-lg-9">
                     <div class="d-flex flex-wrap justify-content-center gap-2 gap-md-3 wow fadeInUp">
-                        <div class="psyllium-pillar-chip fts-14"><iconify-icon icon="mdi:certificate-outline"></iconify-icon>FSSC 22000 Certified</div>
                         <div class="psyllium-pillar-chip fts-14"><iconify-icon icon="mdi:shield-check-outline"></iconify-icon>Export-Grade Quality</div>
                         <div class="psyllium-pillar-chip fts-14"><iconify-icon icon="mdi:leaf"></iconify-icon>100% Natural Processing</div>
                         <div class="psyllium-pillar-chip fts-14"><iconify-icon icon="mdi:earth"></iconify-icon>International Standards</div>

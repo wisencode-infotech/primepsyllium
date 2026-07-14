@@ -10,11 +10,16 @@
         data-src="{{ $src }}"
         data-thumb="{{ $thumb }}"
         data-title="{{ $item->title }}"
+        data-date="{{ $item->memory_date_label }}"
     >
         <img src="{{ $thumb }}" alt="{{ $item->title ?: 'Prime Psyllium gallery' }}" loading="lazy" decoding="async">
 
         @if ($item->type === 'video')
             <span class="gallery-item-tag"><iconify-icon icon="ph:play-fill"></iconify-icon>Video</span>
+        @endif
+
+        @if ($item->memory_date_label)
+            <span class="gallery-item-date"><iconify-icon icon="ph:calendar-blank-bold"></iconify-icon>{{ $item->memory_date_label }}</span>
         @endif
 
         <span class="gallery-item-overlay">

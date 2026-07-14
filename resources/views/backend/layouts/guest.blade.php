@@ -18,7 +18,7 @@
         <div class="theme-bg min-h-screen flex flex-col items-center justify-center pt-6 sm:pt-0">
             <div>
                 <a href="{{ route('home') }}">
-                    <img src="{{ asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="h-20 w-auto">
+                    <img src="{{ asset('assets/frontend/images/brand-logo.png') }}" alt="{{ config('app.name') }}" class="logo-on-dark h-20 w-auto">
                 </a>
             </div>
 

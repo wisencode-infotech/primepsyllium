@@ -410,10 +410,30 @@
   background: #F6F6F6;
 }
 .contact-right-bg{
-  background: url(../images/packaging.webp);
-  background-size: 45%;
+  background: url(../images/packaging.png);
+  background-size: auto 94%;
   background-repeat: no-repeat;
-  background-position: center right;
+  background-position: right 8% bottom;
+}
+.contact-plant-mobile{
+  display: block;
+}
+@media (max-width: 767.98px){
+  .prime-contact-section{
+    overflow: hidden;
+  }
+  .contact-right-bg{
+    background-image: none;
+    position: relative;
+  }
+  .contact-plant-mobile{
+    position: absolute;
+    top: -6px;
+    right: -34px;
+    height: 250px;
+    width: auto;
+    transform: rotate(8deg);
+  }
 }
 .contact-left-layout{
   position: relative;
@@ -815,6 +835,11 @@
   z-index: 2;
   color: var(--white-color);
   text-align: left;
+}
+.company-video-tm{
+  font-size: 0.4em;
+  top: -1.2em;
+  letter-spacing: 0;
 }
 @media (max-width: 767px){
   .company-video-poster{

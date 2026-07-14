@@ -39,6 +39,7 @@
                             <th class="px-4 sm:px-8 py-3 w-10"></th>
                             <th class="px-2 py-3 w-20">Preview</th>
                             <th class="px-2 py-3">Title</th>
+                            <th class="px-2 py-3 w-36">Memory Date</th>
                             <th class="px-2 py-3 w-40">Category</th>
                             <th class="px-2 py-3 w-24">Type</th>
                             <th class="px-2 py-3 w-28">Status</th>
@@ -56,6 +57,7 @@
                                     @endif
                                 </td>
                                 <td class="px-2 py-3 text-sm text-text">{{ $item->title ?: '—' }}</td>
+                                <td class="px-2 py-3 text-sm text-text-muted">{{ $item->memory_date_label ?? \App\Models\GalleryItem::legacyPeriodLabel() }}</td>
                                 <td class="px-2 py-3">
                                     <span class="pill pill-muted">{{ $item->category->name ?? '—' }}</span>
                                 </td>

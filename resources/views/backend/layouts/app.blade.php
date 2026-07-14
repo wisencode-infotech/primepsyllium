@@ -20,7 +20,7 @@
         @vite(['resources/backend/css/app.css', 'resources/backend/js/app.js'])
     </head>
     <body class="antialiased">
-        <div class="flex min-h-screen bg-surface">
+        <div class="admin-shell flex min-h-screen bg-surface">
             @include('backend.partials.sidebar')
 
             <div class="flex min-w-0 flex-1 flex-col">

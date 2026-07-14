@@ -48,6 +48,18 @@
   border-color: var(--primary-color);
   color: var(--white-color);
 }
+/* memory date filter tabs (second row) */
+.gallery-date-tab{
+  gap: 6px;
+  padding: 5px 14px;
+  font-size: 12px;
+  background: #f6f6f6;
+  border-color: transparent;
+}
+.gallery-date-tab iconify-icon{
+  font-size: 13px;
+  opacity: 0.7;
+}
 @media (max-width: 767px){
   .gallery-filter-tabs{
     flex-wrap: nowrap !important;
@@ -218,6 +230,24 @@
   padding: 6px 12px;
   border-radius: 40px;
   font-size: 12px;
+  font-weight: 600;
+  color: var(--white-color);
+  background: rgba(13,49,50,0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+/* memory date badge on tiles */
+.gallery-item-date{
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 40px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--white-color);
   background: rgba(13,49,50,0.55);

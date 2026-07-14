@@ -26,20 +26,20 @@
 }
 
 html[data-theme="dark"] {
-    --color-primary: #1f9d74;
-    --color-primary-hover: #18815f;
-    --color-primary-soft: rgba(31, 157, 116, 0.18);
-    --color-primary-border: #1f9d74;
+    --color-primary: #22a87e;
+    --color-primary-hover: #1b8f6a;
+    --color-primary-soft: rgba(34, 168, 126, 0.16);
+    --color-primary-border: #22a87e;
     --color-primary-ring: rgba(165, 215, 195, 0.3);
-    --color-focus: #1f9d74;
+    --color-focus: #22a87e;
 
-    --color-surface: #15141a;
-    --color-surface-elevated: #1e1d24;
-    --color-surface-muted: #26252d;
+    --color-surface: #0d100f;
+    --color-surface-elevated: #151917;
+    --color-surface-muted: #1e2321;
 
-    --color-text: #f4f3f6;
-    --color-text-muted: #a1a1aa;
-    --color-border: rgba(244, 243, 246, 0.1);
+    --color-text: #f6f8f7;
+    --color-text-muted: #a7b1ab;
+    --color-border: rgba(255, 255, 255, 0.09);
 
     --color-danger: #f87171;
     --color-danger-border: #f87171;
@@ -80,4 +80,79 @@ body {
 a,
 button {
     -webkit-tap-highlight-color: transparent;
+}
+
+/* Colored brand logos/artwork sit on a white tile in dark mode so they stay
+   visible against dark surfaces (the artwork itself is dark green).
+   content-box keeps the artwork at its full h-* size — the tile padding
+   grows outward instead of shrinking the logo. */
+.logo-on-dark {
+    box-sizing: content-box;
+    border-radius: 12px;
+    transition: background 0.2s ease, padding 0.2s ease;
+}
+html[data-theme="dark"] .logo-on-dark {
+    background: #ffffff;
+    padding: 5px 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* Dashboard welcome banner: brand green in light mode, a rich deep-green
+   gradient with soft accent glows in dark mode. */
+.dashboard-hero {
+    background: linear-gradient(135deg, #007a58 0%, #00543e 100%);
+}
+html[data-theme="dark"] .dashboard-hero {
+    background:
+        radial-gradient(640px 240px at 88% -30%, rgba(34, 168, 126, 0.35), transparent 65%),
+        radial-gradient(420px 200px at -5% 130%, rgba(34, 168, 126, 0.16), transparent 60%),
+        linear-gradient(135deg, #12382c 0%, #0a211a 60%, #0c281f 100%);
+    border: 1px solid rgba(34, 168, 126, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* ---- Dark theme elevation system ---- */
+
+/* Ambient glow behind the admin shell so the dark canvas doesn't read flat */
+html[data-theme="dark"] .admin-shell,
+html[data-theme="dark"] .theme-bg {
+    background-image:
+        radial-gradient(1100px 480px at 80% -10%, rgba(34, 168, 126, 0.07), transparent 60%),
+        radial-gradient(800px 400px at -8% 108%, rgba(34, 168, 126, 0.05), transparent 55%);
+    background-attachment: fixed;
+}
+
+/* Cards and table shells: subtle top-light gradient + real shadows */
+.admin-card {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+html[data-theme="dark"] .admin-card,
+html[data-theme="dark"] .table-shell {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 45%),
+        var(--color-surface-elevated);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+html[data-theme="dark"] a.admin-card:hover {
+    border-color: rgba(34, 168, 126, 0.45);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Slim, unobtrusive scrollbars in dark mode */
+html[data-theme="dark"] ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+html[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: transparent;
+}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.26);
 }

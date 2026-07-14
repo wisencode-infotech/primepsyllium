@@ -22,7 +22,7 @@
             <span x-show="collapsed" style="display: none;" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-white">
                 {{ mb_substr(config('app.name'), 0, 1) }}
             </span>
-            <img x-show="!collapsed" x-transition.opacity src="{{ $sidebarLogoUrl }}" alt="{{ config('app.name') }}" class="h-10 w-auto max-w-[160px] shrink-0 object-contain">
+            <img x-show="!collapsed" x-transition.opacity src="{{ $sidebarLogoUrl }}" alt="{{ config('app.name') }}" class="logo-on-dark h-10 w-auto max-w-[160px] shrink-0 object-contain">
         </a>
 
         <button @click="mobileOpen = false" class="rounded-md p-1.5 text-text-muted hover:bg-surface-muted hover:text-text lg:hidden">

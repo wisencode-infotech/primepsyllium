@@ -37,6 +37,19 @@
                         </a>
                     @endforeach
                 </div>
+
+                @if (!empty($datePeriods))
+                    <div class="gallery-filter-tabs gallery-date-tabs d-flex align-items-center flex-wrap gap-2 mt-2 wow fadeIn">
+                        <a href="{{ route('gallery.index', ['date' => 'all']) }}" data-date-key="" class="gallery-filter-tab gallery-date-tab {{ !$activeDatePeriod ? 'active' : '' }}">
+                            <iconify-icon icon="ph:calendar-blank-bold"></iconify-icon>All Dates
+                        </a>
+                        @foreach ($datePeriods as $period)
+                            <a href="{{ route('gallery.index', ['date' => $period['key']]) }}" data-date-key="{{ $period['key'] }}" class="gallery-filter-tab gallery-date-tab {{ $activeDatePeriod === $period['key'] ? 'active' : '' }}">
+                                <iconify-icon icon="ph:calendar-blank-bold"></iconify-icon>{{ $period['label'] }}
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </section>
     @endif
@@ -112,7 +125,8 @@
             var loadMoreBtn = document.getElementById('galleryLoadMore');
             var loaderOverlay = document.getElementById('galleryLoaderOverlay');
             var loadMoreDefaultText = loadMoreBtn ? loadMoreBtn.textContent.trim() : '';
-            var filterTabs = Array.from(document.querySelectorAll('.gallery-filter-tab'));
+            var filterTabs = Array.from(document.querySelectorAll('.gallery-filter-tab:not(.gallery-date-tab)'));
+            var dateTabs = Array.from(document.querySelectorAll('.gallery-date-tab'));
 
             // shows a shimmer skeleton on each tile until its own image finishes loading
             function bindImageLoaders(scope) {
@@ -142,6 +156,7 @@
             var items = [];
             var currentIndex = 0;
             var activeCategoryId = '{{ $activeCategory?->id ?? '' }}';
+            var activeDateKey = '{{ $activeDatePeriod ?? '' }}';
 
             function refreshItems() {
                 items = Array.from(grid.querySelectorAll('.gallery-item'));
@@ -169,8 +184,12 @@
                     imageEl.alt = item.dataset.title;
                 }
 
-                titleEl.textContent = item.dataset.title;
-                titleEl.classList.toggle('d-none', !item.dataset.title);
+                var caption = item.dataset.title || '';
+                if (item.dataset.date) {
+                    caption = caption ? caption + ' — ' + item.dataset.date : item.dataset.date;
+                }
+                titleEl.textContent = caption;
+                titleEl.classList.toggle('d-none', !caption);
                 countEl.textContent = (currentIndex + 1) + ' / ' + items.length;
             }
 
@@ -227,14 +246,28 @@
                 });
             }
 
+            function setActiveDateTab(dateKey) {
+                dateTabs.forEach(function (tab) {
+                    tab.classList.toggle('active', tab.dataset.dateKey === String(dateKey || ''));
+                });
+            }
+
             function categoryLabel(categoryId) {
                 var tab = filterTabs.find(function (t) { return t.dataset.categoryId === String(categoryId || ''); });
                 return tab ? tab.textContent.trim() : '';
             }
 
+            function pageUrl() {
+                var params = new URLSearchParams();
+                params.set('category', activeCategoryId || 'all');
+                if (activeDateKey) params.set('date', activeDateKey);
+                return galleryIndexUrl + '?' + params.toString();
+            }
+
             function fetchItems(categoryId, page, append) {
                 var url = new URL(galleryItemsUrl, window.location.origin);
                 url.searchParams.set('category', categoryId || 'all');
+                url.searchParams.set('date', activeDateKey || 'all');
                 url.searchParams.set('page', page);
 
                 grid.classList.add('is-loading');
@@ -262,8 +295,11 @@
                         emptyState.style.display = hasAnyItems ? 'none' : '';
                         if (!hasAnyItems) {
                             var label = categoryLabel(categoryId);
-                            emptyStateText.innerHTML = label
-                                ? 'No items in <strong>' + label + '</strong> yet. <a href="' + galleryIndexUrl + '?category=all" class="primary-color-L text-decoration-underline">View all photos</a>'
+                            var dateTab = dateTabs.find(function (t) { return t.dataset.dateKey === String(activeDateKey || ''); });
+                            var dateLabel = activeDateKey && dateTab ? dateTab.textContent.trim() : '';
+                            var scope = [label, dateLabel].filter(Boolean).join(' · ');
+                            emptyStateText.innerHTML = scope
+                                ? 'No items in <strong>' + scope + '</strong> yet. <a href="' + galleryIndexUrl + '?category=all" class="primary-color-L text-decoration-underline">View all photos</a>'
                                 : 'Our gallery is being updated. Please check back soon.';
                         }
 
@@ -293,8 +329,21 @@
                     setActiveTab(categoryId);
                     fetchItems(categoryId, 1, false);
 
-                    var newUrl = galleryIndexUrl + '?category=' + (categoryId || 'all');
-                    window.history.pushState({ category: categoryId }, '', newUrl);
+                    window.history.pushState({ category: categoryId, date: activeDateKey }, '', pageUrl());
+                });
+            });
+
+            dateTabs.forEach(function (tab) {
+                tab.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    var dateKey = tab.dataset.dateKey;
+                    if (dateKey === activeDateKey) return;
+
+                    activeDateKey = dateKey;
+                    setActiveDateTab(dateKey);
+                    fetchItems(activeCategoryId, 1, false);
+
+                    window.history.pushState({ category: activeCategoryId, date: dateKey }, '', pageUrl());
                 });
             });
 
@@ -308,7 +357,9 @@
             window.addEventListener('popstate', function (event) {
                 var categoryId = (event.state && event.state.category) || '';
                 activeCategoryId = categoryId;
+                activeDateKey = (event.state && event.state.date) || '';
                 setActiveTab(categoryId);
+                setActiveDateTab(activeDateKey);
                 fetchItems(categoryId, 1, false);
             });
         });

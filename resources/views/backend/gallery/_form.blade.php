@@ -24,6 +24,13 @@
     </div>
 
     <div class="mt-4">
+        <x-input-label for="memory_date" value="Memory Date (optional)" />
+        <x-text-input id="memory_date" name="memory_date" type="date" class="mt-1 block w-full" :value="old('memory_date', isset($galleryItem) ? $galleryItem->memory_date?->format('Y-m-d') : '')" />
+        <p class="mt-1 text-xs text-text-muted">When was this photo/video taken? It is shown on the photo and powers the date filters on the website. Leave blank for older memories — they appear under &ldquo;{{ \App\Models\GalleryItem::legacyPeriodLabel() }}&rdquo;.</p>
+        <x-input-error class="mt-2" :messages="$errors->get('memory_date')" />
+    </div>
+
+    <div class="mt-4">
         <x-input-label value="Type" />
         <div class="mt-1 flex gap-3">
             <label class="flex items-center gap-2 rounded-lg border border-border px-4 py-2 cursor-pointer" :class="type === 'image' ? 'border-primary bg-primary-soft' : ''">

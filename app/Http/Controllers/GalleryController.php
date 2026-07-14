@@ -19,16 +19,20 @@ class GalleryController extends Controller
         $activeCategoryId = $this->resolveActiveCategoryId($request);
         $activeCategory = $activeCategoryId ? GalleryCategory::query()->find($activeCategoryId) : null;
 
-        $galleryItems = $this->itemsQuery($activeCategoryId)->paginate(self::PER_PAGE);
+        $datePeriods = GalleryItem::memoryPeriods();
+        $activeDatePeriod = $this->resolveActiveDatePeriod($request, $datePeriods);
 
-        return view('frontend.gallery', compact('galleryItems', 'categories', 'activeCategory'));
+        $galleryItems = $this->itemsQuery($activeCategoryId, $activeDatePeriod)->paginate(self::PER_PAGE);
+
+        return view('frontend.gallery', compact('galleryItems', 'categories', 'activeCategory', 'datePeriods', 'activeDatePeriod'));
     }
 
     public function items(Request $request): JsonResponse
     {
         $activeCategoryId = $this->resolveActiveCategoryId($request);
+        $activeDatePeriod = $this->resolveActiveDatePeriod($request, GalleryItem::memoryPeriods());
 
-        $galleryItems = $this->itemsQuery($activeCategoryId)->paginate(self::PER_PAGE);
+        $galleryItems = $this->itemsQuery($activeCategoryId, $activeDatePeriod)->paginate(self::PER_PAGE);
 
         return response()->json([
             'html' => view('frontend.gallery._items', compact('galleryItems'))->render(),
@@ -54,6 +58,24 @@ class GalleryController extends Controller
         return $category === 'all' ? null : ((int) $category ?: null);
     }
 
+    /**
+     * Only accept a ?date= value that is one of the currently available
+     * periods, so stale links (e.g. a month whose items were removed)
+     * gracefully fall back to "all dates".
+     *
+     * @param  array<int, array{key: string, label: string}>  $datePeriods
+     */
+    private function resolveActiveDatePeriod(Request $request, array $datePeriods): ?string
+    {
+        $date = $request->query('date');
+
+        if (! $date || $date === 'all') {
+            return null;
+        }
+
+        return collect($datePeriods)->firstWhere('key', $date)['key'] ?? null;
+    }
+
     private function categoriesWithItems()
     {
         return GalleryCategory::query()
@@ -62,11 +84,12 @@ class GalleryController extends Controller
             ->get();
     }
 
-    private function itemsQuery(?int $categoryId)
+    private function itemsQuery(?int $categoryId, ?string $datePeriod = null)
     {
         return GalleryItem::query()
             ->active()
             ->category($categoryId)
+            ->memoryPeriod($datePeriod)
             ->ordered();
     }
 }

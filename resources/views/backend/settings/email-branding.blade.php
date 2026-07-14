@@ -69,9 +69,9 @@
                         <x-input-label for="email_logo" value="Brand Logo" />
 
                         <div class="mt-1 flex items-center gap-4">
-                            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg border border-border bg-surface object-contain p-1">
+                            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg border border-border bg-white object-contain p-1">
                                 <img x-show="logoPreview" :src="logoPreview" class="h-full w-full object-contain">
-                                <span x-show="!logoPreview" class="text-xs text-text-muted">No logo</span>
+                                <span x-show="!logoPreview" class="text-xs text-gray-400">No logo</span>
                             </div>
 
                             <div>
