@@ -181,6 +181,12 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <div class="footer-legal-note d-flex align-items-start align-items-md-center justify-content-center gap-2 mt-3">
+                                <iconify-icon icon="mdi:shield-check-outline" aria-hidden="true"></iconify-icon>
+                                <p class="fts-12 fw-4 subtitle-text-L text-center mb-0">All content and imagery on this website are the property of <span class="secondary-color-L fw-5">{{ config('app.name') }}</span> and protected by copyright law. Unauthorized use, copying, or distribution will be subject to legal action.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

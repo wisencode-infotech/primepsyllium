@@ -7,6 +7,7 @@ use App\Http\Requests\GalleryItemRequest;
 use App\Models\GalleryCategory;
 use App\Models\GalleryItem;
 use App\Services\GalleryThumbnailer;
+use App\Services\GalleryWatermarker;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -53,6 +54,7 @@ class GalleryItemController extends Controller
 
             if ($request->hasFile('video_thumbnail')) {
                 $data['video_thumbnail'] = $request->file('video_thumbnail')->store('gallery', 'public');
+                GalleryWatermarker::apply($data['video_thumbnail']);
                 GalleryThumbnailer::generate($data['video_thumbnail']);
             }
         } else {
@@ -61,6 +63,7 @@ class GalleryItemController extends Controller
 
             if ($request->hasFile('image')) {
                 $data['image'] = $request->file('image')->store('gallery', 'public');
+                GalleryWatermarker::apply($data['image']);
                 GalleryThumbnailer::generate($data['image']);
             }
         }
@@ -104,6 +107,7 @@ class GalleryItemController extends Controller
                     GalleryThumbnailer::delete($gallery->video_thumbnail);
                 }
                 $data['video_thumbnail'] = $request->file('video_thumbnail')->store('gallery', 'public');
+                GalleryWatermarker::apply($data['video_thumbnail']);
                 GalleryThumbnailer::generate($data['video_thumbnail']);
             } else {
                 $data['video_thumbnail'] = $gallery->video_thumbnail;
@@ -125,6 +129,7 @@ class GalleryItemController extends Controller
                     GalleryThumbnailer::delete($gallery->image);
                 }
                 $data['image'] = $request->file('image')->store('gallery', 'public');
+                GalleryWatermarker::apply($data['image']);
                 GalleryThumbnailer::generate($data['image']);
             } else {
                 $data['image'] = $gallery->image;

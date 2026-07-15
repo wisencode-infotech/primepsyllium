@@ -34,12 +34,14 @@ class GalleryThumbnailer
         $thumbPath = self::thumbPath($storagePath);
 
         try {
-            $manager = new ImageManager(self::driver());
-            $image = $manager->read($disk->path($storagePath));
-            $image->scaleDown(width: self::MAX_WIDTH);
+            self::withMemoryHeadroom(function () use ($disk, $storagePath, $thumbPath) {
+                $manager = new ImageManager(self::driver());
+                $image = $manager->read($disk->path($storagePath));
+                $image->scaleDown(width: self::MAX_WIDTH);
 
-            $disk->makeDirectory(dirname($thumbPath));
-            $image->save($disk->path($thumbPath), quality: self::QUALITY);
+                $disk->makeDirectory(dirname($thumbPath));
+                $image->save($disk->path($thumbPath), quality: self::QUALITY);
+            });
         } catch (Throwable $e) {
             Log::warning("GalleryThumbnailer: failed to generate thumbnail for {$storagePath}: {$e->getMessage()}");
 
@@ -58,7 +60,7 @@ class GalleryThumbnailer
      * Some hosts only enable one of GD / Imagick (or neither) depending on
      * the PHP handler in use, independently of what's available locally.
      */
-    private static function driver(): DriverInterface
+    public static function driver(): DriverInterface
     {
         if (extension_loaded('gd')) {
             return new GdDriver();
@@ -74,5 +76,43 @@ class GalleryThumbnailer
     public static function delete(string $storagePath): void
     {
         Storage::disk('public')->delete(self::thumbPath($storagePath));
+    }
+
+    /**
+     * GD holds full uncompressed bitmaps (a ~4000px photo needs ~100M, more
+     * when cloned), so the default 128M limit is not enough. Raise it for
+     * the duration of the operation only, and never lower an existing
+     * higher limit.
+     */
+    public static function withMemoryHeadroom(callable $operation): void
+    {
+        $original = ini_get('memory_limit');
+        $target = 512 * 1024 * 1024;
+
+        $raise = $original !== '-1' && self::toBytes($original) < $target;
+
+        if ($raise) {
+            ini_set('memory_limit', '512M');
+        }
+
+        try {
+            $operation();
+        } finally {
+            if ($raise) {
+                ini_set('memory_limit', $original);
+            }
+        }
+    }
+
+    private static function toBytes(string $iniValue): float
+    {
+        $value = (float) $iniValue;
+
+        return match (strtoupper(substr(trim($iniValue), -1))) {
+            'G' => $value * 1024 ** 3,
+            'M' => $value * 1024 ** 2,
+            'K' => $value * 1024,
+            default => $value,
+        };
     }
 }
