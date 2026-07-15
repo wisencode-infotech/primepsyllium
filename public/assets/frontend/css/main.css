@@ -757,7 +757,6 @@
   background: var(--primary-color);
 }
 .footer-legal-note{
-  border-top: 1px solid #00000014;
   padding-top: 14px;
 }
 .footer-legal-note iconify-icon{

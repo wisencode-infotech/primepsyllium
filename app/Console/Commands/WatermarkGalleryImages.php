@@ -9,7 +9,9 @@ use Illuminate\Console\Command;
 
 class WatermarkGalleryImages extends Command
 {
-    protected $signature = 'gallery:watermark {--path=* : Only process these storage paths (e.g. gallery/abc.jpg)}';
+    protected $signature = 'gallery:watermark
+        {--path=* : Only process these storage paths (e.g. gallery/abc.jpg)}
+        {--limit= : Process at most this many files, e.g. --limit=10 to roll out in small batches}';
 
     protected $description = 'Stamp the site favicon on gallery images and video posters that are not watermarked yet, then refresh their thumbnails';
 
@@ -26,6 +28,15 @@ class WatermarkGalleryImages extends Command
             ->values();
 
         $pending = $paths->reject(fn (string $path) => GalleryWatermarker::isWatermarked($path));
+
+        if (($limit = (int) $this->option('limit')) > 0) {
+            $remaining = $pending->count();
+            $pending = $pending->take($limit);
+
+            if ($remaining > $limit) {
+                $this->info("{$remaining} file(s) pending — processing the first {$limit}; re-run to continue.");
+            }
+        }
 
         if ($pending->isEmpty()) {
             $this->info('Nothing to do — every matching gallery image is already watermarked.');
