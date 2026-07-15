@@ -186,6 +186,7 @@
             whenTurnstileReady(function (turnstile) {
                 turnstileWidgetId = turnstile.render(turnstileContainer, {
                     sitekey: config.turnstileSiteKey,
+                    size: 'flexible',
                 });
             });
         }
@@ -204,6 +205,7 @@
             escalationMessageField.value = lastQuestion;
             escalationForm.hidden = false;
             form.hidden = true;
+            panel.classList.add('is-escalating');
             renderEscalationTurnstile();
         }
 
@@ -224,6 +226,7 @@
         function hideEscalationForm() {
             escalationForm.hidden = true;
             form.hidden = false;
+            panel.classList.remove('is-escalating');
             escalationForm.reset();
             escalationSessionField.value = sessionId;
             hideEscalationError();

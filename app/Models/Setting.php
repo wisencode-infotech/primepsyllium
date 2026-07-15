@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\SafeEncrypted;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
@@ -58,7 +59,7 @@ class Setting extends Model
     ];
 
     protected $casts = [
-        'chat_gateway_secret' => 'encrypted',
+        'chat_gateway_secret' => SafeEncrypted::class,
         'default_gallery_category_id' => 'integer',
     ];
 

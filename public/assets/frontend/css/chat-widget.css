@@ -215,6 +215,20 @@
 .ppsy-chat-escalation {
     flex-direction: column;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #cfcfd4 transparent;
+}
+
+/* Fields keep their natural height; the form scrolls instead of squashing them */
+.ppsy-chat-escalation > * {
+    flex-shrink: 0;
+}
+
+/* Give the taller escalation form (with Turnstile) room to fit without scrolling */
+@media (min-width: 641px) {
+    .ppsy-chat-panel.is-escalating {
+        height: 680px;
+    }
 }
 
 .ppsy-chat-escalation-header {
@@ -303,6 +317,15 @@
 
 .ppsy-chat-turnstile {
     margin-top: 8px;
+}
+
+/* Flexible-size Turnstile fills the form width, matching the input fields */
+.ppsy-chat-turnstile iframe {
+    max-width: 100% !important;
+}
+
+.ppsy-chat-turnstile:empty {
+    display: none;
 }
 
 .ppsy-chat-send-block {

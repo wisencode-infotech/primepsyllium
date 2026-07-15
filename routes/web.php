@@ -201,7 +201,7 @@ Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('even
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:contact')->name('contact.store');
 
 Route::post('/api/chat', [ChatController::class, 'send'])->middleware('throttle:chat')->name('chat.send');
 

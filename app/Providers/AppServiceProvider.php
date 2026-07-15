@@ -43,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         RateLimiter::for('chat', fn ($request) => Limit::perMinute(10)->by($request->ip()));
+        RateLimiter::for('contact', fn ($request) => Limit::perMinute(5)->by($request->ip()));
 
         Product::observe(ProductObserver::class);
         BlogPost::observe(BlogPostObserver::class);
