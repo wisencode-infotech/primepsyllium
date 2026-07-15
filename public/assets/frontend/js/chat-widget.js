@@ -34,6 +34,8 @@
         var escalationMessageField = document.getElementById('ppsy-chat-escalation-message');
         var escalationCloseBtn = document.getElementById('ppsy-chat-escalation-close');
         var escalationErrorEl = document.getElementById('ppsy-chat-escalation-error');
+        var turnstileContainer = document.getElementById('ppsy-chat-turnstile');
+        var turnstileWidgetId = null;
         var sessionId = getSessionId();
         var sending = false;
 
@@ -158,10 +160,51 @@
             suggestionsEl.hidden = false;
         }
 
+        function whenTurnstileReady(callback, attemptsLeft) {
+            attemptsLeft = attemptsLeft === undefined ? 50 : attemptsLeft;
+
+            if (window.turnstile) {
+                callback(window.turnstile);
+
+                return;
+            }
+
+            if (attemptsLeft <= 0) {
+                return;
+            }
+
+            setTimeout(function () {
+                whenTurnstileReady(callback, attemptsLeft - 1);
+            }, 100);
+        }
+
+        function renderEscalationTurnstile() {
+            if (!turnstileContainer || !config.turnstileSiteKey || turnstileWidgetId !== null) {
+                return;
+            }
+
+            whenTurnstileReady(function (turnstile) {
+                turnstileWidgetId = turnstile.render(turnstileContainer, {
+                    sitekey: config.turnstileSiteKey,
+                });
+            });
+        }
+
+        function resetEscalationTurnstile() {
+            if (turnstileWidgetId === null) {
+                return;
+            }
+
+            whenTurnstileReady(function (turnstile) {
+                turnstile.reset(turnstileWidgetId);
+            });
+        }
+
         function showEscalationForm(lastQuestion) {
             escalationMessageField.value = lastQuestion;
             escalationForm.hidden = false;
             form.hidden = true;
+            renderEscalationTurnstile();
         }
 
         function hideEscalationError() {
@@ -184,6 +227,7 @@
             escalationForm.reset();
             escalationSessionField.value = sessionId;
             hideEscalationError();
+            resetEscalationTurnstile();
         }
 
         function sendMessage(message) {
@@ -287,6 +331,7 @@
                         var errors = result.data.errors;
                         var message = (errors && Object.values(errors)[0][0]) || result.data.message || 'Something went wrong. Please try again.';
                         showEscalationError(message);
+                        resetEscalationTurnstile();
                     }
                 })
                 .catch(function () {

@@ -301,6 +301,10 @@
     background: color-mix(in srgb, var(--primary-color, #17494b) 88%, #000);
 }
 
+.ppsy-chat-turnstile {
+    margin-top: 8px;
+}
+
 .ppsy-chat-send-block {
     width: 100%;
     gap: 8px;

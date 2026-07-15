@@ -129,6 +129,13 @@
                                     </div>
 
                                     <div class="col-12">
+                                        <div class="cf-turnstile wow fadeInUp" data-sitekey="{{ config('services.turnstile.site_key') }}"></div>
+                                        @error('cf-turnstile-response')
+                                            <span class="contact-field-error fts-12">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-12">
                                         <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 wow fadeInUp">
                                             <p class="fts-12 subtitle-text-L mb-0 d-flex align-items-center gap-1">
                                                 <iconify-icon icon="mdi:lock-outline"></iconify-icon> Your information is secure and never shared.

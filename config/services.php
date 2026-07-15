@@ -41,4 +41,9 @@ return [
         'timeout' => env('CHAT_GATEWAY_TIMEOUT', 15),
     ],
 
+    'turnstile' => [
+        'site_key' => env('TURNSTILE_SITE_KEY'),
+        'secret_key' => env('TURNSTILE_SECRET_KEY'),
+    ],
+
 ];

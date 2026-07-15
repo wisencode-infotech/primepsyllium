@@ -315,6 +315,12 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
+                                            <div class="cf-turnstile wow fadeInUp" data-sitekey="{{ config('services.turnstile.site_key') }}"></div>
+                                            @error('cf-turnstile-response')
+                                                <span class="text-danger fts-12">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-12">
                                             <button type="submit" class="common-bg-btn contact-submit-btn fts-14 wow fadeInUp">Get Started <img src="{{ asset('assets/frontend/images/arrow.png') }}" alt=""></button>
                                         </div>
                                     </div>

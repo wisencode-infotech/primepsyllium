@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Turnstile;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,6 +23,19 @@ class ContactInquiryRequest extends FormRequest
             'message' => ['required', 'string', 'max:5000'],
             'source' => ['nullable', 'string', 'in:website_form,chatbot'],
             'session_id' => ['nullable', 'string', 'max:255'],
+            'cf-turnstile-response' => ['required', 'string', new Turnstile()],
+        ];
+    }
+
+    /**
+     * Get custom attribute names for validator errors.
+     *
+     * @return array<string, string>
+     */
+    public function attributes(): array
+    {
+        return [
+            'cf-turnstile-response' => 'security check',
         ];
     }
 }

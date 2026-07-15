@@ -197,5 +197,6 @@
         <script src="{{ asset('assets/frontend/js/wow.js') }}" defer></script>
         <script src="{{ asset('assets/frontend/js/main.js') }}?v={{ filemtime(public_path('assets/frontend/js/main.js')) }}" defer></script>
         <script src="{{ asset('assets/frontend/js/chat-widget.js') }}?v={{ filemtime(public_path('assets/frontend/js/chat-widget.js')) }}" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     </body>
 </html>

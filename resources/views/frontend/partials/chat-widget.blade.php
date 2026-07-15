@@ -52,6 +52,8 @@
             <label class="ppsy-chat-field-label" for="ppsy-chat-escalation-message">Your message</label>
             <textarea name="message" id="ppsy-chat-escalation-message" rows="3" required class="ppsy-chat-input-field"></textarea>
 
+            <div id="ppsy-chat-turnstile" class="ppsy-chat-turnstile"></div>
+
             <button type="submit" class="ppsy-chat-send ppsy-chat-send-block">
                 <iconify-icon icon="tabler:send-2"></iconify-icon>
                 <span>Send to our team</span>
@@ -71,5 +73,6 @@
     window.ChatWidgetConfig = {
         endpoint: @json(route('chat.send')),
         csrfToken: @json(csrf_token()),
+        turnstileSiteKey: @json(config('services.turnstile.site_key')),
     };
 </script>
