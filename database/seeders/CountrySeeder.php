@@ -14,10 +14,6 @@ class CountrySeeder extends Seeder
      */
     public function run(): void
     {
-        if (Country::query()->exists()) {
-            return;
-        }
-
         $footerCountries = ['USA', 'Canada', 'Brazil', 'Russia', 'South Korea'];
 
         $countries = [
@@ -40,6 +36,10 @@ class CountrySeeder extends Seeder
         ];
 
         foreach ($countries as $index => [$name, $flagFile]) {
+            if (Country::query()->where('name', $name)->exists()) {
+                continue;
+            }
+
             Country::query()->create([
                 'name' => $name,
                 'flag' => $this->copyImage('assets/frontend/images/'.$flagFile),
