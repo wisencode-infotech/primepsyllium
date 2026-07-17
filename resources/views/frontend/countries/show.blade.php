@@ -121,7 +121,7 @@
                 <div class="row justify-content-center mt-3 mt-lg-4">
                     @foreach ($products as $product)
                         <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3">
-                            <a href="{{ route('products.show', $product) }}" class="country-chip d-block wow fadeInUp">
+                            <a href="{{ route('products.show', $product) }}" class="country-chip text-decoration-none wow fadeInUp">
                                 <img src="{{ $product->image_url }}" alt="{{ $product->name }}" loading="lazy" decoding="async">
                                 <span class="fts-14 fw-4 subtitle-text-L">{{ $product->name }}</span>
                             </a>

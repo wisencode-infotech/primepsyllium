@@ -72,7 +72,7 @@
                         </div>
                         <div class="about-center-line d-none d-md-block"></div>
                         <div class="single-about-exp re-size d-flex justify-content-center gap-2 align-items-center wow fadeInUp">
-                            <h3 class="d-flex fts-32 fw-5 title-text-L">14 <span class="primary-light-color-L">+</span></h3>
+                            <h3 class="d-flex fts-32 fw-5 title-text-L">{{ $countriesServedCount }} <span class="primary-light-color-L">+</span></h3>
                             <p class="fts-14 fw-4 subtitle-text-L">Countries Served <br> Worldwide</p>
                         </div>
                     </div>

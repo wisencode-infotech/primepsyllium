@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\BlogPost;
 use App\Models\Certification;
+use App\Models\Country;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Observers\BlogPostObserver;
@@ -40,6 +41,13 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('emails.*', function ($view) {
             $view->with('branding', Setting::current());
+        });
+
+        View::composer('frontend.*', function ($view) {
+            static $countriesServedCount;
+            $countriesServedCount ??= Country::query()->active()->count();
+
+            $view->with('countriesServedCount', $countriesServedCount);
         });
 
         RateLimiter::for('chat', fn ($request) => Limit::perMinute(10)->by($request->ip()));

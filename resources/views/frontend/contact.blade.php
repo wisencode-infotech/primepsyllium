@@ -26,7 +26,7 @@
                 <div class="col-lg-9">
                     <div class="d-flex flex-wrap justify-content-center gap-2 gap-md-3 wow fadeInUp">
                         <div class="psyllium-pillar-chip fts-14"><iconify-icon icon="mdi:clock-fast"></iconify-icon>Quick Response</div>
-                        <div class="psyllium-pillar-chip fts-14"><iconify-icon icon="mdi:earth"></iconify-icon>14+ Countries Served</div>
+                        <div class="psyllium-pillar-chip fts-14"><iconify-icon icon="mdi:earth"></iconify-icon>{{ $countriesServedCount }}+ Countries Served</div>
                         <div class="psyllium-pillar-chip fts-14"><iconify-icon icon="mdi:account-group-outline"></iconify-icon>Dedicated Support Team</div>
                     </div>
                 </div>

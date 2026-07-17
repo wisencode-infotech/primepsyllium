@@ -127,7 +127,7 @@
                     @foreach ($countries as $country)
                         <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3">
                             @if ($country->has_page)
-                                <a href="{{ $country->url }}" class="country-chip d-block wow fadeInUp">
+                                <a href="{{ $country->url }}" class="country-chip text-decoration-none wow fadeInUp">
                                     <img src="{{ $country->image_url }}" alt="{{ $country->name }}" loading="lazy" decoding="async">
                                     <span class="fts-14 fw-4 subtitle-text-L">{{ $country->name }}</span>
                                 </a>

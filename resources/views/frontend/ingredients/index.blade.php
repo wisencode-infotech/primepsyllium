@@ -103,7 +103,7 @@
                     ['icon' => 'mdi:shield-check-outline', 'title' => 'Certified & Compliant',     'desc' => 'Our facilities and products carry globally recognised certifications for food safety and quality.'],
                     ['icon' => 'mdi:handshake-outline',    'title' => 'Reliable Partnership',      'desc' => 'From sample to shipment, we deliver consistent quality and dependable service that you can count on.'],
                     ['icon' => 'mdi:package-variant-closed', 'title' => 'Bulk & Private Label',   'desc' => 'Available in bulk or private-label packaging tailored to your brand and market requirements.'],
-                    ['icon' => 'mdi:earth',                'title' => 'Global Reach',              'desc' => 'Trusted by businesses across 14+ countries with a proven track record of seamless export logistics.'],
+                    ['icon' => 'mdi:earth',                'title' => 'Global Reach',              'desc' => 'Trusted by businesses across '.$countriesServedCount.'+ countries with a proven track record of seamless export logistics.'],
                 ];
             @endphp
             <div class="row justify-content-center mt-3 mt-lg-4">

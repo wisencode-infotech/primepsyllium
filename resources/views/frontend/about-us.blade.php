@@ -27,7 +27,7 @@
                     <div class="d-flex flex-wrap justify-content-center gap-2 gap-md-3 wow fadeInUp">
                         <div class="psyllium-pillar-chip fts-14"><iconify-icon icon="mdi:certificate-outline"></iconify-icon>30+ Years of Expertise</div>
                         <div class="psyllium-pillar-chip fts-14"><iconify-icon icon="mdi:leaf"></iconify-icon>Export-Grade Purity</div>
-                        <div class="psyllium-pillar-chip fts-14"><iconify-icon icon="mdi:earth"></iconify-icon>14+ Countries Served</div>
+                        <div class="psyllium-pillar-chip fts-14"><iconify-icon icon="mdi:earth"></iconify-icon>{{ $countriesServedCount }}+ Countries Served</div>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="about-center-line d-none d-md-block"></div>
                         <div class="single-about-exp re-size d-flex justify-content-center gap-2 align-items-center wow fadeInUp">
-                            <h4 class="d-flex fts-32 fw-5 title-text-L">14 <span class="primary-light-color-L">+</span></h4>
+                            <h4 class="d-flex fts-32 fw-5 title-text-L">{{ $countriesServedCount }} <span class="primary-light-color-L">+</span></h4>
                             <p class="fts-14 fw-4 subtitle-text-L">Countries Served <br> Worldwide</p>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                         <div class="timeline-item wow fadeInUp">
                             <span class="timeline-year">2019</span>
                             <h4 class="fts-16 fw-6 title-text-L">Going Global</h4>
-                            <p class="fts-14 fw-4 subtitle-text-L">We began exporting to international markets, marking the start of our global presence that now spans 14+ countries.</p>
+                            <p class="fts-14 fw-4 subtitle-text-L">We began exporting to international markets, marking the start of our global presence that now spans {{ $countriesServedCount }}+ countries.</p>
                         </div>
                     </div>
                 </div>

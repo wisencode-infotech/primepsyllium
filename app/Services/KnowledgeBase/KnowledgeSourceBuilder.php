@@ -4,6 +4,7 @@ namespace App\Services\KnowledgeBase;
 
 use App\Models\BlogPost;
 use App\Models\Certification;
+use App\Models\Country;
 use App\Models\Product;
 use App\Models\Setting;
 
@@ -95,7 +96,9 @@ class KnowledgeSourceBuilder
      */
     public function forAboutPage(): array
     {
-        $text = <<<'TEXT'
+        $countryCount = Country::query()->active()->count();
+
+        $text = <<<TEXT
         Prime Psyllium has been a trusted psyllium manufacturer and supplier in India since 2018, built on decades of family expertise that goes back to 1995.
 
         Our founding patriarch is Haji NoorBhai KamalBhai Moriya. Our roots trace back to him beginning cultivating and trading seeds in the 1950s, laying the foundation of the family's legacy in agriculture. That legacy carries through four generations to Prime Psyllium.
@@ -106,9 +109,9 @@ class KnowledgeSourceBuilder
         - 1995: The family entered psyllium husk production, starting with a small manufacturing unit processing one tonne a day.
         - 2012: We expanded into the spices sector, launching our Spices Ventures to diversify our product portfolio.
         - 2018: Prime Psyllium was founded under visionary leadership, with a mission to deliver premium-quality psyllium products globally.
-        - 2019: We began exporting to international markets, marking the start of our global presence that now spans 14+ countries.
+        - 2019: We began exporting to international markets, marking the start of our global presence that now spans {$countryCount}+ countries.
 
-        Every batch is sustainably processed and 100% naturally refined, backed by export-grade quality and consistent purity that meets international standards. The company has 30+ years of industry expertise and serves 14+ countries worldwide.
+        Every batch is sustainably processed and 100% naturally refined, backed by export-grade quality and consistent purity that meets international standards. The company has 30+ years of industry expertise and serves {$countryCount}+ countries worldwide.
 
         Our Mission: To support the health and well-being of our customers by offering hygienic, natural and premium-quality psyllium products at competitive prices.
 

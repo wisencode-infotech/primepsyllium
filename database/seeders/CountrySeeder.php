@@ -35,6 +35,8 @@ class CountrySeeder extends Seeder
             ['Australia', 'Australia-flag.png'],
             ['UAE', 'UAE-flag.png'],
             ['Argentina', 'Argentina-flag.png'],
+            ['Bulgaria', 'Bulgaria-flag.png'],
+            ['Indonesia', 'Indonesia-flag.png'],
         ];
 
         foreach ($countries as $index => [$name, $flagFile]) {
