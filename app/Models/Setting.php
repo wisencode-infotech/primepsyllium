@@ -15,6 +15,10 @@ class Setting extends Model
 
     public const DEFAULT_PRIMARY_LIGHT_COLOR = '#a3c1b5';
 
+    public const DEFAULT_SECTION_WHITE_COLOR = '#FFFFFF';
+
+    public const DEFAULT_SECTION_CREAM_COLOR = '#F8F6F1';
+
     public const DEFAULT_EMAIL_SECONDARY_COLOR = '#2e5557';
 
     public const DEFAULT_EMAIL_TEXT_COLOR = '#2F2724';
@@ -42,6 +46,8 @@ class Setting extends Model
         'primary_color',
         'secondary_color',
         'primary_light_color',
+        'section_white_color',
+        'section_cream_color',
         'email_brand_name',
         'email_website_url',
         'email_logo',
@@ -176,6 +182,16 @@ class Setting extends Model
         return $value ?: self::DEFAULT_PRIMARY_LIGHT_COLOR;
     }
 
+    public function getSectionWhiteColorAttribute(?string $value): string
+    {
+        return $value ?: self::DEFAULT_SECTION_WHITE_COLOR;
+    }
+
+    public function getSectionCreamColorAttribute(?string $value): string
+    {
+        return $value ?: self::DEFAULT_SECTION_CREAM_COLOR;
+    }
+
     /**
      * The configured social media links, keyed by platform, excluding any that are empty.
      *
@@ -204,6 +220,8 @@ class Setting extends Model
             '--primary-color' => $this->primary_color,
             '--secondary-color' => $this->secondary_color,
             '--primary-light-color' => $this->primary_light_color,
+            '--section-bg-white' => $this->section_white_color,
+            '--section-bg-cream' => $this->section_cream_color,
         ];
     }
 }

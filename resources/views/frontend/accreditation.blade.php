@@ -40,7 +40,7 @@
     </section>
 
     {{-- why certifications matter --}}
-    <section class="primer-product-section py-4 py-lg-5">
+    <section id="why-it-matters" class="primer-product-section py-4 py-lg-5">
         <div class="container py-lg-2">
             <div class="heading-products text-center">
                 <h6 class="common-icon-title mx-auto fts-14 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Why It Matters</h6>

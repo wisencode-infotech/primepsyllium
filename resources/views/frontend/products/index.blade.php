@@ -96,25 +96,6 @@
         </div>
     </section>
 
-    {{-- certified quality --}}
-    @if ($certifications->isNotEmpty())
-        <section class="py-4 py-lg-5 trust-strip-box">
-            <div class="container py-lg-2">
-                <div class="heading-products text-center">
-                    <h6 class="common-icon-title mx-auto fts-14 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Certified Quality</h6>
-                    <h2 class="fts-36 fw-5 title-text-L mt-1 mt-lg-2 wow fadeInUp">Globally Certified &amp; Trusted</h2>
-                </div>
-                <div class="coverage-sliders mt-3 mt-lg-4">
-                    @foreach ($certifications as $certification)
-                        <div class="media-items">
-                            <img src="{{ $certification->image_url }}" alt="{{ $certification->name }}" class="brand-media-logo" loading="lazy" decoding="async">
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
-
     {{-- exported worldwide --}}
     @if ($countries->isNotEmpty())
         <section class="py-4 py-lg-5">
@@ -137,6 +118,25 @@
                                     <span class="fts-14 fw-4 subtitle-text-L">{{ $country->name }}</span>
                                 </div>
                             @endif
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+
+    {{-- certified quality --}}
+    @if ($certifications->isNotEmpty())
+        <section class="py-4 py-lg-5 trust-strip-box">
+            <div class="container py-lg-2">
+                <div class="heading-products text-center">
+                    <h6 class="common-icon-title mx-auto fts-14 wow fadeInUp"><iconify-icon icon="ph:flower-tulip-bold"></iconify-icon>Certified Quality</h6>
+                    <h2 class="fts-36 fw-5 title-text-L mt-1 mt-lg-2 wow fadeInUp">Globally Certified &amp; Trusted</h2>
+                </div>
+                <div class="coverage-sliders mt-3 mt-lg-4">
+                    @foreach ($certifications as $certification)
+                        <div class="media-items">
+                            <img src="{{ $certification->image_url }}" alt="{{ $certification->name }}" class="brand-media-logo" loading="lazy" decoding="async">
                         </div>
                     @endforeach
                 </div>

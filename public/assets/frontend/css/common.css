@@ -172,7 +172,7 @@ html {
 }
 body{
   font-family: var(--font-primary);
-  background: var(--white-color);
+  background: var(--section-bg-white);
 }
 button,
 input,
@@ -206,6 +206,8 @@ textarea{
   --border-color: #ABAFC7;
   --success-color: #58C27D;
   --danger-color: #DB4444;
+  --section-bg-white: #FFFFFF;
+  --section-bg-cream: #F8F6F1;
   --bs-font-sans-serif: var(--font-primary);
   --bs-body-font-family: var(--font-primary);
 }

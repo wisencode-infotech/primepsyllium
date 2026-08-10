@@ -39,6 +39,8 @@ class ThemeSettingController extends Controller
             'primary_color' => null,
             'secondary_color' => null,
             'primary_light_color' => null,
+            'section_white_color' => null,
+            'section_cream_color' => null,
         ];
 
         if ($setting->exists) {

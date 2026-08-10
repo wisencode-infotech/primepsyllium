@@ -56,6 +56,36 @@
                     </div>
                 </div>
 
+                <hr class="my-6 border-border">
+
+                <p class="text-sm text-text-muted mb-6">
+                    Controls the alternating background bands used on every page section &mdash; hero banners, content stripes and the footer areas. Changes apply site-wide immediately.
+                </p>
+
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                    <div>
+                        <x-color-input
+                            name="section_white_color"
+                            label="Section White Color"
+                            :value="old('section_white_color', $setting->section_white_color)"
+                            :default="\App\Models\Setting::DEFAULT_SECTION_WHITE_COLOR"
+                            help="The plain band used to alternate between page sections."
+                        />
+                        <x-input-error class="mt-2" :messages="$errors->get('section_white_color')" />
+                    </div>
+
+                    <div>
+                        <x-color-input
+                            name="section_cream_color"
+                            label="Section Cream Color"
+                            :value="old('section_cream_color', $setting->section_cream_color)"
+                            :default="\App\Models\Setting::DEFAULT_SECTION_CREAM_COLOR"
+                            help="The tinted band used to alternate between page sections."
+                        />
+                        <x-input-error class="mt-2" :messages="$errors->get('section_cream_color')" />
+                    </div>
+                </div>
+
                 <div class="mt-6 flex items-center gap-3">
                     <x-primary-button>Save Theme</x-primary-button>
 

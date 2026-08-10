@@ -130,7 +130,7 @@
 
 /* header section start */
 .nav-header-section{
-  background: linear-gradient(38deg, #F6F6F6 0%, rgb(255 255 255) 100%);
+  background: var(--section-bg-white);
 }
 .header-step-position-1{
   position: absolute;
@@ -226,7 +226,7 @@
   border: 1px solid #cacaca;
   color: var(--primary-color);
   padding: 9px 24px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
@@ -265,15 +265,18 @@
 
 /* about us section */
 .about-main-section#about-us{
-  background-color: #F8F6F1;
+  background-color: var(--section-bg-cream);
 }
 
 /* product section start  */
 .primer-product-section {
-  background: #F6F6F6;
+  background: var(--section-bg-cream);
 }
-.primer-product-section#products {
-  background: #F8F6F1;
+.primer-product-section#why-it-matters {
+  background: var(--section-bg-white);
+}
+.primer-product-section#industries {
+  background: var(--section-bg-white);
 }
 .single-prime-product .product-img{
   height: 140px;
@@ -400,7 +403,7 @@
   object-fit: contain;
 }
 .media-center-box{
-  background: #F6F6F6;
+  background: #F8F6F1;
   border-radius: 14px;
 }
 .media-more img{
@@ -415,10 +418,10 @@
 
 /* contact section start */
 .prime-contact-section{
-  background: #F6F6F6;
+  background: var(--section-bg-white);
 }
 .prime-contact-section--flush{
-  background: #F8F6F1;
+  background: var(--section-bg-cream);
 }
 .contact-right-bg{
   background: url(../images/packaging.png);
@@ -674,7 +677,7 @@
 
 /* locations section */
 .contact-locations-section{
-  background: var(--white-color);
+  background: var(--section-bg-cream);
 }
 .contact-location-card{
   background: var(--white-color);

@@ -231,7 +231,7 @@
 
     {{-- industry detail sections --}}
     @foreach ($industries as $index => $industry)
-        <section id="{{ $industry['slug'] }}" class="application-section py-4 py-lg-5 {{ $index % 2 === 1 ? 'primer-product-section' : '' }}">
+        <section id="{{ $industry['slug'] }}" class="application-section py-4 py-lg-5 {{ $index % 2 === 0 ? 'primer-product-section' : '' }}">
             <div class="container py-lg-2">
                 <div class="row align-items-center">
                     <div class="col-lg-6 order-{{ $index % 2 === 0 ? '0' : '5' }} order-lg-{{ $index % 2 === 0 ? '0' : '5' }}">
