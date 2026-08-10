@@ -132,6 +132,9 @@
 .nav-header-section{
   background: linear-gradient(38deg, #F6F6F6 0%, rgb(255 255 255) 100%);
 }
+.prime-header-layout{
+  background-color: #F8F6F1;
+}
 .header-step-position-1{
   position: absolute;
   left: 29%;
@@ -250,6 +253,7 @@
 
 /* brand media section */
 .media-coverage-main{
+  background-color: #F8F6F1;
   border-bottom: 1px solid #e7e7e7;
 }
 .media-items .brand-media-logo{
@@ -266,6 +270,9 @@
 /* product section start  */
 .primer-product-section {
   background: #F6F6F6;
+}
+.primer-product-section#products {
+  background: #F8F6F1;
 }
 .single-prime-product .product-img{
   height: 140px;
@@ -408,6 +415,9 @@
 /* contact section start */
 .prime-contact-section{
   background: #F6F6F6;
+}
+.prime-contact-section--flush{
+  background: #F8F6F1;
 }
 .contact-right-bg{
   background: url(../images/packaging.png);
