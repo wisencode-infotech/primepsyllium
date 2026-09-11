@@ -9,8 +9,8 @@
             <div class="ppsy-chat-header-title">
                 <img src="{{ $settings->favicon_url ?? asset('assets/frontend/icons/favicon.png') }}" alt="" class="ppsy-chat-header-logo">
                 <div>
-                    <p class="ppsy-chat-header-name">{{ config('app.name') }} Assistant</p>
-                    <p class="ppsy-chat-header-status">Ask about our products &amp; certifications</p>
+                    <p class="ppsy-chat-header-name">Prime Orin</p>
+                    <p class="ppsy-chat-header-status">AI Assistant by Prime Psyllium</p>
                 </div>
             </div>
             <button type="button" id="ppsy-chat-close" class="ppsy-chat-close" aria-label="Close chat">
