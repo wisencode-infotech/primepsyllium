@@ -1,6 +1,7 @@
 /* navbar section start  */
 .desktop-nav-logo{
   width: 76px;
+  transition: width 0.3s ease;
 }
 .offcanvas-logo {
   width: 60px;
@@ -131,6 +132,28 @@
 /* header section start */
 .nav-header-section{
   background: var(--section-bg-white);
+}
+.prime-desknav-main{
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background: var(--section-bg-white);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 0.3s ease, padding 0.3s ease;
+}
+.prime-desknav-main.is-sticky{
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+.prime-desknav-main.is-sticky .desktop-nav{
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.prime-desknav-main.is-sticky .desktop-nav-logo{
+  width: 56px;
+}
+.prime-desknav-main.is-sticky .mobile-header{
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 .header-step-position-1{
   position: absolute;

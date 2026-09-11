@@ -15,7 +15,18 @@ new WOW().init();
 		}
 	}, { passive: false });
 
-// brand logo slider 
+// sticky compact header on scroll
+(function () {
+  const header = document.querySelector('.prime-desknav-main');
+  if (!header) return;
+  const toggleSticky = () => {
+    header.classList.toggle('is-sticky', window.scrollY > 40);
+  };
+  toggleSticky();
+  window.addEventListener('scroll', toggleSticky, { passive: true });
+})();
+
+// brand logo slider
 $('.coverage-sliders').slick({
   dots: false,
   arrows: false,
