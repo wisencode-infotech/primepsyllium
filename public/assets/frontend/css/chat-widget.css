@@ -39,7 +39,7 @@
 }
 
 .ppsy-chat-toggle-icon-open {
-    animation: ppsy-chat-bounce 2s ease-in-out infinite;
+    animation: ppsy-chat-bounce 4s ease-in-out infinite;
 }
 
 @keyframes ppsy-chat-bounce {
